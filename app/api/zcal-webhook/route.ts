@@ -58,7 +58,10 @@ function pick<T = string>(
 }
 
 // zcal sends one of these event types; we only act on the create event.
+// Verified from Vercel logs: zcal uses "event.created" on confirmed bookings.
 const CREATE_EVENTS = new Set([
+  "event.created",
+  "event_created",
   "event_scheduled",
   "event.scheduled",
   "scheduled",
@@ -127,6 +130,15 @@ export async function POST(request: Request) {
   if (payload && typeof payload === "object") {
     const topKeys = Object.keys(payload as Record<string, unknown>).join(", ");
     console.log(`[zcal-webhook] payload top-level keys: ${topKeys}`);
+    // Also log the full payload at INFO level — temporarily, while we
+    // learn zcal's schema. Once parsing is verified, drop this back to
+    // top-keys only to avoid leaking guest PII into log retention.
+    try {
+      const stringified = JSON.stringify(payload).slice(0, 4000);
+      console.log(`[zcal-webhook] full payload: ${stringified}`);
+    } catch {
+      /* unstringifiable — skip */
+    }
   }
 
   // Identify the event type. Some platforms send {type}, others {event_type}.
@@ -222,7 +234,11 @@ export async function POST(request: Request) {
     programName,
     parsed,
     rawPayload: payload,
-    includeRawPayload: process.env.ZCAL_DEBUG_PAYLOAD === "true",
+    // Force-include the raw payload as a Slack attachment until we've
+    // confirmed parsing works against zcal's real schema. Flip back to
+    // env-controlled (`process.env.ZCAL_DEBUG_PAYLOAD === "true"`) once
+    // the first real ✅ message lands with all fields parsed correctly.
+    includeRawPayload: true,
   });
 
   const result = await postSlackMessage(webhookUrl, slackPayload);
