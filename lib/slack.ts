@@ -30,6 +30,8 @@ const COLOR_ENGAGED = "#93ADBF"; // slate — soft signal
 const COLOR_INTENT = "#F9C84A"; // honey — pending
 const COLOR_CONFIRMED = "#BFDEA3"; // sage — success
 
+const BOOKING_URL = "https://zcal.co/mochicollective/consultation";
+
 /* ─────────────────────────────────────────────────────────────────
  * Posting
  * ───────────────────────────────────────────────────────────────── */
@@ -85,8 +87,6 @@ function conciergeFields(answers: Answers): { type: "mrkdwn"; text: string }[] {
     },
   ];
 }
-
-const BOOKING_URL = "https://zcal.co/mochicollective/consultation";
 
 /* ─────────────────────────────────────────────────────────────────
  * 👀 Concierge engaged (completed, hasn't clicked Book yet)
@@ -182,40 +182,61 @@ export function buildBookingIntentPayload(input: {
 
 /* ─────────────────────────────────────────────────────────────────
  * ✅ Booking confirmed (zcal webhook)
+ *
+ * Structured parsing uses zcal's customQuestionAnswers (Q/A pairs) as the
+ * canonical source — more reliable than parsing our prefilled `notes`
+ * field. The notes are still included verbatim as a final block for
+ * operator-side context.
  * ───────────────────────────────────────────────────────────────── */
+
+export type ParsedBooking = {
+  bookingTimeISO?: string;
+  bookingTimeZone?: string;
+  durationMinutes?: number;
+  guestName?: string;
+  guestEmail?: string;
+  meetingUrl?: string;
+  programName?: string;
+  programBlurb?: string;
+  type?: string;
+  timing?: string;
+  budget?: string;
+  pressurePoints?: string;
+  additionalContext?: string;
+  /** Verbatim concierge notes (our prefilled `notes=` field). */
+  notes?: string;
+};
 
 export type BookingConfirmedInput = {
   zcalEvent?: string;
-  bookingTime?: string;
-  bookingTimeZone?: string;
-  guestName?: string;
-  guestEmail?: string;
-  /** Full prefilled notes text — guaranteed to contain all concierge answers. */
-  conciergeNotes?: string;
-  /** Parsed program name if extractable. */
-  programName?: string;
-  /** Parsed concierge selections, when notes can be parsed. */
-  parsed?: {
-    type?: string;
-    pressurePoints?: string;
-    timing?: string;
-    budget?: string;
-  };
-  /** Raw zcal payload — for debugging the first few bookings. */
+  parsed: ParsedBooking;
   rawPayload?: unknown;
   includeRawPayload?: boolean;
 };
+
+function formatBookingTime(iso: string, tz: string | undefined): string {
+  try {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    return new Intl.DateTimeFormat("en-US", {
+      timeZone: tz ?? "UTC",
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+      timeZoneName: "short",
+    }).format(d);
+  } catch {
+    return iso;
+  }
+}
 
 export function buildBookingConfirmedPayload(
   input: BookingConfirmedInput
 ): unknown {
   const {
-    bookingTime,
-    bookingTimeZone,
-    guestName,
-    guestEmail,
-    conciergeNotes,
-    programName,
     parsed,
     rawPayload,
     includeRawPayload = false,
@@ -223,31 +244,39 @@ export function buildBookingConfirmedPayload(
 
   const fields: { type: "mrkdwn"; text: string }[] = [];
 
-  if (parsed?.type) {
+  if (parsed.bookingTimeISO) {
+    const formatted = formatBookingTime(
+      parsed.bookingTimeISO,
+      parsed.bookingTimeZone
+    );
+    const duration = parsed.durationMinutes
+      ? ` · ${parsed.durationMinutes} min`
+      : "";
+    fields.push({
+      type: "mrkdwn",
+      text: `*Booked time*\n${formatted}${duration}`,
+    });
+  }
+
+  if (parsed.guestName || parsed.guestEmail) {
+    const who = [parsed.guestName, parsed.guestEmail].filter(Boolean).join(" · ");
+    fields.push({ type: "mrkdwn", text: `*Guest*\n${who}` });
+  }
+
+  if (parsed.type) {
     fields.push({ type: "mrkdwn", text: `*Type*\n${parsed.type}` });
   }
-  if (parsed?.timing) {
+  if (parsed.timing) {
     fields.push({ type: "mrkdwn", text: `*Timing*\n${parsed.timing}` });
   }
-  if (parsed?.budget) {
+  if (parsed.budget) {
     fields.push({ type: "mrkdwn", text: `*Budget*\n${parsed.budget}` });
   }
-  if (parsed?.pressurePoints) {
+  if (parsed.pressurePoints) {
     fields.push({
       type: "mrkdwn",
       text: `*Pressure points*\n${parsed.pressurePoints}`,
     });
-  }
-  if (bookingTime) {
-    const tz = bookingTimeZone ? ` ${bookingTimeZone}` : "";
-    fields.push({
-      type: "mrkdwn",
-      text: `*Booked time*\n${bookingTime}${tz}`,
-    });
-  }
-  const who = [guestName, guestEmail].filter(Boolean).join(" · ");
-  if (who) {
-    fields.push({ type: "mrkdwn", text: `*Guest*\n${who}` });
   }
 
   const blocks: unknown[] = [
@@ -258,29 +287,52 @@ export function buildBookingConfirmedPayload(
         text: ":white_check_mark: *Discovery call booked via Mochi Concierge*",
       },
     },
-    {
+  ];
+
+  if (parsed.programName) {
+    blocks.push({
       type: "section",
       text: {
         type: "mrkdwn",
-        text: programName
-          ? `*Suggested program:* ${programName}`
-          : "*Suggested program:* — _(could not parse from notes)_",
+        text: parsed.programBlurb
+          ? `*Suggested program:* ${parsed.programName}\n> ${parsed.programBlurb}`
+          : `*Suggested program:* ${parsed.programName}`,
       },
-    },
-  ];
+    });
+  }
+
+  if (parsed.meetingUrl) {
+    blocks.push({
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `:movie_camera: *Meeting link:* <${parsed.meetingUrl}|${parsed.meetingUrl}>`,
+      },
+    });
+  }
 
   if (fields.length > 0) {
     blocks.push({ type: "section", fields: fields.slice(0, 10) });
   }
 
-  blocks.push({ type: "divider" });
-
-  if (conciergeNotes) {
+  if (parsed.additionalContext) {
     blocks.push({
       type: "section",
       text: {
         type: "mrkdwn",
-        text: "*Concierge submission (raw notes)*\n```" + conciergeNotes + "```",
+        text: `*Additional context from guest:*\n> ${parsed.additionalContext}`,
+      },
+    });
+  }
+
+  blocks.push({ type: "divider" });
+
+  if (parsed.notes) {
+    blocks.push({
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: "*Concierge submission (raw notes)*\n```" + parsed.notes + "```",
       },
     });
   }
@@ -298,7 +350,7 @@ export function buildBookingConfirmedPayload(
   const attachments: unknown[] = [
     {
       color: COLOR_CONFIRMED,
-      fallback: `Discovery call booked${programName ? ` — ${programName}` : ""}`,
+      fallback: `Discovery call booked${parsed.programName ? ` — ${parsed.programName}` : ""}`,
     },
   ];
 
@@ -314,49 +366,98 @@ export function buildBookingConfirmedPayload(
   }
 
   return {
-    text: `Discovery call booked${programName ? ` — ${programName}` : ""}`,
+    text: `Discovery call booked${parsed.programName ? ` — ${parsed.programName}` : ""}`,
     blocks,
     attachments,
   };
 }
 
 /* ─────────────────────────────────────────────────────────────────
- * Notes parser — extract structured concierge data from prefilled
- * notes (which we control). Used by the confirmed-booking path so we
- * can show typed fields even when zcal's payload schema surprises us.
+ * Parsers
  * ───────────────────────────────────────────────────────────────── */
 
-const FIELD_MAP: Record<string, keyof NonNullable<BookingConfirmedInput["parsed"]>> = {
-  type: "type",
-  "pressure points": "pressurePoints",
-  timing: "timing",
-  budget: "budget",
+type RawCustomAnswer = {
+  question: string;
+  answer: string | string[];
 };
 
-export function parseConciergeNotes(notes: string | undefined): {
-  programName?: string;
-  parsed: NonNullable<BookingConfirmedInput["parsed"]>;
+/**
+ * Parse the structured customQuestionAnswers array from zcal's payload.
+ * Field matching is done by case-insensitive substring on the question
+ * text, so minor edits to question labels in zcal admin won't break this.
+ */
+export function parseCustomAnswers(
+  answers: RawCustomAnswer[] | undefined
+): {
+  type?: string;
+  timing?: string;
+  budget?: string;
+  pressurePoints?: string;
+  suggestedProgramRaw?: string;
+  additionalContext?: string;
 } {
-  const parsed: NonNullable<BookingConfirmedInput["parsed"]> = {};
-  let programName: string | undefined;
+  if (!Array.isArray(answers)) return {};
+  const result: ReturnType<typeof parseCustomAnswers> = {};
 
-  if (!notes) return { programName, parsed };
+  for (const item of answers) {
+    if (!item?.question || item?.answer == null) continue;
+    const q = item.question.toLowerCase();
+    const a = Array.isArray(item.answer)
+      ? item.answer.join(", ")
+      : String(item.answer);
 
-  for (const rawLine of notes.split(/\r?\n/)) {
-    const line = rawLine.trim();
-    const m = line.match(/^([^:]+):\s*(.+)$/);
-    if (!m) continue;
-    const key = m[1].toLowerCase().trim();
-    const value = m[2].trim();
-    if (key === "suggested program") {
-      programName = value;
-      continue;
+    if (q.includes("type of program") || q === "type") {
+      result.type = a;
+    } else if (q.includes("pressure")) {
+      result.pressurePoints = a;
+    } else if (q.includes("timing")) {
+      result.timing = a;
+    } else if (q.includes("budget")) {
+      result.budget = a;
+    } else if (
+      q.includes("suggested") ||
+      q.includes("mochi-suggested") ||
+      q.includes("program + notes")
+    ) {
+      result.suggestedProgramRaw = a;
+    } else if (
+      q.includes("additional context") ||
+      q.includes("additonal context") || // [sic] — matches zcal's existing typo if present
+      q.includes("anything else")
+    ) {
+      result.additionalContext = a;
     }
-    const target = FIELD_MAP[key];
-    if (target) parsed[target] = value;
   }
+  return result;
+}
 
-  return { programName, parsed };
+/**
+ * The "Mochi-suggested program + notes" answer is formatted as
+ *   "<ProgramName> — <Blurb>"
+ * (em-dash with single spaces). Split on the first occurrence to recover
+ * the program name and blurb cleanly.
+ */
+export function splitSuggestedProgram(
+  raw: string | undefined
+): { programName?: string; programBlurb?: string } {
+  if (!raw) return {};
+  // Prefer the em-dash separator since that's what we use.
+  const emDashSplit = raw.split(/\s+—\s+/);
+  if (emDashSplit.length >= 2) {
+    return {
+      programName: emDashSplit[0].trim(),
+      programBlurb: emDashSplit.slice(1).join(" — ").trim(),
+    };
+  }
+  // Fall back to a colon-or-hyphen separator if format ever drifts.
+  const altSplit = raw.split(/\s+[-:]\s+/);
+  if (altSplit.length >= 2) {
+    return {
+      programName: altSplit[0].trim(),
+      programBlurb: altSplit.slice(1).join(" — ").trim(),
+    };
+  }
+  return { programName: raw.trim() };
 }
 
 /* Re-export for any future server-side caller that needs the human summary. */

@@ -4,61 +4,44 @@
  * Receives zcal's booking webhook (configured at zcal admin → Integrations
  * → Webhooks) and forwards a Slack notification to #website-leads.
  *
- * zcal's exact payload schema is not publicly documented as of build time,
- * so this handler is intentionally defensive:
- *   - Extracts known field names with multiple fallback paths.
- *   - Always parses the prefilled `notes` field (which we control) for
- *     reliable concierge data, regardless of payload shape.
- *   - For the first N bookings, includes the raw payload in the Slack
- *     message as a debugging attachment. After we see a real payload, we
- *     can tighten the parser and drop the raw-payload attachment.
+ * Schema verified against a real zcal booking (May 2026):
+ *   {
+ *     type: "event.created",
+ *     created_at: "...",
+ *     data: {
+ *       id, startDate, duration, cancelled, eventName,
+ *       location: { locationType, onlineMeeting: { url } },
+ *       hosts: [...],
+ *       attendees: [{
+ *         name, email, timezone, type,
+ *         customQuestionAnswers: [{ question, answer }, ...],
+ *       }],
+ *       invite: { id, name, inviteType },
+ *       tracking: { a0..a4, a1, notes },
+ *     }
+ *   }
+ *
+ * Future: zcal sends an x-zcal-webhook-signature header (visible in our
+ * logs) — once they publish a signing secret in their UI we can verify
+ * HMAC properly. Until then we rely on the URL being secret-ish.
  *
  * Env vars:
- *   SLACK_WEBHOOK_URL  — required. Set in Vercel project settings.
- *   ZCAL_WEBHOOK_SECRET — optional. If set, we require an `x-zcal-secret`
- *                         header that matches. (Configure the same secret
- *                         in zcal admin when adding the webhook.)
- *   ZCAL_DEBUG_PAYLOAD — optional. When "true" the Slack message includes
- *                        the full raw zcal payload as an attachment for
- *                        debugging the first few bookings.
+ *   SLACK_WEBHOOK_URL  — required.
+ *   ZCAL_DEBUG_PAYLOAD — optional ("true" to include raw payload in Slack).
  */
 
 import { NextResponse } from "next/server";
 import {
   buildBookingConfirmedPayload,
-  parseConciergeNotes,
+  parseCustomAnswers,
   postSlackMessage,
+  splitSuggestedProgram,
+  type ParsedBooking,
 } from "@/lib/slack";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// Helper: walk a nested object via candidate paths until one resolves.
-function pick<T = string>(
-  obj: unknown,
-  paths: string[]
-): T | undefined {
-  for (const path of paths) {
-    const parts = path.split(".");
-    let cur: unknown = obj;
-    let ok = true;
-    for (const p of parts) {
-      if (cur && typeof cur === "object" && p in (cur as Record<string, unknown>)) {
-        cur = (cur as Record<string, unknown>)[p];
-      } else {
-        ok = false;
-        break;
-      }
-    }
-    if (ok && cur !== undefined && cur !== null && cur !== "") {
-      return cur as T;
-    }
-  }
-  return undefined;
-}
-
-// zcal sends one of these event types; we only act on the create event.
-// Verified from Vercel logs: zcal uses "event.created" on confirmed bookings.
 const CREATE_EVENTS = new Set([
   "event.created",
   "event_created",
@@ -70,48 +53,131 @@ const CREATE_EVENTS = new Set([
   "created",
 ]);
 
+/* ──────────────────────────────────────────────
+ * Defensive nested-getter — returns undefined
+ * for any missing leg so callers don't need
+ * deeply chained optional-chaining.
+ * ────────────────────────────────────────────── */
+function get<T = unknown>(obj: unknown, path: string): T | undefined {
+  const parts = path.split(".");
+  let cur: unknown = obj;
+  for (const p of parts) {
+    if (cur && typeof cur === "object" && p in (cur as Record<string, unknown>)) {
+      cur = (cur as Record<string, unknown>)[p];
+    } else {
+      return undefined;
+    }
+  }
+  return cur as T | undefined;
+}
+
+/* ──────────────────────────────────────────────
+ * Extract booking metadata from zcal's payload.
+ * Pulls the primary invitee (or first attendee)
+ * for guest details and customQuestionAnswers.
+ * ────────────────────────────────────────────── */
+function parseZcalPayload(payload: unknown): ParsedBooking {
+  const data = get(payload, "data");
+
+  const startDate =
+    get<string>(data, "startDate") ??
+    get<string>(data, "start_time") ??
+    get<string>(data, "startTime") ??
+    get<string>(data, "datetime");
+
+  const duration = get<number>(data, "duration");
+
+  const meetingUrl =
+    get<string>(data, "location.onlineMeeting.url") ??
+    get<string>(data, "location.url") ??
+    get<string>(data, "meetUrl");
+
+  // Notes — our prefilled `notes=` ends up at data.tracking.notes
+  const notes =
+    get<string>(data, "tracking.notes") ??
+    get<string>(data, "notes") ??
+    get<string>(data, "message");
+
+  // Find the invitee in the attendees array (zcal uses type: "invitee").
+  const attendees = get<unknown[]>(data, "attendees");
+  let guestName: string | undefined;
+  let guestEmail: string | undefined;
+  let timezone: string | undefined;
+  let customQuestionAnswers: { question: string; answer: string | string[] }[] | undefined;
+
+  if (Array.isArray(attendees) && attendees.length > 0) {
+    const invitee =
+      attendees.find(
+        (a) => (a as Record<string, unknown>)?.type === "invitee"
+      ) ?? attendees[0];
+    if (invitee && typeof invitee === "object") {
+      const inv = invitee as Record<string, unknown>;
+      guestName = typeof inv.name === "string" ? inv.name : undefined;
+      guestEmail = typeof inv.email === "string" ? inv.email : undefined;
+      timezone = typeof inv.timezone === "string" ? inv.timezone : undefined;
+      const cqa = inv.customQuestionAnswers;
+      if (Array.isArray(cqa)) {
+        customQuestionAnswers = cqa as {
+          question: string;
+          answer: string | string[];
+        }[];
+      }
+    }
+  }
+
+  const customParsed = parseCustomAnswers(customQuestionAnswers);
+  const { programName, programBlurb } = splitSuggestedProgram(
+    customParsed.suggestedProgramRaw
+  );
+
+  return {
+    bookingTimeISO: startDate,
+    bookingTimeZone: timezone,
+    durationMinutes: typeof duration === "number" ? duration : undefined,
+    guestName,
+    guestEmail,
+    meetingUrl,
+    programName,
+    programBlurb,
+    type: customParsed.type,
+    timing: customParsed.timing,
+    budget: customParsed.budget,
+    pressurePoints: customParsed.pressurePoints,
+    additionalContext: customParsed.additionalContext,
+    notes,
+  };
+}
+
 export async function POST(request: Request) {
   const webhookUrl = process.env.SLACK_WEBHOOK_URL;
   if (!webhookUrl) {
     console.error("[zcal-webhook] SLACK_WEBHOOK_URL is not configured");
-    return NextResponse.json(
-      { ok: false, error: "Slack webhook not configured" },
-      { status: 200 } // 200 anyway so zcal doesn't retry-storm us
-    );
+    return NextResponse.json({ ok: false }, { status: 200 });
   }
 
-  // Always log inbound headers (helps diagnose secret-header naming).
-  const headerSummary: Record<string, string> = {};
-  request.headers.forEach((value, key) => {
-    // Don't log Authorization in plaintext — strip the bearer prefix only.
-    if (key.toLowerCase() === "authorization") {
-      headerSummary[key] = "Bearer ***";
-    } else if (key.toLowerCase().includes("secret") || key.toLowerCase().includes("signature")) {
-      headerSummary[key] = "*** (masked)";
-    } else {
-      headerSummary[key] = value;
-    }
-  });
-  console.log("[zcal-webhook] received headers:", JSON.stringify(headerSummary));
-
-  // Optional shared-secret check.
+  // Optional shared-secret check. zcal's webhook UI doesn't currently
+  // expose a way to set this — they DO send x-zcal-webhook-signature
+  // (HMAC-style) but without a known signing key we can't verify it yet.
   const expectedSecret = process.env.ZCAL_WEBHOOK_SECRET;
   if (expectedSecret) {
     const provided =
       request.headers.get("x-zcal-secret") ??
       request.headers.get("x-webhook-secret") ??
       request.headers.get("x-zcal-signature") ??
+      request.headers.get("x-zcal-webhook-signature") ??
       request.headers.get("x-signature") ??
       request.headers.get("zcal-signature") ??
       request.headers.get("webhook-signature") ??
       request.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
     if (provided !== expectedSecret) {
-      // Log header names (NOT values) so we can see what zcal actually sent.
       const headerNames = Array.from(request.headers.keys()).join(", ");
       console.warn(
-        `[zcal-webhook] secret mismatch — refusing. Headers received: ${headerNames}`
+        `[zcal-webhook] secret mismatch — refusing. Headers: ${headerNames}`
       );
-      return NextResponse.json({ ok: false, error: "auth_failed" }, { status: 401 });
+      return NextResponse.json(
+        { ok: false, error: "auth_failed" },
+        { status: 401 }
+      );
     }
   }
 
@@ -125,33 +191,13 @@ export async function POST(request: Request) {
     );
   }
 
-  // Log top-level payload keys (NOT full content — could be PII) so we can
-  // diagnose schema mismatches without needing ZCAL_DEBUG_PAYLOAD=true.
-  if (payload && typeof payload === "object") {
-    const topKeys = Object.keys(payload as Record<string, unknown>).join(", ");
-    console.log(`[zcal-webhook] payload top-level keys: ${topKeys}`);
-    // Also log the full payload at INFO level — temporarily, while we
-    // learn zcal's schema. Once parsing is verified, drop this back to
-    // top-keys only to avoid leaking guest PII into log retention.
-    try {
-      const stringified = JSON.stringify(payload).slice(0, 4000);
-      console.log(`[zcal-webhook] full payload: ${stringified}`);
-    } catch {
-      /* unstringifiable — skip */
-    }
-  }
-
-  // Identify the event type. Some platforms send {type}, others {event_type}.
+  // Identify the event type.
   const eventType =
-    pick<string>(payload, [
-      "event_type",
-      "event",
-      "type",
-      "data.event_type",
-      "data.type",
-      "kind",
-      "action",
-    ]) ?? "unknown";
+    (get<string>(payload, "type") ||
+      get<string>(payload, "event_type") ||
+      get<string>(payload, "event") ||
+      get<string>(payload, "data.type") ||
+      "unknown") as string;
 
   if (!CREATE_EVENTS.has(eventType)) {
     console.warn(
@@ -160,85 +206,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, ignored: eventType });
   }
 
-  // Booking time — try common shapes.
-  const bookingTime =
-    pick<string>(payload, [
-      "booking.start_time",
-      "booking.startTime",
-      "booking.datetime",
-      "event.start_time",
-      "event.startTime",
-      "data.start_time",
-      "data.startTime",
-      "start_time",
-      "startTime",
-      "datetime",
-    ]) ?? undefined;
+  const parsed = parseZcalPayload(payload);
 
-  const bookingTimeZone =
-    pick<string>(payload, [
-      "booking.timezone",
-      "booking.time_zone",
-      "event.timezone",
-      "event.time_zone",
-      "data.timezone",
-      "timezone",
-      "time_zone",
-    ]) ?? undefined;
-
-  const guestEmail =
-    pick<string>(payload, [
-      "guest.email",
-      "booker.email",
-      "attendee.email",
-      "invitee.email",
-      "data.email",
-      "email",
-    ]) ?? undefined;
-
-  const guestName =
-    pick<string>(payload, [
-      "guest.name",
-      "booker.name",
-      "attendee.name",
-      "invitee.name",
-      "data.name",
-      "name",
-    ]) ?? undefined;
-
-  // Notes — zcal stores prefilled `notes=` as the booking's notes/message.
-  // Field is variously called "notes", "message", "additional_info", etc.
-  const conciergeNotes =
-    pick<string>(payload, [
-      "booking.notes",
-      "booking.message",
-      "booking.additional_info",
-      "event.notes",
-      "event.message",
-      "data.notes",
-      "data.message",
-      "notes",
-      "message",
-      "additional_info",
-    ]) ?? undefined;
-
-  const { programName, parsed } = parseConciergeNotes(conciergeNotes);
+  // Quick log of what we extracted (for sanity-checking, no PII).
+  console.log(
+    `[zcal-webhook] parsed: program=${parsed.programName ?? "?"} start=${parsed.bookingTimeISO ?? "?"} type=${parsed.type ?? "?"}`
+  );
 
   const slackPayload = buildBookingConfirmedPayload({
     zcalEvent: eventType,
-    bookingTime,
-    bookingTimeZone,
-    guestName,
-    guestEmail,
-    conciergeNotes,
-    programName,
     parsed,
     rawPayload: payload,
-    // Force-include the raw payload as a Slack attachment until we've
-    // confirmed parsing works against zcal's real schema. Flip back to
-    // env-controlled (`process.env.ZCAL_DEBUG_PAYLOAD === "true"`) once
-    // the first real ✅ message lands with all fields parsed correctly.
-    includeRawPayload: true,
+    includeRawPayload: process.env.ZCAL_DEBUG_PAYLOAD === "true",
   });
 
   const result = await postSlackMessage(webhookUrl, slackPayload);
@@ -246,15 +225,10 @@ export async function POST(request: Request) {
     console.error("[zcal-webhook] Slack notify failed:", result.error);
   }
 
-  // Always 200 to zcal — Slack failures are our problem, not theirs.
   return NextResponse.json({ ok: result.ok });
 }
 
-// Healthcheck handler — webhook senders (including zcal's "Test Endpoint"
-// button) frequently validate URLs with a GET or HEAD first and only proceed
-// if they get a 2xx. We return 200 with a small informational body.
-//
-// Real bookings still flow exclusively through POST below.
+// Healthcheck — zcal's "Test Endpoint" button does a GET first.
 export async function GET() {
   return NextResponse.json({
     ok: true,
@@ -263,8 +237,6 @@ export async function GET() {
   });
 }
 
-// Next.js derives HEAD from GET automatically, but defining it explicitly
-// keeps the headers deterministic.
 export async function HEAD() {
   return new NextResponse(null, { status: 200 });
 }
