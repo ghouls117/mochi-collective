@@ -77,16 +77,38 @@ export async function POST(request: Request) {
     );
   }
 
+  // Always log inbound headers (helps diagnose secret-header naming).
+  const headerSummary: Record<string, string> = {};
+  request.headers.forEach((value, key) => {
+    // Don't log Authorization in plaintext — strip the bearer prefix only.
+    if (key.toLowerCase() === "authorization") {
+      headerSummary[key] = "Bearer ***";
+    } else if (key.toLowerCase().includes("secret") || key.toLowerCase().includes("signature")) {
+      headerSummary[key] = "*** (masked)";
+    } else {
+      headerSummary[key] = value;
+    }
+  });
+  console.log("[zcal-webhook] received headers:", JSON.stringify(headerSummary));
+
   // Optional shared-secret check.
   const expectedSecret = process.env.ZCAL_WEBHOOK_SECRET;
   if (expectedSecret) {
     const provided =
       request.headers.get("x-zcal-secret") ??
       request.headers.get("x-webhook-secret") ??
+      request.headers.get("x-zcal-signature") ??
+      request.headers.get("x-signature") ??
+      request.headers.get("zcal-signature") ??
+      request.headers.get("webhook-signature") ??
       request.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
     if (provided !== expectedSecret) {
-      console.warn("[zcal-webhook] secret mismatch — refusing");
-      return NextResponse.json({ ok: false }, { status: 401 });
+      // Log header names (NOT values) so we can see what zcal actually sent.
+      const headerNames = Array.from(request.headers.keys()).join(", ");
+      console.warn(
+        `[zcal-webhook] secret mismatch — refusing. Headers received: ${headerNames}`
+      );
+      return NextResponse.json({ ok: false, error: "auth_failed" }, { status: 401 });
     }
   }
 
@@ -100,6 +122,13 @@ export async function POST(request: Request) {
     );
   }
 
+  // Log top-level payload keys (NOT full content — could be PII) so we can
+  // diagnose schema mismatches without needing ZCAL_DEBUG_PAYLOAD=true.
+  if (payload && typeof payload === "object") {
+    const topKeys = Object.keys(payload as Record<string, unknown>).join(", ");
+    console.log(`[zcal-webhook] payload top-level keys: ${topKeys}`);
+  }
+
   // Identify the event type. Some platforms send {type}, others {event_type}.
   const eventType =
     pick<string>(payload, [
@@ -108,10 +137,14 @@ export async function POST(request: Request) {
       "type",
       "data.event_type",
       "data.type",
+      "kind",
+      "action",
     ]) ?? "unknown";
 
   if (!CREATE_EVENTS.has(eventType)) {
-    // Reschedule/cancel/other — acknowledge but don't notify (for now).
+    console.warn(
+      `[zcal-webhook] event_type "${eventType}" not in CREATE_EVENTS — ignoring`
+    );
     return NextResponse.json({ ok: true, ignored: eventType });
   }
 
