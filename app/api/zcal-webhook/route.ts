@@ -191,6 +191,12 @@ export async function POST(request: Request) {
     );
   }
 
+  // Log top-level keys for ongoing schema-drift detection (no PII).
+  if (payload && typeof payload === "object") {
+    const topKeys = Object.keys(payload as Record<string, unknown>).join(", ");
+    console.log(`[zcal-webhook] payload top-level keys: ${topKeys}`);
+  }
+
   // Identify the event type.
   const eventType =
     (get<string>(payload, "type") ||
