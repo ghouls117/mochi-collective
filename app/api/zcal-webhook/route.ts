@@ -234,14 +234,21 @@ export async function POST(request: Request) {
   return NextResponse.json({ ok: result.ok });
 }
 
-// Light GET handler so you can hit the URL in a browser to confirm it's
-// reachable (returns 405 — fine, just lets us verify the route resolves).
+// Healthcheck handler — webhook senders (including zcal's "Test Endpoint"
+// button) frequently validate URLs with a GET or HEAD first and only proceed
+// if they get a 2xx. We return 200 with a small informational body.
+//
+// Real bookings still flow exclusively through POST below.
 export async function GET() {
-  return NextResponse.json(
-    {
-      ok: false,
-      error: "POST only — this endpoint receives zcal webhooks.",
-    },
-    { status: 405 }
-  );
+  return NextResponse.json({
+    ok: true,
+    service: "zcal-webhook-receiver",
+    note: "POST a zcal booking payload here to forward to Slack.",
+  });
+}
+
+// Next.js derives HEAD from GET automatically, but defining it explicitly
+// keeps the headers deterministic.
+export async function HEAD() {
+  return new NextResponse(null, { status: 200 });
 }
