@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   type Answers,
   type Program,
@@ -23,8 +23,46 @@ function findLabel(stepIdx: number, value: string | undefined): string {
   );
 }
 
+/**
+ * Fire-and-forget POST to our own /api/concierge-event endpoint. Wrapped
+ * in try/catch so a network or backend failure never breaks the UX.
+ * Uses `keepalive: true` so the request survives if the user immediately
+ * navigates away (e.g. clicking the booking link).
+ */
+function fireConciergeEvent(
+  stage: "engaged" | "intent",
+  answers: Answers,
+  program: Program
+): void {
+  try {
+    fetch("/api/concierge-event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ stage, answers, program }),
+      keepalive: true,
+    }).catch(() => {
+      /* swallow — Slack notifications must not block UX */
+    });
+  } catch {
+    /* swallow — same reason */
+  }
+}
+
 export function QuizResult({ answers, program, onRestart }: Props) {
   const [copied, setCopied] = useState(false);
+
+  // Fire the 👀 "engaged" Slack notification exactly once per result view.
+  // useRef guards against re-fire if React re-runs effects (e.g. strict mode
+  // double-invocation, prop changes that don't represent a new session).
+  const engagedFiredRef = useRef(false);
+  useEffect(() => {
+    if (engagedFiredRef.current) return;
+    engagedFiredRef.current = true;
+    fireConciergeEvent("engaged", answers, program);
+    // intentionally NOT depending on answers/program — we only want this on
+    // first mount of QuizResult for a given result session
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const copy = async () => {
     try {
@@ -34,6 +72,11 @@ export function QuizResult({ answers, program, onRestart }: Props) {
     } catch {
       /* noop */
     }
+  };
+
+  const handleBookClick = () => {
+    // 💭 intent — fires before browser opens zcal in the new tab.
+    fireConciergeEvent("intent", answers, program);
   };
 
   return (
@@ -79,6 +122,7 @@ export function QuizResult({ answers, program, onRestart }: Props) {
           href={calendarUrl(answers, program)}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={handleBookClick}
         >
           Book a discovery call →
         </a>
