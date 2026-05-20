@@ -1,12 +1,12 @@
 /**
- * POST /api/zcal-webhook
+ * POST /api/zcal-webhook?token=<ZCAL_URL_TOKEN>
  *
  * Receives zcal's booking webhook (configured at zcal admin → Integrations
  * → Webhooks) and forwards a Slack notification to #website-leads.
  *
  * Schema verified against a real zcal booking (May 2026):
  *   {
- *     type: "event.created",
+ *     type: "event.created" | "event.rescheduled" | "event.cancelled",
  *     created_at: "...",
  *     data: {
  *       id, startDate, duration, cancelled, eventName,
@@ -21,16 +21,26 @@
  *     }
  *   }
  *
- * Future: zcal sends an x-zcal-webhook-signature header (visible in our
- * logs) — once they publish a signing secret in their UI we can verify
- * HMAC properly. Until then we rely on the URL being secret-ish.
+ * Authentication:
+ *   - Primary: URL bearer token. The webhook URL configured in zcal admin
+ *     includes ?token=<value>. We compare the query param against
+ *     ZCAL_URL_TOKEN with constant-time comparison. If the env var is unset
+ *     the check is bypassed (useful for local development).
+ *   - Future: zcal sends x-zcal-webhook-signature (HMAC-shaped) on every
+ *     request. Their UI doesn't expose the signing key yet — once it does
+ *     we add proper HMAC verification on top of the URL token.
  *
  * Env vars:
  *   SLACK_WEBHOOK_URL  — required.
+ *   ZCAL_URL_TOKEN     — recommended. Disables anonymous POSTs.
+ *   ZCAL_WEBHOOK_SECRET — kept as a hook for future HMAC support. Unused
+ *                        unless set; if set, treated as a shared secret in
+ *                        the x-zcal-webhook-signature header.
  *   ZCAL_DEBUG_PAYLOAD — optional ("true" to include raw payload in Slack).
  */
 
 import { NextResponse } from "next/server";
+import { timingSafeEqual } from "node:crypto";
 import {
   buildBookingCancelledPayload,
   buildBookingConfirmedPayload,
@@ -43,6 +53,18 @@ import {
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+/**
+ * Constant-time string equality. Prevents timing attacks on the URL token
+ * (an attacker who can measure response latency could otherwise brute the
+ * token byte by byte).
+ */
+function safeEqual(a: string, b: string): boolean {
+  const aBuf = Buffer.from(a, "utf8");
+  const bBuf = Buffer.from(b, "utf8");
+  if (aBuf.length !== bBuf.length) return false;
+  return timingSafeEqual(aBuf, bBuf);
+}
 
 type EventStage = "created" | "rescheduled" | "cancelled";
 
@@ -212,27 +234,53 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false }, { status: 200 });
   }
 
-  // Optional shared-secret check. zcal's webhook UI doesn't currently
-  // expose a way to set this — they DO send x-zcal-webhook-signature
-  // (HMAC-style) but without a known signing key we can't verify it yet.
+  // ── Auth: URL bearer token ──────────────────────────────────────
+  // Primary auth path. zcal's webhook URL is configured with
+  // ?token=<ZCAL_URL_TOKEN>; we compare against the env var with a
+  // constant-time check. If the env var is unset, auth is bypassed —
+  // useful for local development but flagged in logs as a warning.
+  const expectedToken = process.env.ZCAL_URL_TOKEN;
+  if (expectedToken) {
+    const url = new URL(request.url);
+    const providedToken = url.searchParams.get("token") ?? "";
+    if (!providedToken) {
+      console.warn("[zcal-webhook] missing ?token query param — refusing");
+      return NextResponse.json(
+        { ok: false, error: "auth_failed_missing_token" },
+        { status: 401 }
+      );
+    }
+    if (!safeEqual(providedToken, expectedToken)) {
+      console.warn("[zcal-webhook] token mismatch — refusing");
+      return NextResponse.json(
+        { ok: false, error: "auth_failed_bad_token" },
+        { status: 401 }
+      );
+    }
+  } else {
+    console.warn(
+      "[zcal-webhook] ZCAL_URL_TOKEN is not configured — accepting unauthenticated POSTs"
+    );
+  }
+
+  // ── Auth: optional HMAC / shared-secret header ──────────────────
+  // Currently unused — zcal sends x-zcal-webhook-signature on every
+  // request, but their UI doesn't expose the signing key. This block
+  // remains as a hook: once a key is known, set ZCAL_WEBHOOK_SECRET and
+  // (later) swap this from string equality to HMAC verification.
   const expectedSecret = process.env.ZCAL_WEBHOOK_SECRET;
   if (expectedSecret) {
     const provided =
-      request.headers.get("x-zcal-secret") ??
-      request.headers.get("x-webhook-secret") ??
-      request.headers.get("x-zcal-signature") ??
       request.headers.get("x-zcal-webhook-signature") ??
+      request.headers.get("x-zcal-signature") ??
+      request.headers.get("x-zcal-secret") ??
       request.headers.get("x-signature") ??
-      request.headers.get("zcal-signature") ??
       request.headers.get("webhook-signature") ??
-      request.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
-    if (provided !== expectedSecret) {
-      const headerNames = Array.from(request.headers.keys()).join(", ");
-      console.warn(
-        `[zcal-webhook] secret mismatch — refusing. Headers: ${headerNames}`
-      );
+      "";
+    if (!provided || !safeEqual(provided, expectedSecret)) {
+      console.warn("[zcal-webhook] secret header mismatch — refusing");
       return NextResponse.json(
-        { ok: false, error: "auth_failed" },
+        { ok: false, error: "auth_failed_bad_secret" },
         { status: 401 }
       );
     }
