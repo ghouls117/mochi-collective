@@ -29,6 +29,8 @@ import {
 const COLOR_ENGAGED = "#93ADBF"; // slate — soft signal
 const COLOR_INTENT = "#F9C84A"; // honey — pending
 const COLOR_CONFIRMED = "#BFDEA3"; // sage — success
+const COLOR_RESCHEDULED = "#93ADBF"; // slate — neutral informational
+const COLOR_CANCELLED = "#F6BEC9"; // pink — soft warning (lead dropped)
 
 const BOOKING_URL = "https://zcal.co/mochicollective/consultation";
 
@@ -205,6 +207,12 @@ export type ParsedBooking = {
   additionalContext?: string;
   /** Verbatim concierge notes (our prefilled `notes=` field). */
   notes?: string;
+  /** Reschedule-specific: previous booking time, if zcal sends it. */
+  previousBookingTimeISO?: string;
+  /** Cancel-specific: who cancelled (host vs guest), if known. */
+  cancelledBy?: string;
+  /** Cancel-specific: reason text if the guest provided one. */
+  cancellationReason?: string;
 };
 
 export type BookingConfirmedInput = {
@@ -367,6 +375,229 @@ export function buildBookingConfirmedPayload(
 
   return {
     text: `Discovery call booked${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+    blocks,
+    attachments,
+  };
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * 🔄 Booking rescheduled
+ *
+ * Same shape as confirmed but with a different headline + colour, plus a
+ * "from → to" block when zcal includes the previous time.
+ * ───────────────────────────────────────────────────────────────── */
+
+export function buildBookingRescheduledPayload(input: {
+  parsed: ParsedBooking;
+  rawPayload?: unknown;
+  includeRawPayload?: boolean;
+}): unknown {
+  const { parsed, rawPayload, includeRawPayload = false } = input;
+
+  const newTime = parsed.bookingTimeISO
+    ? formatBookingTime(parsed.bookingTimeISO, parsed.bookingTimeZone)
+    : "—";
+  const prevTime = parsed.previousBookingTimeISO
+    ? formatBookingTime(parsed.previousBookingTimeISO, parsed.bookingTimeZone)
+    : undefined;
+
+  const blocks: unknown[] = [
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: ":arrows_counterclockwise: *Discovery call rescheduled*",
+      },
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: prevTime
+          ? `*From:* ~${prevTime}~\n*To:* ${newTime}${parsed.durationMinutes ? ` · ${parsed.durationMinutes} min` : ""}`
+          : `*New time:* ${newTime}${parsed.durationMinutes ? ` · ${parsed.durationMinutes} min` : ""}`,
+      },
+    },
+  ];
+
+  if (parsed.programName) {
+    blocks.push({
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `*Suggested program:* ${parsed.programName}`,
+      },
+    });
+  }
+
+  if (parsed.meetingUrl) {
+    blocks.push({
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `:movie_camera: *Meeting link:* <${parsed.meetingUrl}|${parsed.meetingUrl}>`,
+      },
+    });
+  }
+
+  const fields: { type: "mrkdwn"; text: string }[] = [];
+  if (parsed.guestName || parsed.guestEmail) {
+    fields.push({
+      type: "mrkdwn",
+      text: `*Guest*\n${[parsed.guestName, parsed.guestEmail].filter(Boolean).join(" · ")}`,
+    });
+  }
+  if (parsed.type) fields.push({ type: "mrkdwn", text: `*Type*\n${parsed.type}` });
+  if (parsed.budget) fields.push({ type: "mrkdwn", text: `*Budget*\n${parsed.budget}` });
+  if (parsed.pressurePoints) {
+    fields.push({
+      type: "mrkdwn",
+      text: `*Pressure points*\n${parsed.pressurePoints}`,
+    });
+  }
+  if (fields.length > 0) {
+    blocks.push({ type: "section", fields: fields.slice(0, 10) });
+  }
+
+  blocks.push({
+    type: "context",
+    elements: [
+      {
+        type: "mrkdwn",
+        text: `_Calendar event has been updated automatically._  ↗︎ ${BOOKING_URL}`,
+      },
+    ],
+  });
+
+  const attachments: unknown[] = [
+    {
+      color: COLOR_RESCHEDULED,
+      fallback: `Discovery call rescheduled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+    },
+  ];
+  if (includeRawPayload && rawPayload) {
+    attachments.push({
+      color: COLOR_INTENT,
+      title: "Raw zcal payload (debugging)",
+      text:
+        "```" + JSON.stringify(rawPayload, null, 2).slice(0, 2500) + "```",
+    });
+  }
+
+  return {
+    text: `Discovery call rescheduled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+    blocks,
+    attachments,
+  };
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * ❌ Booking cancelled
+ *
+ * Shows the originally-booked time (now cancelled), who cancelled, and a
+ * reason if zcal sent one. Concierge selections stay visible so we know
+ * what kind of lead just dropped.
+ * ───────────────────────────────────────────────────────────────── */
+
+export function buildBookingCancelledPayload(input: {
+  parsed: ParsedBooking;
+  rawPayload?: unknown;
+  includeRawPayload?: boolean;
+}): unknown {
+  const { parsed, rawPayload, includeRawPayload = false } = input;
+
+  const cancelledTime = parsed.bookingTimeISO
+    ? formatBookingTime(parsed.bookingTimeISO, parsed.bookingTimeZone)
+    : "—";
+
+  const blocks: unknown[] = [
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: ":x: *Discovery call cancelled*",
+      },
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `*Cancelled time:* ~${cancelledTime}~${parsed.cancelledBy ? `\n*Cancelled by:* ${parsed.cancelledBy}` : ""}`,
+      },
+    },
+  ];
+
+  if (parsed.cancellationReason) {
+    blocks.push({
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `*Reason:*\n> ${parsed.cancellationReason}`,
+      },
+    });
+  }
+
+  if (parsed.programName) {
+    blocks.push({
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: parsed.programBlurb
+          ? `*Suggested program (still on file):* ${parsed.programName}\n> ${parsed.programBlurb}`
+          : `*Suggested program (still on file):* ${parsed.programName}`,
+      },
+    });
+  }
+
+  const fields: { type: "mrkdwn"; text: string }[] = [];
+  if (parsed.guestName || parsed.guestEmail) {
+    fields.push({
+      type: "mrkdwn",
+      text: `*Guest*\n${[parsed.guestName, parsed.guestEmail].filter(Boolean).join(" · ")}`,
+    });
+  }
+  if (parsed.type) fields.push({ type: "mrkdwn", text: `*Type*\n${parsed.type}` });
+  if (parsed.timing) fields.push({ type: "mrkdwn", text: `*Timing*\n${parsed.timing}` });
+  if (parsed.budget) fields.push({ type: "mrkdwn", text: `*Budget*\n${parsed.budget}` });
+  if (parsed.pressurePoints) {
+    fields.push({
+      type: "mrkdwn",
+      text: `*Pressure points*\n${parsed.pressurePoints}`,
+    });
+  }
+  if (fields.length > 0) {
+    blocks.push({ type: "section", fields: fields.slice(0, 10) });
+  }
+
+  blocks.push({
+    type: "context",
+    elements: [
+      {
+        type: "mrkdwn",
+        text: parsed.guestEmail
+          ? `_Consider a soft follow-up — they showed enough intent to book once._  ✉️ <mailto:${parsed.guestEmail}|${parsed.guestEmail}>`
+          : `_Consider a soft follow-up — they showed enough intent to book once._`,
+      },
+    ],
+  });
+
+  const attachments: unknown[] = [
+    {
+      color: COLOR_CANCELLED,
+      fallback: `Discovery call cancelled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+    },
+  ];
+  if (includeRawPayload && rawPayload) {
+    attachments.push({
+      color: COLOR_INTENT,
+      title: "Raw zcal payload (debugging)",
+      text:
+        "```" + JSON.stringify(rawPayload, null, 2).slice(0, 2500) + "```",
+    });
+  }
+
+  return {
+    text: `Discovery call cancelled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
     blocks,
     attachments,
   };

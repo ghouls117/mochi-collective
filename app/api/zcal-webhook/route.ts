@@ -32,7 +32,9 @@
 
 import { NextResponse } from "next/server";
 import {
+  buildBookingCancelledPayload,
   buildBookingConfirmedPayload,
+  buildBookingRescheduledPayload,
   parseCustomAnswers,
   postSlackMessage,
   splitSuggestedProgram,
@@ -41,6 +43,8 @@ import {
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+type EventStage = "created" | "rescheduled" | "cancelled";
 
 const CREATE_EVENTS = new Set([
   "event.created",
@@ -52,6 +56,34 @@ const CREATE_EVENTS = new Set([
   "booking.created",
   "created",
 ]);
+
+const RESCHEDULE_EVENTS = new Set([
+  "event.rescheduled",
+  "event_rescheduled",
+  "rescheduled",
+  "booking.rescheduled",
+  "booking_rescheduled",
+]);
+
+const CANCEL_EVENTS = new Set([
+  "event.cancelled",
+  "event.canceled",
+  "event_cancelled",
+  "event_canceled",
+  "cancelled",
+  "canceled",
+  "booking.cancelled",
+  "booking.canceled",
+  "booking_cancelled",
+  "booking_canceled",
+]);
+
+function classifyEvent(eventType: string): EventStage | null {
+  if (CREATE_EVENTS.has(eventType)) return "created";
+  if (RESCHEDULE_EVENTS.has(eventType)) return "rescheduled";
+  if (CANCEL_EVENTS.has(eventType)) return "cancelled";
+  return null;
+}
 
 /* ──────────────────────────────────────────────
  * Defensive nested-getter — returns undefined
@@ -130,6 +162,28 @@ function parseZcalPayload(payload: unknown): ParsedBooking {
     customParsed.suggestedProgramRaw
   );
 
+  // Reschedule-specific: zcal may include the previous time under various
+  // field names. We probe a handful of plausible paths.
+  const previousBookingTimeISO =
+    get<string>(data, "previousStartDate") ??
+    get<string>(data, "previous_start_date") ??
+    get<string>(data, "rescheduledFrom.startDate") ??
+    get<string>(data, "rescheduled_from.startDate") ??
+    get<string>(data, "original.startDate") ??
+    get<string>(data, "from.startDate");
+
+  // Cancel-specific: cancellation metadata if zcal sends it.
+  const cancelledBy =
+    get<string>(data, "cancelledBy") ??
+    get<string>(data, "cancelled_by") ??
+    get<string>(data, "cancellation.cancelledBy");
+
+  const cancellationReason =
+    get<string>(data, "cancellationReason") ??
+    get<string>(data, "cancellation_reason") ??
+    get<string>(data, "cancellation.reason") ??
+    get<string>(data, "reason");
+
   return {
     bookingTimeISO: startDate,
     bookingTimeZone: timezone,
@@ -145,6 +199,9 @@ function parseZcalPayload(payload: unknown): ParsedBooking {
     pressurePoints: customParsed.pressurePoints,
     additionalContext: customParsed.additionalContext,
     notes,
+    previousBookingTimeISO,
+    cancelledBy,
+    cancellationReason,
   };
 }
 
@@ -205,9 +262,10 @@ export async function POST(request: Request) {
       get<string>(payload, "data.type") ||
       "unknown") as string;
 
-  if (!CREATE_EVENTS.has(eventType)) {
+  const stage = classifyEvent(eventType);
+  if (stage === null) {
     console.warn(
-      `[zcal-webhook] event_type "${eventType}" not in CREATE_EVENTS — ignoring`
+      `[zcal-webhook] event_type "${eventType}" not handled — ignoring`
     );
     return NextResponse.json({ ok: true, ignored: eventType });
   }
@@ -216,15 +274,30 @@ export async function POST(request: Request) {
 
   // Quick log of what we extracted (for sanity-checking, no PII).
   console.log(
-    `[zcal-webhook] parsed: program=${parsed.programName ?? "?"} start=${parsed.bookingTimeISO ?? "?"} type=${parsed.type ?? "?"}`
+    `[zcal-webhook] stage=${stage} program=${parsed.programName ?? "?"} start=${parsed.bookingTimeISO ?? "?"} type=${parsed.type ?? "?"}`
   );
 
-  const slackPayload = buildBookingConfirmedPayload({
-    zcalEvent: eventType,
-    parsed,
-    rawPayload: payload,
-    includeRawPayload: process.env.ZCAL_DEBUG_PAYLOAD === "true",
-  });
+  const debug = process.env.ZCAL_DEBUG_PAYLOAD === "true";
+
+  const slackPayload =
+    stage === "created"
+      ? buildBookingConfirmedPayload({
+          zcalEvent: eventType,
+          parsed,
+          rawPayload: payload,
+          includeRawPayload: debug,
+        })
+      : stage === "rescheduled"
+        ? buildBookingRescheduledPayload({
+            parsed,
+            rawPayload: payload,
+            includeRawPayload: debug,
+          })
+        : buildBookingCancelledPayload({
+            parsed,
+            rawPayload: payload,
+            includeRawPayload: debug,
+          });
 
   const result = await postSlackMessage(webhookUrl, slackPayload);
   if (!result.ok) {
