@@ -58,18 +58,23 @@ export function OrbCluster() {
 
     const onMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      mouseRef.current.x =
-        (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-      mouseRef.current.y =
-        (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+      const ox = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+      const oy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+      // If the cursor is far from the canvas (e.g. user is in the hero
+      // text column or scrolled past), treat as inactive so the orbs
+      // gently drift back to their resting positions.
+      if (Math.hypot(ox, oy) > 1.5) {
+        mouseRef.current.active = false;
+        return;
+      }
+      // Clamp inside the canvas so off-canvas cursor positions don't
+      // push orbs further than the canvas edge.
+      mouseRef.current.x = Math.max(-1, Math.min(1, ox));
+      mouseRef.current.y = Math.max(-1, Math.min(1, oy));
       mouseRef.current.active = true;
-    };
-    const onMouseLeave = () => {
-      mouseRef.current.active = false;
     };
     if (!reducedMotion) {
       window.addEventListener("mousemove", onMouseMove);
-      canvas.addEventListener("mouseleave", onMouseLeave);
     }
 
     const t0 = performance.now();
@@ -90,8 +95,13 @@ export function OrbCluster() {
 
       ctx.clearRect(0, 0, w, h);
 
-      const R = Math.min(w, h) * 0.18; // pentagon radius
-      const orbR = Math.min(w, h) * 0.16; // each orb's radius
+      // Pentagon radius + per-orb radius. The canvas is sized at 120% of the
+      // visible orb-stage (see .orb-cluster in globals.css) so the glow halos
+      // never clip when the orbs drift toward an edge. Coefficients here are
+      // scaled down by 1/1.2 so the orbs still look the same size as the
+      // original design.
+      const R = Math.min(w, h) * 0.15;
+      const orbR = Math.min(w, h) * 0.133;
 
       const points = BASE_ANGLES.map((a, i) => {
         const rad = (a * Math.PI) / 180;
@@ -106,11 +116,11 @@ export function OrbCluster() {
           px += Math.cos(rad) * wob + wob2 * 0.3;
           py += Math.sin(rad) * wob + wob2 * 0.4;
 
-          // Mouse repulsion — each orb pushes away with a slightly different
-          // strength so the cluster doesn't shift as one rigid body.
-          const repel = orbR * 0.55;
-          px += -smoothed.x * repel * (0.55 + (i % 3) * 0.15);
-          py += -smoothed.y * repel * (0.55 + ((i + 1) % 3) * 0.18);
+          // Mouse attraction — orbs follow the cursor with slightly different
+          // per-orb strengths so the cluster doesn't shift as one rigid body.
+          const follow = orbR * 0.55;
+          px += smoothed.x * follow * (0.55 + (i % 3) * 0.15);
+          py += smoothed.y * follow * (0.55 + ((i + 1) % 3) * 0.18);
         }
 
         return { x: px, y: py, color: ORB_COLORS[i] };
@@ -174,7 +184,6 @@ export function OrbCluster() {
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
       window.removeEventListener("mousemove", onMouseMove);
-      canvas.removeEventListener("mouseleave", onMouseLeave);
       resizeObserver.disconnect();
     };
   }, []);
