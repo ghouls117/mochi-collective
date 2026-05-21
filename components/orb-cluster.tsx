@@ -60,15 +60,10 @@ export function OrbCluster() {
       const rect = canvas.getBoundingClientRect();
       const ox = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
       const oy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-      // If the cursor is far from the canvas (e.g. user is in the hero
-      // text column or scrolled past), treat as inactive so the orbs
-      // gently drift back to their resting positions.
-      if (Math.hypot(ox, oy) > 1.5) {
-        mouseRef.current.active = false;
-        return;
-      }
-      // Clamp inside the canvas so off-canvas cursor positions don't
-      // push orbs further than the canvas edge.
+      // Clamp at the canvas edges. Off-canvas cursor positions (cursor in
+      // the hero text column, off the side of the viewport, etc.) hold the
+      // orbs at their maximum attraction toward that direction — they
+      // don't snap back to centre.
       mouseRef.current.x = Math.max(-1, Math.min(1, ox));
       mouseRef.current.y = Math.max(-1, Math.min(1, oy));
       mouseRef.current.active = true;
