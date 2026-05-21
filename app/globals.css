@@ -275,13 +275,8 @@ section {
     transform: none;
     transition: none;
   }
-  .orb-cluster .orb-pink,
-  .orb-cluster .orb-blue,
-  .orb-cluster .orb-sage,
-  .orb-cluster .orb-honey,
-  .orb-cluster .orb-slate {
-    animation: none !important;
-  }
+  /* Canvas orb cluster honours prefers-reduced-motion in JS — see
+     components/orb-cluster.tsx (renders one static frame, no rAF loop). */
 }
 
 /* ─── Nav ────────────────────────────────────────────────────── */
@@ -463,69 +458,8 @@ section {
   width: 100%;
   height: 100%;
   display: block;
-  overflow: visible;
-}
-.orb-cluster .orb-pink,
-.orb-cluster .orb-blue,
-.orb-cluster .orb-sage,
-.orb-cluster .orb-honey,
-.orb-cluster .orb-slate {
-  will-change: transform;
-}
-.orb-cluster .orb-pink {
-  animation: drift1 9s ease-in-out infinite alternate;
-}
-.orb-cluster .orb-blue {
-  animation: drift2 7s ease-in-out infinite alternate;
-}
-.orb-cluster .orb-sage {
-  animation: drift3 11s ease-in-out infinite alternate;
-}
-.orb-cluster .orb-honey {
-  animation: drift4 8s ease-in-out infinite alternate;
-}
-.orb-cluster .orb-slate {
-  animation: drift5 6s ease-in-out infinite alternate;
-}
-@keyframes drift1 {
-  from {
-    translate: 0 0;
-  }
-  to {
-    translate: 4px -3px;
-  }
-}
-@keyframes drift2 {
-  from {
-    translate: 0 0;
-  }
-  to {
-    translate: -3px 4px;
-  }
-}
-@keyframes drift3 {
-  from {
-    translate: 0 0;
-  }
-  to {
-    translate: 3px 3px;
-  }
-}
-@keyframes drift4 {
-  from {
-    translate: 0 0;
-  }
-  to {
-    translate: -4px -2px;
-  }
-}
-@keyframes drift5 {
-  from {
-    translate: 0 0;
-  }
-  to {
-    translate: 2px -4px;
-  }
+  /* Animation lives in components/orb-cluster.tsx (canvas + rAF loop).
+     Honouring prefers-reduced-motion is handled there too. */
 }
 
 /* ─── Manifesto ──────────────────────────────────────────────── */
