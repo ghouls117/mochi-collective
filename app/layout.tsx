@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { Analytics } from "@/components/analytics";
 
 const SITE_URL = "https://mochicollective.com";
 const SITE_NAME = "Mochi Collective";
@@ -62,6 +63,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <Analytics />
       </body>
     </html>
   );

@@ -9,6 +9,7 @@ import {
   calendarUrl,
   pressureLabels,
 } from "./data";
+import { trackBookingIntent, trackConciergeEngaged } from "@/lib/analytics";
 
 type Props = {
   answers: Answers;
@@ -51,14 +52,16 @@ function fireConciergeEvent(
 export function QuizResult({ answers, program, onRestart }: Props) {
   const [copied, setCopied] = useState(false);
 
-  // Fire the 👀 "engaged" Slack notification exactly once per result view.
-  // useRef guards against re-fire if React re-runs effects (e.g. strict mode
-  // double-invocation, prop changes that don't represent a new session).
+  // Fire the 👀 "engaged" Slack notification + analytics events exactly once
+  // per result view. useRef guards against re-fire if React re-runs effects
+  // (e.g. strict mode double-invocation, prop changes that don't represent
+  // a new session).
   const engagedFiredRef = useRef(false);
   useEffect(() => {
     if (engagedFiredRef.current) return;
     engagedFiredRef.current = true;
     fireConciergeEvent("engaged", answers, program);
+    trackConciergeEngaged(answers, program);
     // intentionally NOT depending on answers/program — we only want this on
     // first mount of QuizResult for a given result session
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,6 +80,7 @@ export function QuizResult({ answers, program, onRestart }: Props) {
   const handleBookClick = () => {
     // 💭 intent — fires before browser opens zcal in the new tab.
     fireConciergeEvent("intent", answers, program);
+    trackBookingIntent(answers, program);
   };
 
   return (
