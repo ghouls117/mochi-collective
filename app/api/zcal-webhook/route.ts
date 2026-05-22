@@ -50,6 +50,7 @@ import {
   splitSuggestedProgram,
   type ParsedBooking,
 } from "@/lib/slack";
+import { sendCapiEvent } from "@/lib/meta-capi";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -350,6 +351,56 @@ export async function POST(request: Request) {
   const result = await postSlackMessage(webhookUrl, slackPayload);
   if (!result.ok) {
     console.error("[zcal-webhook] Slack notify failed:", result.error);
+  }
+
+  // ── Meta Conversions API (server-side conversion) ────────────────
+  // Only fire on the create event — reschedules and cancellations
+  // don't represent a new conversion.
+  if (stage === "created" && parsed.guestEmail) {
+    const bookingDataId =
+      (typeof payload === "object" &&
+        payload !== null &&
+        ((payload as Record<string, unknown>).data as
+          | Record<string, unknown>
+          | undefined)?.id) ??
+      undefined;
+    const eventId =
+      typeof bookingDataId === "string" && bookingDataId.length > 0
+        ? `zcal-booking-${bookingDataId}`
+        : `zcal-booking-${Date.now()}`;
+
+    const guestNameParts = (parsed.guestName ?? "").trim().split(/\s+/);
+    const firstName = guestNameParts.shift();
+    const lastName = guestNameParts.join(" ") || undefined;
+
+    const capiResult = await sendCapiEvent({
+      eventName: "Schedule",
+      eventId,
+      eventTime: parsed.bookingTimeISO
+        ? new Date(parsed.bookingTimeISO)
+        : undefined,
+      sourceUrl: "https://mochicollective.com",
+      userData: {
+        email: parsed.guestEmail,
+        firstName,
+        lastName,
+        timezone: parsed.bookingTimeZone,
+      },
+      customData: {
+        currency: "SGD",
+        value: 0,
+        content_name: parsed.programName,
+        content_category: "booking_confirmed",
+      },
+    });
+
+    if (!capiResult.ok) {
+      console.error("[zcal-webhook] Meta CAPI failed:", capiResult.error);
+    } else {
+      console.log(
+        `[zcal-webhook] Meta CAPI Schedule fired for ${eventId}`
+      );
+    }
   }
 
   return NextResponse.json({ ok: result.ok });

@@ -115,8 +115,10 @@ export function trackConciergeEngaged(answers: Answers, program: Program) {
 
 /**
  * Fires when a user clicks "Book a discovery call" (💭 stage).
- * Meta event: `Schedule` — Meta's standard event for appointment-booking
- * funnels. Better signal for ad optimisation than the default PageView.
+ * Meta event: `Contact` — "person initiated contact with the business".
+ * We use `Contact` (not `Schedule`) here so this client-side intent event
+ * doesn't collide with the server-side `Schedule` event fired from
+ * /api/zcal-webhook on actual booking confirmation.
  * GA4 event: `booking_clicked`.
  */
 export function trackBookingIntent(answers: Answers, program: Program) {
@@ -124,7 +126,7 @@ export function trackBookingIntent(answers: Answers, program: Program) {
   const params = paramsFromAnswers(answers, program);
 
   try {
-    window.fbq?.("track", "Schedule", {
+    window.fbq?.("track", "Contact", {
       content_name: program.name,
       content_category: "booking_intent",
       value: 0,
