@@ -1135,6 +1135,131 @@ section {
   font-size: 17px;
 }
 
+/* ─── Sub-page prose (privacy, terms, etc.) ──────────────────── */
+.subpage {
+  padding-top: calc(var(--section-y) * 0.45);
+  padding-bottom: calc(var(--section-y) * 0.4);
+}
+.subpage .wrap {
+  max-width: 760px;
+}
+.subpage .eyebrow + h1 {
+  margin-top: 22px;
+}
+.subpage h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  font-size: clamp(36px, 5vw, 60px);
+  text-wrap: balance;
+}
+.subpage .lede {
+  margin-top: 18px;
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: none;
+}
+.subpage .updated {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+.prose {
+  margin-top: 48px;
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.prose h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  font-size: clamp(22px, 2.4vw, 28px);
+  color: var(--ink);
+  margin-top: 56px;
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+.prose h2:first-child {
+  margin-top: 0;
+}
+.prose h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(17px, 1.6vw, 19px);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-top: 32px;
+  margin-bottom: 10px;
+}
+.prose p {
+  margin-bottom: 18px;
+}
+.prose p:last-child {
+  margin-bottom: 0;
+}
+.prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.prose a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-soft);
+  transition: border-color 0.2s ease;
+}
+.prose a:hover {
+  border-bottom-color: var(--ink);
+}
+.prose ul,
+.prose ol {
+  margin: 0 0 18px 0;
+  padding-left: 22px;
+}
+.prose li {
+  margin-bottom: 8px;
+}
+.prose li::marker {
+  color: var(--ink-soft);
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 26px 0;
+  font-size: 15px;
+}
+.prose th,
+.prose td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.prose th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 40px 0;
+}
+.prose .footnote {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
 /* ─── Footer ─────────────────────────────────────────────────── */
 footer {
   border-top: 1px solid var(--line);
