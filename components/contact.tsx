@@ -23,7 +23,7 @@ export function Contact() {
               className="btn btn-primary"
               style={{ alignSelf: "flex-start" }}
             >
-              Book a discovery call <span className="arr">→</span>
+              Book a Discovery <span className="arr">→</span>
             </a>
             <div className="row">
               <div className="lab">Email</div>
