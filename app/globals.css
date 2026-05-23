@@ -76,13 +76,21 @@
   --gutter: clamp(20px, 4vw, 64px);
   --maxw: 1240px;
 
-  --t-display: clamp(56px, 11vw, 184px);
-  --t-h1: clamp(40px, 6.5vw, 84px);
-  --t-h2: clamp(30px, 4.5vw, 56px);
+  --t-display: clamp(48px, 11vw, 184px);
+  --t-h1: clamp(34px, 6.5vw, 84px);
+  --t-h2: clamp(28px, 4.5vw, 56px);
   --t-h3: clamp(22px, 2.4vw, 30px);
   --t-eyebrow: 11px;
   --t-body: 17px;
   --t-small: 13px;
+}
+
+/* Tighter vertical rhythm on phones so users aren't scrolling past empty
+   space between sections. */
+@media (max-width: 720px) {
+  :root {
+    --section-y: 72px;
+  }
 }
 
 [data-theme="beige"] {
@@ -170,6 +178,13 @@ button {
 section {
   padding: var(--section-y) 0;
   position: relative;
+  /* Push anchor-jumps below the fixed nav so eyebrows aren't hidden. */
+  scroll-margin-top: 90px;
+}
+@media (max-width: 720px) {
+  section {
+    scroll-margin-top: 100px;
+  }
 }
 
 /* ─── Type primitives ────────────────────────────────────────── */
@@ -268,6 +283,27 @@ section {
 .reveal-d4 {
   transition-delay: 0.32s;
 }
+/* Snappier on mobile so anchor-scrolled sections don't sit blank for a
+   noticeable moment while the cascade animates in. Shorter distance + faster
+   transition + cumulatively shorter delays. */
+@media (max-width: 720px) {
+  .reveal {
+    transform: translateY(14px);
+    transition-duration: 0.45s;
+  }
+  .reveal-d1 {
+    transition-delay: 0.04s;
+  }
+  .reveal-d2 {
+    transition-delay: 0.08s;
+  }
+  .reveal-d3 {
+    transition-delay: 0.12s;
+  }
+  .reveal-d4 {
+    transition-delay: 0.16s;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .reveal {
@@ -364,6 +400,14 @@ section {
   grid-template-rows: 1fr auto;
   position: relative;
   overflow: hidden;
+}
+@media (max-width: 720px) {
+  .hero {
+    /* Nav is ~80px tall on mobile (logo+wordmark + 18px padding). 100px gives
+       a comfortable margin without huge dead space above the eyebrow. */
+    padding-top: 100px;
+    min-height: auto;
+  }
 }
 .hero-inner {
   display: grid;
@@ -517,6 +561,14 @@ section {
 .services-head h2 {
   max-width: 22ch;
 }
+.services-headline {
+  max-width: 14ch;
+}
+@media (max-width: 720px) {
+  .services-headline {
+    max-width: none;
+  }
+}
 .services-head .lede {
   max-width: 60ch;
 }
@@ -605,6 +657,13 @@ section {
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 24px;
+  scroll-margin-top: 90px;
+}
+@media (max-width: 720px) {
+  .tab-panel {
+    scroll-margin-top: 100px;
+    min-height: 0;
+  }
 }
 .tab-panel .pnl-head {
   display: flex;
@@ -1271,25 +1330,6 @@ footer {
   flex-wrap: wrap;
   font-size: 13px;
   color: var(--ink-soft);
-}
-footer .footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-footer .footer-email-label {
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--ink-2);
-  margin-right: 2px;
-}
-footer .footer-email a {
-  color: var(--ink-soft);
-  transition: color 0.2s;
-}
-footer .footer-email a:hover {
-  color: var(--ink);
 }
 footer .links {
   display: flex;

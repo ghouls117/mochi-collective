@@ -8,7 +8,7 @@
  * SVG paths are simplified renders of each platform's official mark.
  */
 
-import { SOCIAL_LINKS } from "@/lib/constants";
+import { EMAIL, SOCIAL_LINKS } from "@/lib/constants";
 
 const ICON_SIZE = 20;
 
@@ -56,23 +56,38 @@ function TikTokIcon({ size = ICON_SIZE }: IconProps) {
   );
 }
 
+function EnvelopeIcon({ size = ICON_SIZE }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M3.2 5.5h17.6c.94 0 1.7.76 1.7 1.7v9.6c0 .94-.76 1.7-1.7 1.7H3.2c-.94 0-1.7-.76-1.7-1.7V7.2c0-.94.76-1.7 1.7-1.7zm-.2 2.3v.07L12 13.45l9-5.58V7.8c0-.06-.04-.1-.1-.1H3.1a.1.1 0 00-.1.1zm18 1.94l-8.45 5.24a1.05 1.05 0 01-1.1 0L3 9.74V16.7c0 .06.04.1.1.1h17.8a.1.1 0 00.1-.1V9.74z" />
+    </svg>
+  );
+}
+
 const ICONS = [
-  { key: "instagram", href: SOCIAL_LINKS.instagram, label: "Instagram", Icon: InstagramIcon },
-  { key: "linkedin", href: SOCIAL_LINKS.linkedin, label: "LinkedIn", Icon: LinkedInIcon },
-  { key: "tiktok", href: SOCIAL_LINKS.tiktok, label: "TikTok", Icon: TikTokIcon },
+  { key: "instagram", href: SOCIAL_LINKS.instagram, label: "Instagram", Icon: InstagramIcon, external: true },
+  { key: "linkedin", href: SOCIAL_LINKS.linkedin, label: "LinkedIn", Icon: LinkedInIcon, external: true },
+  { key: "tiktok", href: SOCIAL_LINKS.tiktok, label: "TikTok", Icon: TikTokIcon, external: true },
+  { key: "email", href: `mailto:${EMAIL}`, label: `Email Mochi Collective at ${EMAIL}`, Icon: EnvelopeIcon, external: false },
 ] as const;
 
 export function SocialIcons() {
   return (
-    <div className="social-links" aria-label="Social media">
-      {ICONS.map(({ key, href, label, Icon }) => (
+    <div className="social-links" aria-label="Social media and contact">
+      {ICONS.map(({ key, href, label, Icon, external }) => (
         <a
           key={key}
           href={href}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
           className="social-link"
-          aria-label={`Mochi Collective on ${label}`}
+          aria-label={external ? `Mochi Collective on ${label}` : label}
         >
           <Icon />
         </a>

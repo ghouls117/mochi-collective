@@ -1,11 +1,29 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { SERVICES } from "@/lib/services";
 
 export function Services() {
   const [active, setActive] = useState(0);
   const current = SERVICES[active];
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * On narrow viewports the tab list and detail panel stack vertically, so
+   * tapping a tab leaves the user staring at the same tab list (the panel
+   * is well below the fold). Auto-scroll the panel into view on click — but
+   * only on mobile, so desktop hover-switching stays static and snappy.
+   */
+  const handleTabClick = (index: number) => {
+    setActive(index);
+    if (typeof window === "undefined") return;
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
+    if (!isMobile) return;
+    // Wait a tick so the panel has re-keyed before we scroll to it.
+    requestAnimationFrame(() => {
+      panelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
 
   return (
     <section className="services" id="work">
@@ -14,8 +32,8 @@ export function Services() {
           <div>
             <div className="eyebrow reveal">02 — What we do</div>
             <h2
-              className="h1 reveal reveal-d1"
-              style={{ marginTop: 22, maxWidth: "14ch" }}
+              className="h1 services-headline reveal reveal-d1"
+              style={{ marginTop: 22 }}
             >
               <span className="accent">Five</span> practices.
               <br />
@@ -43,7 +61,7 @@ export function Services() {
                   className={"tab-item" + (isActive ? " active" : "")}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
-                  onClick={() => setActive(i)}
+                  onClick={() => handleTabClick(i)}
                 >
                   <div className="num">{String(i + 1).padStart(2, "0")}</div>
                   <div className="label">{service.label}</div>
@@ -58,6 +76,7 @@ export function Services() {
           </div>
 
           <div
+            ref={panelRef}
             className="tab-panel"
             key={active}
             id="service-detail-panel"

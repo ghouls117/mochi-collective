@@ -19,6 +19,10 @@ export function RevealOnScroll() {
       return;
     }
 
+    // Fire reveals slightly before the element enters the viewport so users
+    // never see an empty section while content fades in. Negative bottom
+    // margin (previously used) made reveals happen LATE; positive margins on
+    // top + bottom expand the trigger zone so we catch elements early.
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -28,7 +32,7 @@ export function RevealOnScroll() {
           }
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0, rootMargin: "0px 0px 15% 0px" }
     );
 
     const elements = document.querySelectorAll<HTMLElement>(".reveal:not(.in)");

@@ -3,7 +3,7 @@ export const EMAIL = "hello@mochicollective.com";
 
 export const SOCIAL_LINKS = {
   instagram: "https://instagram.com/mochi.collective",
-  linkedin: "https://linkedin.com/company/mochicollective",
+  linkedin: "https://www.linkedin.com/company/mochi-collective",
   tiktok: "https://tiktok.com/@mochicollective",
 } as const;
 

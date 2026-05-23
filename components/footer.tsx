@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { EMAIL } from "@/lib/constants";
 import { SocialIcons } from "./social-icons";
 
 export function Footer() {
@@ -12,13 +11,7 @@ export function Footer() {
 
   return (
     <footer>
-      <div className="footer-left">
-        <div>© 2026 Mochi Collective. Make it worth talking about.</div>
-        <div className="footer-email">
-          <span className="footer-email-label">Enquiry Email:</span>{" "}
-          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-        </div>
-      </div>
+      <div>© 2026 Mochi Collective. Make it worth talking about.</div>
       <div className="links">
         <SocialIcons />
         <Link href="/privacy">Privacy Policy</Link>
