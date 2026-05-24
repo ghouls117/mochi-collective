@@ -609,6 +609,7 @@ section {
   letter-spacing: 0.18em;
   color: var(--ink-soft);
   width: 28px;
+  flex-shrink: 0;
 }
 .tab-item .label {
   font-family: var(--font-display);
@@ -619,6 +620,32 @@ section {
   transition: color 0.25s;
   flex: 1;
   text-align: left;
+  text-wrap: balance;
+}
+
+/* Mobile: shrink the label + tighten gaps so all five practice names fit
+   on single lines — "Community & Membership" was the worst offender,
+   wrapping the longest word onto a second line. */
+@media (max-width: 720px) {
+  .tab-item {
+    padding: 18px 0;
+    gap: 12px;
+  }
+  .tab-item:hover,
+  .tab-item.active {
+    padding-left: 8px;
+  }
+  .tab-item .num {
+    width: 22px;
+    font-size: 10px;
+  }
+  .tab-item .label {
+    font-size: 17px;
+    letter-spacing: -0.005em;
+  }
+  .tab-item .arr {
+    font-size: 18px;
+  }
 }
 .tab-item.active .label {
   color: var(--ink);
