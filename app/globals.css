@@ -111,8 +111,11 @@
   --ink-2: #c8c2b5;
   --ink-soft: #888377;
   --line: #3a3a3a;
-  --card: #1f1f1f;
-  --card-2: #2a2a2a;
+  /* Card is intentionally LIGHTER than --bg-2 so the tab-panel and concierge
+     quiz visibly lift off their darker section background — gives the
+     "elevated card" feel without breaking the muted dark palette. */
+  --card: #2f2f2f;
+  --card-2: #3a3a3a;
 }
 
 /* ─── Reset + base ───────────────────────────────────────────── */
@@ -753,6 +756,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   padding-top: 20px;
   border-top: 1px solid var(--line);
   font-size: 12px;
@@ -760,9 +764,25 @@ section {
   text-transform: uppercase;
   color: var(--ink-soft);
 }
+.tab-panel .pnl-foot > div {
+  white-space: nowrap;
+}
 .tab-panel .pnl-foot .x {
   display: inline-flex;
   gap: 16px;
+}
+
+/* On narrow phones the right "Strategy · Design · Proof" cluster needs a
+   touch less spacing to stay on one row alongside "Practice / 0X". */
+@media (max-width: 720px) {
+  .tab-panel .pnl-foot {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    gap: 12px;
+  }
+  .tab-panel .pnl-foot .x {
+    gap: 10px;
+  }
 }
 
 /* ─── Method ─────────────────────────────────────────────────── */
