@@ -3,7 +3,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { EMAIL } from "@/lib/constants";
 
-const LAST_UPDATED = "21 May 2026";
+const LAST_UPDATED = "25 May 2026";
 const ENTITY = "Mochi Collective Pte. Ltd.";
 const UEN = "202538712H";
 const ADDRESS = "68 Circular Road, #02-01, Singapore 049422";
@@ -132,6 +132,12 @@ export default function PrivacyPage() {
               <li>
                 <strong>Microsoft</strong> &mdash; Microsoft Clarity (session
                 recordings, heatmaps).
+              </li>
+              <li>
+                <strong>LinkedIn</strong> &mdash; LinkedIn Insight Tag for B2B
+                visitor analytics + retargeting on LinkedIn Ads. Tracks
+                anonymous visit data; matches to your LinkedIn profile via
+                LinkedIn&rsquo;s own cookie if you&rsquo;re logged in.
               </li>
               <li>
                 <strong>zcal</strong> &mdash; our booking provider. Their

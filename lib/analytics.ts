@@ -38,6 +38,8 @@ declare global {
       params?: Record<string, unknown>
     ) => void;
     clarity?: (...args: unknown[]) => void;
+    /** LinkedIn Insight Tag — `window.lintrk('track', { conversion_id })`. */
+    lintrk?: (action: "track", params?: { conversion_id?: number }) => void;
   }
 }
 
