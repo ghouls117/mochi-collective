@@ -14,6 +14,7 @@ export function Footer() {
       <div>© 2026 Mochi Collective. Make it worth talking about.</div>
       <div className="links">
         <SocialIcons />
+        <Link href="/terms">Terms of Use</Link>
         <Link href="/privacy">Privacy Policy</Link>
         <a href="#top" onClick={backToTop}>
           Back to top ↑
