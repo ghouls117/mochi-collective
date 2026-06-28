@@ -75,7 +75,28 @@ relationship warrants.
 
 ---
 
-## Part B — Step-by-step: how to (re)generate this workbook
+## Part B — Step-by-step: creating a new budget sheet for a new event
+
+Use **one file per event** and keep this template as a clean master — don't track
+a live project in the master copy.
+
+1. **Make a copy of the file.** In Excel: *File → Save As*. In Google Sheets:
+   *File → Make a copy*. (Or regenerate a fresh blank from the script — see Part C.)
+2. **Name the copy for the event**, e.g. `2026-08_AcmeCorp_Sprint_Budget.xlsx`, so
+   each engagement has its own file.
+3. **Open the copy's `Budget vs Actual` tab and fill the header** — Project /
+   Client, Event date, Currency, Contingency %, Variance threshold, Prepared by.
+4. **Pick the Event size** (`20` or `50`) from the dropdown.
+5. **Clear any leftover entries** so the sheet starts fresh — delete anything in
+   the **Actual** and **Reason** columns (the master ships with these empty; this
+   matters only if you copied a worked example).
+6. **Replace the placeholder estimates with this event's quotes**, and add/remove
+   line items as needed (keep the Category text on every row).
+7. **Clear the `Impact & Opportunities` and `Over-Budget Deep Dive` tabs** of any
+   prior entries.
+8. **Save.** Then follow Part A to run budget vs actual through the event.
+
+## Part C — Step-by-step: how to (re)generate this workbook
 
 The `.xlsx` is produced by a script so it stays version-controllable and easy to
 tweak (line items, defaults, branding).

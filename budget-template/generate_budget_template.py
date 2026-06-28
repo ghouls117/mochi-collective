@@ -214,9 +214,28 @@ guide = [
      "opened) and 'Over-Budget Deep Dive' (reason → real impact → way forward) for each "
      "flagged item.", "p"),
     ("", ""),
-    ("PART B — STEP-BY-STEP: HOW TO (RE)GENERATE THIS WORKBOOK", "h"),
-    ("The .xlsx is produced by a script, so you can regenerate it after changing line items, "
-     "default amounts, currency, or branding.", "p"),
+    ("PART B — STEP-BY-STEP: CREATING A NEW BUDGET SHEET FOR A NEW EVENT", "h"),
+    ("Use one file per event and keep this template as a clean master — don't track a live "
+     "project in the master copy.", "p"),
+    ("Step 1  —  Make a copy of the file. In Excel: File → Save As. In Google Sheets: File → "
+     "Make a copy. (Or regenerate a fresh blank from the script — see Part C.)", "p"),
+    ("Step 2  —  Name the copy for the event, e.g. 2026-08_AcmeCorp_Sprint_Budget.xlsx, so "
+     "each engagement has its own file.", "p"),
+    ("Step 3  —  Open the copy's 'Budget vs Actual' tab and fill the header: Project / Client, "
+     "Event date, Currency, Contingency %, Variance threshold, Prepared by.", "p"),
+    ("Step 4  —  Pick the Event size (20 or 50) from the dropdown.", "p"),
+    ("Step 5  —  Clear any leftover entries so the sheet starts fresh — delete anything in the "
+     "Actual and Reason columns (the master ships with these empty; this matters only if you "
+     "copied a worked example).", "p"),
+    ("Step 6  —  Replace the placeholder estimates with this event's quotes, and add/remove "
+     "line items as needed (keep the Category text on every row).", "p"),
+    ("Step 7  —  Clear the 'Impact & Opportunities' and 'Over-Budget Deep Dive' tabs of any "
+     "prior entries.", "p"),
+    ("Step 8  —  Save. Now follow Part A to run budget vs actual through the event.", "p"),
+    ("", ""),
+    ("PART C — STEP-BY-STEP: HOW TO (RE)GENERATE THIS WORKBOOK", "h"),
+    ("The .xlsx is produced by a script, so you can regenerate a fresh blank master after "
+     "changing line items, default amounts, currency, or branding.", "p"),
     ("Step 1  —  Make sure Python 3 is installed:  python3 --version", "p"),
     ("Step 2  —  Install the one dependency:  pip install openpyxl", "p"),
     ("Step 3  —  Open generate_budget_template.py and edit the ITEMS list to change line "
