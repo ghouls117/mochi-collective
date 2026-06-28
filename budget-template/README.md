@@ -22,19 +22,31 @@ Works in Microsoft Excel, Google Sheets (File → Import → Upload), and Number
 
 ---
 
-## How it works
+## Part A — Step-by-step: how to use the budget sheet
 
-1. **Pick the event size.** On *Budget vs Actual*, choose `20` or `50` from the
-   **Event size (pax)** dropdown. The **Budgeted** column auto-fills from the
-   matching estimate — overwrite any cell with your real quote.
-2. **Log actuals.** As money is committed, type into the **Actual** column.
-   **Variance ($)**, **Variance %**, and the **Flag** compute automatically.
-3. **Explain the swings.** Any line where Actual exceeds Budgeted by more than
-   the **Variance threshold** (default **20%**, editable in the header) shows
-   **⚠ OVER** in red, and its Reason cell turns amber until you fill it in.
-4. **Close the loop after the event.** Fill *Impact & Opportunities* (value
-   created + doors opened) and *Over-Budget Deep Dive* (reason, real impact,
-   way forward) so the next event is estimated better.
+1. **Open the `Budget vs Actual` tab.**
+2. **Fill the header** — Project / Client, Event date, Currency (default `SGD`),
+   Contingency % (default `10%`), Variance threshold (default `20%`), Prepared by.
+3. **Choose the event size** from the **Event size (pax)** dropdown — `20` or
+   `50`. The **Budgeted** column auto-fills from the matching estimate column for
+   every line item.
+4. **Replace the placeholder estimates with your real quotes** — edit the
+   `Est. 20 pax` / `Est. 50 pax` cells (or type directly over a Budgeted cell).
+5. **Add or remove line items** to suit the event. Keep each row's **Category**
+   text intact — the Dashboard rolls up by Category, so a blank/typo category
+   drops the row from the totals.
+6. **Log actuals.** As costs are committed, type into the **Actual** column (grey
+   cells). **Variance ($)**, **Variance %**, and the **Flag** compute
+   automatically.
+7. **Watch the Flag column.** `⚠ OVER` (red) = more than +20% over budget;
+   `under` (green) = more than 20% under; `ok` = within range.
+8. **Explain every `⚠ OVER` line** in the **Reason** column — the cell stays
+   amber until you do. This is your audit trail for the big discrepancies.
+9. **Check the Dashboard tab** for the category roll-up and headline KPIs (total
+   budgeted, total actual, variance, # flagged). It updates itself.
+10. **Close the loop after the event** — complete *Impact & Opportunities* (value
+    created + doors opened) and *Over-Budget Deep Dive* (reason → real impact →
+    way forward) for each flagged item.
 
 ### Categories covered
 
@@ -63,17 +75,31 @@ relationship warrants.
 
 ---
 
-## Regenerating the file
+## Part B — Step-by-step: how to (re)generate this workbook
 
-The workbook is generated from a script so it stays version-controllable and
-easy to tweak (line items, defaults, branding):
+The `.xlsx` is produced by a script so it stays version-controllable and easy to
+tweak (line items, defaults, branding).
 
-```bash
-cd budget-template
-pip install openpyxl
-python3 generate_budget_template.py
-```
-
-Edit the `ITEMS` list in
-[`generate_budget_template.py`](./generate_budget_template.py) to change line
-items or placeholder estimates, then re-run.
+1. **Check Python 3 is installed:**
+   ```bash
+   python3 --version
+   ```
+2. **Install the one dependency:**
+   ```bash
+   pip install openpyxl
+   ```
+3. **Edit the script** [`generate_budget_template.py`](./generate_budget_template.py):
+   - Change line items / placeholder estimates in the **`ITEMS`** list. Each entry
+     is `(Category, Line item, Description, Est. 20 pax, Est. 50 pax)`.
+   - Change header defaults (currency `SGD`, contingency `0.10`, threshold `0.20`)
+     in the **`hdr`** dictionary.
+4. **Run it from the `budget-template` folder:**
+   ```bash
+   cd budget-template
+   python3 generate_budget_template.py
+   ```
+5. **Verify.** The script overwrites
+   `Hackathon_Innovation_Sprint_Budget_Template.xlsx` and prints a confirmation
+   (line-item count + row range). Open the new file to check it.
+6. **(Optional) Use it in Google Sheets:** File → Import → Upload the `.xlsx` →
+   *Replace spreadsheet*. Formulas, dropdowns, and formatting carry over.

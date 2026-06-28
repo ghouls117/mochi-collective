@@ -190,16 +190,44 @@ guide = [
     ("4.  Over-Budget Deep Dive  —  for each flagged item: the reason, the impact it actually "
      "delivered, and the way forward.", "p"),
     ("", ""),
-    ("HOW TO USE IT", "h"),
-    ("Step 1  —  On 'Budget vs Actual', fill the project header and choose Event size (20 or "
-     "50) from the dropdown. The Budgeted column auto-fills from the matching estimate; "
-     "overwrite any cell with your real quote.", "p"),
-    ("Step 2  —  As money is committed, enter the Actual for each line. Variance ($ and %) and "
-     "the over-budget flag calculate automatically.", "p"),
-    ("Step 3  —  Whenever 'Flag' shows ⚠ OVER, write the circumstance in the Reason column. "
-     "This is the audit trail for spend that ran >20% hot.", "p"),
-    ("Step 4  —  After the event, complete 'Impact & Opportunities' and 'Over-Budget Deep "
-     "Dive' to close the loop on value and learnings.", "p"),
+    ("PART A — STEP-BY-STEP: HOW TO USE THE BUDGET SHEET", "h"),
+    ("Step 1  —  Open the 'Budget vs Actual' tab.", "p"),
+    ("Step 2  —  Fill the header: Project / Client name, Event date, Currency (default SGD), "
+     "Contingency % (default 10%), Variance threshold (default 20%) and Prepared by.", "p"),
+    ("Step 3  —  Choose Event size (pax) from the dropdown — 20 or 50. The Budgeted column "
+     "auto-fills from the matching estimate column for every line item.", "p"),
+    ("Step 4  —  Replace the placeholder estimates with your real quotes. Edit the 'Est. 20 "
+     "pax' / 'Est. 50 pax' cells (or type directly over the Budgeted cell) so the figures "
+     "reflect your suppliers.", "p"),
+    ("Step 5  —  Add or remove line items to suit the event. Keep each row's Category text "
+     "intact — the Dashboard rolls up by Category, so a blank/typo category drops the row "
+     "from the totals.", "p"),
+    ("Step 6  —  As costs are committed, enter each line's Actual (the grey cells). Variance "
+     "($), Variance % and the Flag calculate automatically.", "p"),
+    ("Step 7  —  Watch the Flag column. ⚠ OVER (red) = more than +20% over budget; 'under' "
+     "(green) = more than 20% under; 'ok' = within range.", "p"),
+    ("Step 8  —  For every ⚠ OVER line, write the circumstance in the Reason column. The cell "
+     "stays amber until you do — this is your audit trail for big discrepancies.", "p"),
+    ("Step 9  —  Check the Dashboard tab for the category roll-up and headline KPIs (total "
+     "budgeted, total actual, variance, and how many lines are flagged). It updates itself.", "p"),
+    ("Step 10  —  After the event, complete 'Impact & Opportunities' (value created + doors "
+     "opened) and 'Over-Budget Deep Dive' (reason → real impact → way forward) for each "
+     "flagged item.", "p"),
+    ("", ""),
+    ("PART B — STEP-BY-STEP: HOW TO (RE)GENERATE THIS WORKBOOK", "h"),
+    ("The .xlsx is produced by a script, so you can regenerate it after changing line items, "
+     "default amounts, currency, or branding.", "p"),
+    ("Step 1  —  Make sure Python 3 is installed:  python3 --version", "p"),
+    ("Step 2  —  Install the one dependency:  pip install openpyxl", "p"),
+    ("Step 3  —  Open generate_budget_template.py and edit the ITEMS list to change line "
+     "items or placeholder estimates (each entry is: Category, Line item, Description, "
+     "Est. 20 pax, Est. 50 pax). Header defaults (currency 'SGD', contingency 0.10, "
+     "threshold 0.20) live in the 'hdr' dictionary.", "p"),
+    ("Step 4  —  From the budget-template folder, run:  python3 generate_budget_template.py", "p"),
+    ("Step 5  —  The script overwrites Hackathon_Innovation_Sprint_Budget_Template.xlsx and "
+     "prints a confirmation (line-item count + row range). Open the new file to verify.", "p"),
+    ("Step 6  —  (Optional) To use it in Google Sheets: File → Import → Upload the .xlsx, then "
+     "choose 'Replace spreadsheet'. Formulas, dropdowns and formatting carry over.", "p"),
     ("", ""),
     ("CONVENTIONS", "h"),
     ("•  Amounts shipped in the template are ILLUSTRATIVE planning placeholders — replace them "
@@ -222,7 +250,8 @@ for text, kind in guide:
     elif kind == "p":
         cell.font = body_font
         cell.alignment = left_top
-        ws0.row_dimensions[r].height = 30 if len(text) > 95 else 18
+        lines = max(1, -(-len(text) // 96))
+        ws0.row_dimensions[r].height = 15 * lines + 3
     r += 1
 
 # ---------------------------------------------------------------------------
