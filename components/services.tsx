@@ -5,23 +5,24 @@ import { SERVICES } from "@/lib/services";
 
 export function Services() {
   const [active, setActive] = useState(0);
-  const current = SERVICES[active];
-  const panelRef = useRef<HTMLDivElement>(null);
+  const panelRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   /**
    * On narrow viewports the tab list and detail panel stack vertically, so
    * tapping a tab leaves the user staring at the same tab list (the panel
-   * is well below the fold). Auto-scroll the panel into view on click — but
-   * only on mobile, so desktop hover-switching stays static and snappy.
+   * is well below the fold). Auto-scroll the active panel into view on click —
+   * but only on mobile, so desktop hover-switching stays static and snappy.
    */
   const handleTabClick = (index: number) => {
     setActive(index);
     if (typeof window === "undefined") return;
     const isMobile = window.matchMedia("(max-width: 900px)").matches;
     if (!isMobile) return;
-    // Wait a tick so the panel has re-keyed before we scroll to it.
     requestAnimationFrame(() => {
-      panelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      panelRefs.current[index]?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
   };
 
@@ -56,7 +57,7 @@ export function Services() {
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  aria-controls="service-detail-panel"
+                  aria-controls={`service-detail-panel-${i}`}
                   id={`service-tab-${i}`}
                   className={"tab-item" + (isActive ? " active" : "")}
                   onMouseEnter={() => setActive(i)}
@@ -75,44 +76,63 @@ export function Services() {
             })}
           </div>
 
-          <div
-            ref={panelRef}
-            className="tab-panel"
-            key={active}
-            id="service-detail-panel"
-            role="tabpanel"
-            aria-labelledby={`service-tab-${active}`}
-          >
-            <div className="pnl-head">
-              <div
-                className="pnl-orb"
-                style={{ background: current.color }}
-              />
-              <div className="pnl-title">
-                {splitSentences(current.title).map((line, i, arr) => (
-                  <Fragment key={i}>
-                    {line}
-                    {i < arr.length - 1 && <br />}
-                  </Fragment>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p className="pnl-body">{current.body}</p>
-              <ul className="pnl-list" style={{ marginTop: 20 }}>
-                {current.list.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="pnl-foot">
-              <div>Practice / {String(active + 1).padStart(2, "0")}</div>
-              <div className="x">
-                <span>Strategy</span>
-                <span>Design</span>
-                <span>Proof</span>
-              </div>
-            </div>
+          {/*
+            All 5 panels are rendered server-side into the DOM so AI crawlers
+            (GPTBot, ClaudeBot, PerplexityBot etc.) that don't execute JS can
+            read every practice's copy. Only the active panel is visible; the
+            rest are `display: none` via the `.hidden` class. Same UX as
+            before, but the full service story is now machine-readable on the
+            first HTML load.
+          */}
+          <div className="tab-panels">
+            {SERVICES.map((service, i) => {
+              const isActive = i === active;
+              return (
+                <div
+                  key={service.label}
+                  ref={(el) => {
+                    panelRefs.current[i] = el;
+                  }}
+                  className={"tab-panel" + (isActive ? "" : " hidden")}
+                  id={`service-detail-panel-${i}`}
+                  role="tabpanel"
+                  aria-labelledby={`service-tab-${i}`}
+                  aria-hidden={!isActive}
+                  hidden={!isActive}
+                >
+                  <div className="pnl-head">
+                    <div
+                      className="pnl-orb"
+                      style={{ background: service.color }}
+                    />
+                    <div className="pnl-title">
+                      {splitSentences(service.title).map((line, li, arr) => (
+                        <Fragment key={li}>
+                          {line}
+                          {li < arr.length - 1 && <br />}
+                        </Fragment>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="pnl-body">{service.body}</p>
+                    <ul className="pnl-list" style={{ marginTop: 20 }}>
+                      {service.list.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="pnl-foot">
+                    <div>Practice / {String(i + 1).padStart(2, "0")}</div>
+                    <div className="x">
+                      <span>Strategy</span>
+                      <span>Design</span>
+                      <span>Proof</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

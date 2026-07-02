@@ -11,7 +11,7 @@ export const METHOD: MethodStep[] = [
     h: "Strategy",
     tone: "#F6BEC9",
     body:
-      "We start with the metric, not the moodboard. What were the misalignments that happened? Who is the proof for? We come back with a brief that survives the boardroom.",
+      "We start with the metric, not the moodboard. What needs to change, and who has to see it? We come back with a brief that survives the boardroom.",
   },
   {
     n: 2,

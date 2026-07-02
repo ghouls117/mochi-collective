@@ -678,6 +678,14 @@ section {
   transform: translateX(0);
 }
 
+/* All 5 panels live in the DOM at once; only the active one is visible.
+   AI crawlers see every practice's copy on first paint. */
+.tab-panels {
+  min-width: 0;
+}
+.tab-panel.hidden {
+  display: none;
+}
 .tab-panel {
   border-radius: 18px;
   padding: clamp(28px, 4vw, 48px);
@@ -1199,6 +1207,52 @@ section {
   flex-wrap: wrap;
 }
 
+/* ─── FAQ ────────────────────────────────────────────────────── */
+.faq {
+  /* Uses the default --bg so it alternates with the surrounding Concierge
+     (bg-2) and Contact (bg) sections — visual rhythm stays clean. */
+}
+.faq .lede {
+  margin-top: 22px;
+}
+.faq .lede a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-soft);
+  transition: border-color 0.2s ease;
+}
+.faq .lede a:hover {
+  border-bottom-color: var(--ink);
+}
+.faq-list {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  max-width: 780px;
+}
+.faq-item h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(19px, 1.9vw, 24px);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+.faq-item p {
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+@media (max-width: 720px) {
+  .faq-list {
+    margin-top: 40px;
+    gap: 28px;
+  }
+}
+
 /* ─── Contact / CTA ──────────────────────────────────────────── */
 .cta {
   position: relative;
@@ -1371,12 +1425,45 @@ footer {
   border-top: 1px solid var(--line);
   padding: 40px var(--gutter);
   display: flex;
+  flex-direction: column;
+  gap: 28px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+footer .footer-entity {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  max-width: 900px;
+}
+footer .footer-entity-paragraph {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+footer .footer-entity-paragraph a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-soft);
+  transition: border-color 0.2s ease;
+}
+footer .footer-entity-paragraph a:hover {
+  border-bottom-color: var(--ink);
+}
+footer .footer-entity-line {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+}
+footer .footer-row {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
   flex-wrap: wrap;
-  font-size: 13px;
-  color: var(--ink-soft);
 }
 footer .links {
   display: flex;

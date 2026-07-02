@@ -9,7 +9,7 @@ const UEN = "202538712H";
 const ADDRESS = "68 Circular Road, #02-01, Singapore 049422";
 
 export const metadata: Metadata = {
-  title: "Privacy at Mochi Collective",
+  title: "Privacy Policy | Mochi Collective",
   description:
     "What data Mochi Collective collects, who we share it with, and how to access or delete yours.",
   alternates: { canonical: "/privacy" },
