@@ -58,8 +58,8 @@ export default function HomePage() {
         <Services />
         <Method />
         <ConciergeSection />
-        <Faq />
         <Contact />
+        <Faq />
       </main>
       <Footer />
       <RevealOnScroll />
