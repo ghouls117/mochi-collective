@@ -2,24 +2,37 @@ import { Fragment } from "react";
 import { EMAIL } from "@/lib/constants";
 import { FAQ } from "@/lib/faq";
 
+const ZCAL_PATH = "zcal.co/mochicollective/consultation";
+const ZCAL_URL = `https://${ZCAL_PATH}`;
+
 /**
- * Render a plain-text answer with any occurrence of the primary contact
- * email turned into a `mailto:` link. Keeps the source data in lib/faq.ts
- * as plain strings so it can still be serialised verbatim into FAQPage
- * JSON-LD (Schema.org expects text, not HTML).
+ * Render a plain-text answer with the primary contact email and the zcal
+ * booking URL turned into links. Source data in lib/faq.ts stays as plain
+ * strings so it can be serialised verbatim into FAQPage JSON-LD (Schema.org
+ * expects text, not HTML).
  */
 function renderAnswer(text: string) {
-  const pattern = new RegExp(`(${EMAIL.replace(/\./g, "\\.")})`, "g");
+  const emailPattern = EMAIL.replace(/\./g, "\\.");
+  const zcalPattern = ZCAL_PATH.replace(/\./g, "\\.").replace(/\//g, "\\/");
+  const pattern = new RegExp(`(${emailPattern}|${zcalPattern})`, "g");
   const parts = text.split(pattern);
-  return parts.map((part, i) =>
-    part === EMAIL ? (
-      <a key={i} href={`mailto:${EMAIL}`}>
-        {EMAIL}
-      </a>
-    ) : (
-      <Fragment key={i}>{part}</Fragment>
-    )
-  );
+  return parts.map((part, i) => {
+    if (part === EMAIL) {
+      return (
+        <a key={i} href={`mailto:${EMAIL}`}>
+          {EMAIL}
+        </a>
+      );
+    }
+    if (part === ZCAL_PATH) {
+      return (
+        <a key={i} href={ZCAL_URL}>
+          {ZCAL_PATH}
+        </a>
+      );
+    }
+    return <Fragment key={i}>{part}</Fragment>;
+  });
 }
 
 export function Faq() {
