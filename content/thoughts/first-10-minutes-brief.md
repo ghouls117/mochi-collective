@@ -1,7 +1,7 @@
 ---
 title: The First 10 Minutes We Spend On A Brief
 slug: first-10-minutes-brief
-meta_title: How We Read An Event Brief In The First 10 Minutes | Mochi Collective
+meta_title: How We Read Event Briefs During Discovery | Mochi Collective
 meta_description: Behind the process. The four things we check in the first ten minutes on a brief to know whether it can land — and whether we can help.
 publish_date: 2026-07-15
 category: Thought Leadership
@@ -15,6 +15,13 @@ Every brief that lands in our inbox gets the same first ten minutes.
 Not a formal review. Not a scoring rubric. Just four passes — each of them is answering a specific question about whether the brief can support what it's asking for. By the tenth minute we usually know whether we can help.
 
 Here's what those ten minutes actually look like.
+
+**The four passes, in order:**
+
+1. Read for the feeling target — what the audience should walk out *feeling*
+2. Check for three specific names (or three titles) the experience is really for
+3. Name the next decision downstream that this event makes easier
+4. Write the Monday sentence in advance — the one people say unprompted
 
 ## 00:00–02:30 · We read for the feeling target
 

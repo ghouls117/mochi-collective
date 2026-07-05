@@ -1,7 +1,7 @@
 ---
 title: 5 Red Flags We Spot In Event Briefs
 slug: 5-brief-red-flags
-meta_title: 5 Red Flags We Spot In Event Briefs (And How To Fix Them) | Mochi Collective
+meta_title: 5 Event Brief Red Flags (and How to Fix Them) | Mochi Collective
 meta_description: Five phrases that quietly signal an event brief needs sharpening before it becomes a project. Plus the reframe that fixes each one.
 publish_date: 2026-07-22
 category: Thought Leadership
@@ -15,6 +15,14 @@ None of these mean *no*.
 All of them mean *the brief needs sharpening before this becomes an event*.
 
 The good news: every one of these red flags has a simple fix at the top of the brief that saves an enormous amount of scope creep, rework, and post-event "did it actually work?" ambiguity down the line. Here are the five we spot most often, and the reframe we walk clients through when we see them.
+
+**The five red flags, in order:**
+
+1. **"By when?"** — deadline before intent
+2. **"Something impactful."** — no feeling target
+3. **"The C-suite will attend."** — audience by title, not by name
+4. **"We have S$X."** — budget before outcome
+5. **"Wow us."** — creative ask before goal
 
 ## Red flag #1 — "By when?"
 

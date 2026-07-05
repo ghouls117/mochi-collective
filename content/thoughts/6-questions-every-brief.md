@@ -1,7 +1,7 @@
 ---
 title: 6 Questions That Should Live At The Top Of Every Brief
 slug: 6-questions-every-brief
-meta_title: 6 Questions Every Great Event Brief Answers | Mochi Collective
+meta_title: 6 Questions Every Event Brief Must Answer | Mochi Collective
 meta_description: The six questions we put to every brief before we agree to work on it — for events, community programmes, wellness retreats, or brand activations.
 publish_date: 2026-07-08
 category: Thought Leadership
@@ -15,6 +15,15 @@ Most briefs we receive answer three things: what, where, and how much. The good 
 Before we agree to work on an event, community programme, wellness retreat, or brand activation, we run the brief through six questions. Not as a formality — as a filter. If the top of the brief can't answer them, the design underneath won't hold. Every scope creep, every last-minute pivot, every "did that actually work?" post-mortem is downstream of a top-of-brief that never got sharp.
 
 Here they are. Use them on your next brief before you send it to anyone.
+
+**The six questions, in order:**
+
+1. What do you want people to *feel* when they walk out?
+2. Who *specifically* should care that this happened?
+3. What's the one sentence the right people will say to each other on Monday?
+4. Which decision should this make easier to make next?
+5. What's the smallest version of this that would still work?
+6. How will you know — six weeks from now — that it worked?
 
 ## 1. What do you want people to feel when they walk out?
 
