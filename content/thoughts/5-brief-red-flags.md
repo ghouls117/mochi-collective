@@ -10,6 +10,8 @@ canonical_url: https://mochicollective.com/thoughts/thought-leadership/5-brief-r
 deck: None of these mean no. All of them mean the brief needs sharpening before it becomes an event. Here are the five we spot most often, and the reframe we walk clients through when we see them.
 ---
 
+Every event brief we've reviewed at Mochi Collective has come in with at least one of these five red flags at the top.
+
 None of these mean *no*.
 
 All of them mean *the brief needs sharpening before this becomes an event*.

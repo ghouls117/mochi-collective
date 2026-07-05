@@ -7,10 +7,10 @@ publish_date: 2026-07-15
 category: Thought Leadership
 tags: [event brief, brief review, process, experience design, singapore events]
 canonical_url: https://mochicollective.com/thoughts/thought-leadership/first-10-minutes-brief
-deck: Every brief that lands in our inbox gets the same first ten minutes. Not a formal review. Just four passes — each answering a specific question about whether the brief can support what it's asking for.
+deck: Every event brief that lands in our inbox gets the same first ten minutes. Not a formal review. Just four passes — each answering a specific question about whether the brief can support what it's asking for.
 ---
 
-Every brief that lands in our inbox gets the same first ten minutes.
+Every event brief that lands in our inbox gets the same first ten minutes.
 
 Not a formal review. Not a scoring rubric. Just four passes — each of them is answering a specific question about whether the brief can support what it's asking for. By the tenth minute we usually know whether we can help.
 
@@ -49,7 +49,7 @@ The third pass is the commercial question. What decision does this experience ma
 
 Every brief we take on ladders to a moment downstream — a deal that closes, a hire that lands, a renewal that survives, a campaign that gets green-lit. If we can name the next decision, the event has a job. Budget conversations get shorter. Trade-offs get clearer. "Should we cut this from the run-of-show?" becomes answerable, because we can ask whether it moves the next decision or not.
 
-This is also, incidentally, where finance teams stop pushing back on event budgets. The moment an event is "the setup that gets us to X decision by Y date" rather than "an offsite," the ROI conversation reframes entirely. That's not spin. It's the same event, described in the language of the people signing the invoice.
+At Mochi Collective, we've watched this reframe unlock budget conversations more than once. This is also, incidentally, where finance teams stop pushing back on event budgets. The moment an event is "the setup that gets us to X decision by Y date" rather than "an offsite," the ROI conversation reframes entirely. That's not spin. It's the same event, described in the language of the people signing the invoice.
 
 ## 07:30–10:00 · We write the Monday sentence
 

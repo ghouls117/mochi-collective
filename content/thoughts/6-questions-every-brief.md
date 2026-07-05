@@ -12,7 +12,7 @@ deck: Most briefs we receive answer three things — what, where, and how much. 
 
 Most briefs we receive answer three things: what, where, and how much. The good ones answer something else first.
 
-Before we agree to work on an event, community programme, wellness retreat, or brand activation, we run the brief through six questions. Not as a formality — as a filter. If the top of the brief can't answer them, the design underneath won't hold. Every scope creep, every last-minute pivot, every "did that actually work?" post-mortem is downstream of a top-of-brief that never got sharp.
+At Mochi Collective, before we agree to work on an event, community programme, wellness retreat, or brand activation in Singapore or across Southeast Asia, we run the brief through six questions. Not as a formality — as a filter. If the top of the brief can't answer them, the design underneath won't hold. Every scope creep, every last-minute pivot, every "did that actually work?" post-mortem is downstream of a top-of-brief that never got sharp.
 
 Here they are. Use them on your next brief before you send it to anyone.
 
