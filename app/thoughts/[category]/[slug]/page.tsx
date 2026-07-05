@@ -124,7 +124,14 @@ export default async function ThoughtsPostPage({
             >
               {post.category}
             </Link>
-            <h1 className="th-art-title">{post.title}</h1>
+            {post.title_display ? (
+              <h1
+                className="th-art-title"
+                dangerouslySetInnerHTML={{ __html: post.title_display }}
+              />
+            ) : (
+              <h1 className="th-art-title">{post.title}</h1>
+            )}
             {post.deck && <p className="th-art-deck">{post.deck}</p>}
             <div className="th-art-meta">
               <span>

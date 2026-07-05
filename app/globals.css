@@ -2015,6 +2015,152 @@ footer .social-link svg {
 .th-prose ul li::marker {
   color: var(--color-pink);
 }
+
+/* Orb-list — numbered points with beige markers + orb colors on bold labels */
+.th-prose ol.orb-list li::marker {
+  color: var(--color-beige);
+}
+.th-prose ol.orb-list li:nth-child(1) > strong:first-child {
+  color: var(--color-pink);
+}
+.th-prose ol.orb-list li:nth-child(2) > strong:first-child {
+  color: var(--color-blue);
+}
+.th-prose ol.orb-list li:nth-child(3) > strong:first-child {
+  color: var(--color-sage);
+}
+.th-prose ol.orb-list li:nth-child(4) > strong:first-child {
+  color: var(--color-honey);
+}
+.th-prose ol.orb-list li:nth-child(5) > strong:first-child {
+  color: var(--color-slate-orb);
+}
+
+/* Beige-list — bullet marker stays pink, bold labels in warm beige */
+.th-prose ul.beige-list li strong {
+  color: var(--color-beige);
+}
+
+/* Pull quote — gradient border-image left rule, Poppins bold */
+.th-prose blockquote.pull {
+  margin: 20px 0;
+  padding: 6px 0 6px 32px;
+  border-left: 2px solid;
+  border-image: linear-gradient(
+      to bottom,
+      var(--color-pink),
+      var(--color-blue),
+      var(--color-sage),
+      var(--color-honey)
+    )
+    1;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.25;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  max-width: 32ch;
+  text-wrap: balance;
+}
+.th-prose blockquote.pull p {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  font-weight: inherit;
+}
+
+/* Callout box */
+.th-prose .th-callout {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 4px;
+  margin: 12px 0;
+}
+.th-prose .th-callout .th-callout-h {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-honey);
+}
+.th-prose .th-callout p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+/* Stats panel — "Snapshot of goals" style */
+.th-prose .th-stats-panel {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0 26px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.th-prose .th-stats-header {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-beige);
+}
+.th-prose .th-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.th-prose .th-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.th-prose .th-stat-n {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-pink);
+  font-variant-numeric: tabular-nums;
+}
+.th-prose .th-stat-n.th-stat-n--text {
+  font-size: clamp(22px, 2.6vw, 30px);
+}
+.th-prose .th-stat:nth-child(2) .th-stat-n {
+  color: var(--color-blue);
+}
+.th-prose .th-stat:nth-child(3) .th-stat-n {
+  color: var(--color-sage);
+}
+.th-prose .th-stat-l {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+.th-prose .th-stat-s {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+@media (max-width: 720px) {
+  .th-prose .th-stats {
+    grid-template-columns: 1fr;
+  }
+}
 .th-prose strong {
   font-weight: 700;
   color: var(--ink);

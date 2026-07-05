@@ -21,6 +21,13 @@ import { marked } from "marked";
 
 export type PostFrontmatter = {
   title: string;
+  /**
+   * Optional HTML-enhanced title for the post-page display. Falls back to
+   * `title` when absent. Used to inject accent styling (e.g. gradient
+   * `<em class="accent">`) on part of the headline. Meta/OG/JSON-LD always
+   * use the plain `title` field.
+   */
+  title_display?: string;
   slug: string;
   meta_title?: string;
   meta_description: string;

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { FilterChips } from "@/components/thoughts/filter-chips";
@@ -23,30 +22,9 @@ export const metadata: Metadata = {
   },
 };
 
-const CATEGORY_TAG_COLOR: Record<string, string> = {
-  "thought-leadership": "brand",
-  "brand-strategy": "brand",
-  measurement: "measurement",
-  "events-craft": "events-craft",
-};
-
-function formatShortDate(iso: string): string {
-  const d = new Date(`${iso}T00:00:00+08:00`);
-  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
-}
-function formatFullDate(iso: string): string {
-  const d = new Date(`${iso}T00:00:00+08:00`);
-  return d.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-}
-
 export default function ThoughtsIndexPage() {
   const posts = getPublishedPosts();
   const categories = getPublishedCategories();
-  const featured = posts.find((p) => p.featured) ?? posts[0];
   const hasPosts = posts.length > 0;
 
   return (
@@ -69,38 +47,7 @@ export default function ThoughtsIndexPage() {
           </header>
 
           {hasPosts ? (
-            <FilterChips
-              posts={posts}
-              categories={categories}
-              renderCard={(post, i) => {
-                const isFeatured = post === featured && i === 0;
-                const tagColor = CATEGORY_TAG_COLOR[post.categorySlug] ?? "brand";
-                return (
-                  <Link
-                    key={post.slug}
-                    href={post.urlPath}
-                    className={`th-card${isFeatured ? " th-card--featured" : ""}`}
-                    data-tag={tagColor}
-                  >
-                    <span className="th-card-tag">{post.category}</span>
-                    <h2 className="th-card-title">{post.title}</h2>
-                    <p className="th-card-excerpt">
-                      {post.deck ?? post.meta_description}
-                    </p>
-                    <div className="th-card-foot">
-                      <span>{post.readingTimeMinutes} min read</span>
-                      <span>
-                        {formatShortDate(post.publish_date)}
-                        <span className="th-card-arrow" aria-hidden="true">
-                          {" "}
-                          →
-                        </span>
-                      </span>
-                    </div>
-                  </Link>
-                );
-              }}
-            />
+            <FilterChips posts={posts} categories={categories} />
           ) : (
             <div className="th-empty">
               <div className="th-empty-h">First posts landing this month.</div>
