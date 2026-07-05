@@ -1855,14 +1855,23 @@ footer .social-link svg {
 }
 
 /* ─── /thoughts individual post ──────────────────────────────── */
+/* Outer container matches the rest of the site (--maxw = 1240px + gutter);
+   internal elements set their own reading-width caps so the article stays
+   comfortable to read while the page frame aligns with the nav + footer. */
 .th-post {
-  max-width: 780px;
+  max-width: var(--maxw);
   margin: 0 auto;
   padding: 90px var(--gutter) 120px;
 }
 .th-post .wrap {
   padding: 0;
   max-width: 100%;
+}
+.th-post .th-art-head,
+.th-post .th-prose,
+.th-post .th-post-cta,
+.th-post .th-art-foot {
+  max-width: 780px;
 }
 .th-back {
   display: inline-flex;
