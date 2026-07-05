@@ -8,10 +8,16 @@ import { MiniCluster } from "./mini-cluster";
 
 type AnchorLink = { id: string; label: string };
 
+type PageLink = { href: string; label: string; matchPath: string };
+
 const LINKS: AnchorLink[] = [
   { id: "work", label: "What We Do" },
   { id: "method", label: "The Methodology" },
   { id: "concierge", label: "Service Concierge" },
+];
+
+const PAGE_LINKS: PageLink[] = [
+  { href: "/thoughts", label: "Mochi Thoughts", matchPath: "/thoughts" },
 ];
 
 export function Nav() {
@@ -56,6 +62,20 @@ export function Nav() {
               {link.label}
             </a>
           ))}
+          {PAGE_LINKS.map((link) => {
+            const isActive =
+              pathname === link.matchPath ||
+              pathname?.startsWith(`${link.matchPath}/`);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={isActive ? "nav-page-link active" : "nav-page-link"}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <a
             href={BOOKING_URL}
             target="_blank"

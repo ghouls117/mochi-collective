@@ -1,13 +1,18 @@
 import type { MetadataRoute } from "next";
+import { getPublishedPosts } from "@/lib/thoughts";
 
 const SITE_URL = "https://mochicollective.com";
 
-/**
- * Single-page marketing site for now. The named in-page anchors aren't
- * separate URLs from a search-engine standpoint, so we only emit the root.
- * Add real routes here as they're built (e.g. /case-studies, /journal).
- */
 export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = getPublishedPosts();
+
+  const postEntries: MetadataRoute.Sitemap = posts.map((p) => ({
+    url: `${SITE_URL}${p.urlPath}`,
+    lastModified: new Date(`${p.publish_date}T00:00:00+08:00`),
+    changeFrequency: "yearly",
+    priority: 0.7,
+  }));
+
   return [
     {
       url: SITE_URL,
@@ -15,6 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    {
+      url: `${SITE_URL}/thoughts`,
+      lastModified: new Date(),
+      changeFrequency: posts.length > 0 ? "weekly" : "monthly",
+      priority: 0.9,
+    },
+    ...postEntries,
     {
       url: `${SITE_URL}/privacy`,
       lastModified: new Date("2026-05-25"),
