@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: posts.length > 0 ? "weekly" : "monthly",
       priority: 0.9,
     },
+    {
+      url: `${SITE_URL}/impact-measurement`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...postEntries,
     {
       url: `${SITE_URL}/privacy`,

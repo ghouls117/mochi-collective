@@ -23,7 +23,7 @@ Here's what those ten minutes actually look like.
 3. Name the next decision downstream that this event makes easier
 4. Write the Monday sentence in advance — the one people say unprompted
 
-## 00:00–02:30 · We read for the feeling target
+## Read for the feeling target (00:00–02:30)
 
 The first thing we do is scan the brief for the *feeling* — what the client wants attendees to walk out with, emotionally. Not what they want them to know. Not what they want them to have seen.
 
@@ -33,7 +33,7 @@ Nine briefs out of ten don't answer this. They say things like "engaged," "inspi
 
 If the brief doesn't answer this, we don't reject it — we ask. Sometimes the answer is already in the client's head; they just didn't write it down. Sometimes it's not, and the conversation that surfaces it is the most valuable thirty minutes we'll have together.
 
-## 02:30–05:00 · We check the names
+## Check for three specific names (02:30–05:00)
 
 Next: who is this experience actually for?
 
@@ -43,15 +43,15 @@ This is where a lot of briefs quietly fall apart. The brief will say "1,000 atte
 
 When the brief already names three specific people (or three specific personas by title), the rest of the work gets radically easier. When it doesn't, we go looking. Sometimes on the call. Sometimes over follow-up email. But we don't move to design until we have the three.
 
-## 05:00–07:30 · We name the next decision
+## Name the next decision (05:00–07:30)
 
 The third pass is the commercial question. What decision does this experience make easier to make next?
 
 Every brief we take on ladders to a moment downstream — a deal that closes, a hire that lands, a renewal that survives, a campaign that gets green-lit. If we can name the next decision, the event has a job. Budget conversations get shorter. Trade-offs get clearer. "Should we cut this from the run-of-show?" becomes answerable, because we can ask whether it moves the next decision or not.
 
-At Mochi Collective, we've watched this reframe unlock budget conversations more than once. This is also, incidentally, where finance teams stop pushing back on event budgets. The moment an event is "the setup that gets us to X decision by Y date" rather than "an offsite," the ROI conversation reframes entirely. That's not spin. It's the same event, described in the language of the people signing the invoice.
+At Mochi Collective, we've watched this reframe unlock budget conversations more than once. This is also, incidentally, where finance teams stop pushing back on event budgets. The moment an event is "the setup that gets us to X decision by Y date" rather than "an offsite," the ROI conversation reframes entirely. That's not spin. It's the same event, described in the language of the people signing the invoice. Every engagement we take on ships with a proof report — see how that works in our [Impact Measurement practice](/impact-measurement).
 
-## 07:30–10:00 · We write the Monday sentence
+## Write the Monday sentence (07:30–10:00)
 
 The last two and a half minutes are the sharpest test. We try to write, in advance, the one sentence the right people will say to each other on Monday morning.
 

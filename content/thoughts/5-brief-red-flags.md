@@ -74,7 +74,7 @@ When a brief opens with "surprise us" or "wow us" or "bring us something unexpec
 
 **The fix:** name the change first, then invite the creativity. "We want the room to leave with a specific belief about our brand. Surprise us with how you get them there." That's a brief. The creative team now has something to design *against* rather than *into*.
 
-Creative teams thrive on constraint. Every red flag on this list is a version of the same failure mode: the brief tried to leave the constraint blank, hoping the design would fill it in. That's how you get scope creep, quiet disappointment, and post-event "well, everyone had a good time" as the final readout.
+Creative teams thrive on constraint. Every red flag on this list is a version of the same failure mode: the brief tried to leave the constraint blank, hoping the design would fill it in. That's how you get scope creep, quiet disappointment, and post-event "well, everyone had a good time" as the final readout — instead of a real [impact report](/impact-measurement) the stakeholder can actually defend.
 
 ---
 

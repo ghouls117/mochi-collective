@@ -61,7 +61,7 @@ Ask this question honestly and you'll surface which elements are load-bearing (d
 
 If the success criteria can't survive past the initial buzz, they weren't success criteria. They were vibes.
 
-Write down what you'll measure — recall, behaviour, pipeline — *before* the experience runs, so the readout writes itself afterwards. This is where our [Impact Measurement practice](/#work) does its heaviest lifting. Even a rough version of this question at the top of the brief keeps everyone honest.
+Write down what you'll measure — recall, behaviour, pipeline — *before* the experience runs, so the readout writes itself afterwards. This is where our [Impact Measurement practice](/impact-measurement) does its heaviest lifting. Even a rough version of this question at the top of the brief keeps everyone honest.
 
 ---
 
