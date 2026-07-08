@@ -97,6 +97,11 @@ const ORG_JSON_LD = {
     SOCIAL_LINKS.linkedin,
     SOCIAL_LINKS.instagram,
     SOCIAL_LINKS.tiktok,
+    // Agency-directory citations — help Google's Knowledge Graph
+    // consolidate the entity across the web (entity disambiguation).
+    "https://www.sortlist.com/agency/mochicollective",
+    "https://www.goodfirms.co/company/mochi-collective-pte-ltd",
+    "https://clutch.co/profile/mochi-collective-pte",
   ],
 };
 

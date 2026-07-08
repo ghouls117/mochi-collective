@@ -8,6 +8,7 @@ import {
   buildShareUrls,
   getAllPosts,
   getPost,
+  getPublishedPosts,
 } from "@/lib/thoughts";
 
 const SITE_URL = "https://mochicollective.com";
@@ -79,10 +80,10 @@ export default async function ThoughtsPostPage({
   if (!post) notFound();
 
   const share = buildShareUrls(post);
-  // Related shows all posts in the collection (including upcoming ones)
-  // so readers hitting a live post always see what else is coming — small
-  // set for now (3 total), so no risk of over-showing.
-  const related = getAllPosts()
+  // Related shows only posts that have already published. Future-dated
+  // drafts must stay off the page until their publish_date lands, so a
+  // live post doesn't leak titles of pieces that haven't been announced.
+  const related = getPublishedPosts()
     .filter((p) => p.slug !== post.slug)
     .slice(0, 2);
 
