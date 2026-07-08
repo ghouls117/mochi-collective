@@ -95,11 +95,3 @@ The Brief Diagnostic is a free 30-minute conversation where we look at your actu
 **Book yours:** [zcal.co/mochicollective/discovery](https://zcal.co/mochicollective/discovery)
 
 Screenshot this article. Send it to whoever's writing the brief. If they push back on any of the fixes, that's when the Diagnostic call earns its keep.
-
----
-
-*Related reading:*
-- [6 Questions That Should Live At The Top Of Every Brief](/thoughts/thought-leadership/6-questions-every-brief) — the sharpening framework
-- [The First 10 Minutes We Spend On A Brief](/thoughts/thought-leadership/first-10-minutes-brief) — how we spot these in practice
-
-*Mochi Collective — experience design and event curation in Singapore. Events, community programmes, wellness retreats, brand activations.*

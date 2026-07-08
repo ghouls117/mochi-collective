@@ -18,12 +18,12 @@ Here they are. Use them on your next brief before you send it to anyone.
 
 **The six questions, in order:**
 
-1. What do you want people to *feel* when they walk out?
-2. Who *specifically* should care that this happened?
-3. What's the one sentence the right people will say to each other on Monday?
-4. Which decision should this make easier to make next?
-5. What's the smallest version of this that would still work?
-6. How will you know — six weeks from now — that it worked?
+1. What do you want people to <span class="accent">feel</span> when they walk out?
+2. <span class="accent">Who</span> specifically should care that this happened?
+3. What's the <span class="accent">one sentence</span> the right people will say to each other on Monday?
+4. Which <span class="accent">decision</span> should this make easier to make next?
+5. What's the <span class="accent">smallest version</span> of this that would still work?
+6. How will you know — <span class="accent">six weeks from now</span> — that it worked?
 
 ## 1. What do you want people to feel when they walk out?
 
@@ -73,7 +73,7 @@ We say to every client who takes on Mochi: **make it worth talking about.** Thes
 
 ---
 
-## Ready to try this on your own brief?
+## Ready to try this on your <span class="accent">own brief</span>?
 
 We're running free 30-minute **Brief Diagnostic** conversations throughout July.
 
@@ -82,11 +82,3 @@ Whether you're planning an event, a community programme, a wellness retreat, or 
 **Book yours:** [zcal.co/mochicollective/discovery](https://zcal.co/mochicollective/discovery)
 
 No deck. No pitch. Just your brief and an honest read.
-
----
-
-*Related reading:*
-- [The First 10 Minutes We Spend On A Brief](/thoughts/thought-leadership/first-10-minutes-brief) — behind the process
-- [5 Red Flags We Spot In Event Briefs](/thoughts/thought-leadership/5-brief-red-flags) — what "not ready" looks like
-
-*Mochi Collective — experience design and event curation in Singapore. Events, community programmes, wellness retreats, brand activations.*

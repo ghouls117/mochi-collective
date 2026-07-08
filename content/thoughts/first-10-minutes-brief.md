@@ -84,11 +84,3 @@ You'll leave with an honest read on whether your brief can land, where it's weak
 **Book yours:** [zcal.co/mochicollective/discovery](https://zcal.co/mochicollective/discovery)
 
 No deck. No pitch. Just your brief and ten of the same minutes we spend on every one that lands in our inbox.
-
----
-
-*Related reading:*
-- [6 Questions That Should Live At The Top Of Every Brief](/thoughts/thought-leadership/6-questions-every-brief) — the questions we use in this process
-- [5 Red Flags We Spot In Event Briefs](/thoughts/thought-leadership/5-brief-red-flags) — what the "no" briefs have in common
-
-*Mochi Collective — experience design and event curation in Singapore. Events, community programmes, wellness retreats, brand activations.*
