@@ -92,6 +92,4 @@ If any of these red flags live at the top of a brief you're writing right now, d
 
 The Brief Diagnostic is a free 30-minute conversation where we look at your actual brief — event, community programme, wellness retreat, brand activation — and tell you honestly whether any of these red flags are present, and how to reframe them before the brief becomes a project.
 
-**Book yours:** [zcal.co/mochicollective/discovery](https://zcal.co/mochicollective/discovery)
-
 Screenshot this article. Send it to whoever's writing the brief. If they push back on any of the fixes, that's when the Diagnostic call earns its keep.

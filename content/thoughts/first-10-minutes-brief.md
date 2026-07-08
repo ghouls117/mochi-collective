@@ -81,6 +81,4 @@ The Brief Diagnostic is a free 30-minute conversation where we run these ten min
 
 You'll leave with an honest read on whether your brief can land, where it's weak, and what to sharpen before you commit budget.
 
-**Book yours:** [zcal.co/mochicollective/discovery](https://zcal.co/mochicollective/discovery)
-
 No deck. No pitch. Just your brief and ten of the same minutes we spend on every one that lands in our inbox.

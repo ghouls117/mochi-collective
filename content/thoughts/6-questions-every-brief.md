@@ -1,5 +1,6 @@
 ---
 title: 6 Questions That Should Live At The Top Of Every Brief
+title_display: 6 Questions That Should Live At The <span class="accent">Top Of Every Brief</span>
 slug: 6-questions-every-brief
 meta_title: 6 Questions Every Event Brief Must Answer | Mochi Collective
 meta_description: The six questions we put to every brief before we agree to work on it — for events, community programmes, wellness retreats, or brand activations.
@@ -78,7 +79,5 @@ We say to every client who takes on Mochi: **make it worth talking about.** Thes
 We're running free 30-minute **Brief Diagnostic** conversations throughout July.
 
 Whether you're planning an event, a community programme, a wellness retreat, or a brand activation, we'll put these six questions to what you're building and tell you honestly whether the brief can land, where it's weak, and what to sharpen before you commit budget.
-
-**Book yours:** [zcal.co/mochicollective/discovery](https://zcal.co/mochicollective/discovery)
 
 No deck. No pitch. Just your brief and an honest read.
