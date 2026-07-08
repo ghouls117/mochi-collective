@@ -1991,7 +1991,15 @@ footer .social-link svg {
   margin-top: 28px;
   padding-top: 8px;
   color: var(--ink);
-  text-wrap: balance;
+  /* pretty > balance for long question-form h2s — balance forces equal
+     line lengths (splits mid-clause), pretty aims for a natural break
+     that avoids stranded short last lines. */
+  text-wrap: pretty;
+}
+.th-prose h2 .accent {
+  /* Gradient still renders inside display-headline sizes; keep the
+     same class as body accents so any h2 word can wear it. */
+  padding-right: 0.05em;
 }
 .th-prose h3 {
   font-family: var(--font-display);
@@ -2005,9 +2013,6 @@ footer .social-link svg {
 .th-prose ul,
 .th-prose ol {
   padding-left: 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   margin: 6px 0;
 }
 .th-prose li {
@@ -2015,6 +2020,13 @@ footer .social-link svg {
   font-size: 17px;
   line-height: 1.65;
   color: var(--ink);
+  margin-bottom: 10px;
+  /* Explicit — some browsers drop list-item semantics if a nearby
+     ancestor uses display:flex; guard against that recurrence. */
+  display: list-item;
+}
+.th-prose li:last-child {
+  margin-bottom: 0;
 }
 .th-prose ol li::marker {
   font-family: var(--font-display);
@@ -2049,6 +2061,15 @@ footer .social-link svg {
 .th-prose ul.beige-list li strong {
   color: var(--color-beige);
 }
+
+/* Solid orb-color emphasis inside prose. Used to highlight the key
+   phrase inside each item of a TL;DR list — pairs one accent color
+   per item across the five Mochi orb colors, then loops. */
+.th-prose .c-pink { color: var(--color-pink); font-weight: 600; }
+.th-prose .c-blue { color: var(--color-blue); font-weight: 600; }
+.th-prose .c-sage { color: var(--color-sage); font-weight: 600; }
+.th-prose .c-honey { color: var(--color-honey); font-weight: 600; }
+.th-prose .c-slate { color: var(--color-slate-orb); font-weight: 600; }
 
 /* Pull quote — gradient border-image left rule, Poppins bold */
 .th-prose blockquote.pull {

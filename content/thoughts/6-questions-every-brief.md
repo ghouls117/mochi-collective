@@ -18,26 +18,26 @@ Here they are. Use them on your next brief before you send it to anyone.
 
 **The six questions, in order:**
 
-1. What do you want people to <span class="accent">feel</span> when they walk out?
-2. <span class="accent">Who</span> specifically should care that this happened?
-3. What's the <span class="accent">one sentence</span> the right people will say to each other on Monday?
-4. Which <span class="accent">decision</span> should this make easier to make next?
-5. What's the <span class="accent">smallest version</span> of this that would still work?
-6. How will you know — <span class="accent">six weeks from now</span> — that it worked?
+1. What do you want people to <span class="c-pink">feel</span> when they walk out?
+2. <span class="c-blue">Who</span> specifically should care that this happened?
+3. What's the <span class="c-sage">one sentence</span> the right people will say to each other on Monday?
+4. Which <span class="c-honey">decision</span> should this make easier to make next?
+5. What's the <span class="c-slate">smallest version</span> of this that would still work?
+6. How will you know — <span class="c-pink">six weeks from now</span> — that it worked?
 
-## 1. What do you want people to feel when they walk out?
+## 1. What do you want people to <span class="accent">feel</span> when they walk out?
 
 The brief usually says what you want them to *know*. That's a different question. Feeling is what they actually remember, and it's the only lens that survives the walk to the Grab home.
 
 Until this answer exists, every other decision — the space, the flow, the details — is guesswork. And it can't be answered generically. "Excited" is not an answer. "Reassured that we're a partner they can commit budget to" is. "Understood, for the first time, by their own company" is. The more specific the feeling, the more specific the design decisions become.
 
-## 2. Who specifically should care that this happened?
+## 2. <span class="accent">Who</span> specifically should care that this happened?
 
 "Stakeholders" is not an answer. Three **names — or titles** — is.
 
 Write them down. The room is designed for those three, even if 500 people walk through it. Design for job titles when you don't know the individuals; design for names when you do. Either way, the goal is to shrink the audience question from "500 attendees" to a tight, opinionated three. You'll be surprised how many downstream decisions get easier once you have the list.
 
-## 3. What's the one sentence the right people will say to each other on Monday?
+## 3. What's the <span class="accent">one sentence</span> the right people will say to each other on Monday?
 
 This is the only metric that survives the week.
 
@@ -45,19 +45,19 @@ If you can write the sentence in advance, you can design the experience that mak
 
 If you can't write the sentence, you don't have a brief. You have a date on the calendar. There's a real difference.
 
-## 4. Which decision should this make easier to make next?
+## 4. Which <span class="accent">decision</span> should this make easier to make next?
 
 Every brief ladders to a strategic or commercial moment downstream — a deal, a hire, a campaign, a renewal, a retention. Naming the next decision unlocks the budget conversation, because now the programme isn't a cost — it's a setup.
 
 This is also the question that turns a "nice to have" event into a "must-do" business investment. Finance teams don't argue with events that lubricate specific downstream decisions. They *will* argue with events that don't name one.
 
-## 5. What's the smallest version of this that would still work?
+## 5. What's the <span class="accent">smallest version</span> of this that would still work?
 
 Most briefs over-scope by 40%. It's not a design failure — it's habit, expectation, and budget filler.
 
 Ask this question honestly and you'll surface which elements are load-bearing (drop them and the experience collapses) and which are decoration (drop them and nobody notices). The load-bearing pieces deserve full craft. The decoration is where scope creep dies quietly and everyone leaves happier.
 
-## 6. How will you know — six weeks from now — that it worked?
+## 6. How will you know — <span class="accent">six weeks from now</span> — that it worked?
 
 If the success criteria can't survive past the initial buzz, they weren't success criteria. They were vibes.
 
