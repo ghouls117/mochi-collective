@@ -1,4 +1,5 @@
 import { BOOKING_URL, EMAIL } from "@/lib/constants";
+import { SectionEyebrow } from "./section-eyebrow";
 
 export function Contact() {
   return (
@@ -6,7 +7,7 @@ export function Contact() {
       <div className="wrap">
         <div className="cta-grid">
           <div>
-            <div className="eyebrow reveal">05 — Get in</div>
+            <SectionEyebrow id="contact" label="Get in" />
             <h2 className="h1 reveal reveal-d1" style={{ marginTop: 22 }}>
               Let’s make
               <br />

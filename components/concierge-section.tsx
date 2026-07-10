@@ -1,10 +1,11 @@
 import { Concierge } from "./concierge";
+import { SectionEyebrow } from "./section-eyebrow";
 
 export function ConciergeSection() {
   return (
     <section className="concierge" id="concierge">
       <div className="wrap">
-        <div className="eyebrow reveal">04 — Service Concierge</div>
+        <SectionEyebrow id="concierge" label="Service Concierge" />
         <h2
           className="h1 reveal reveal-d1"
           style={{ marginTop: 22, maxWidth: "18ch" }}

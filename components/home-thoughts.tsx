@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPublishedPosts } from "@/lib/thoughts";
+import { SectionEyebrow } from "./section-eyebrow";
 
 /**
  * Homepage tease for Mochi Thoughts. Renders the three most recent
@@ -32,7 +33,7 @@ export function HomeThoughts() {
     <section className="home-thoughts" id="thoughts">
       <div className="wrap">
         <div className="home-thoughts-head">
-          <div className="eyebrow reveal">Mochi Thoughts</div>
+          <SectionEyebrow id="thoughts" label="Mochi Thoughts" />
           <h2 className="h2 reveal reveal-d1">
             <span className="accent">How we think</span> about the work.
           </h2>
@@ -54,7 +55,14 @@ export function HomeThoughts() {
                 data-tag={tagColor}
               >
                 <span className="th-card-tag">{post.category}</span>
-                <h3 className="th-card-title">{post.title}</h3>
+                {post.title_display ? (
+                  <h3
+                    className="th-card-title"
+                    dangerouslySetInnerHTML={{ __html: post.title_display }}
+                  />
+                ) : (
+                  <h3 className="th-card-title">{post.title}</h3>
+                )}
                 <p className="th-card-excerpt">
                   {post.deck ?? post.meta_description}
                 </p>

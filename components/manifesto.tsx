@@ -1,10 +1,12 @@
+import { SectionEyebrow } from "./section-eyebrow";
+
 export function Manifesto() {
   return (
     <section className="manifesto" id="manifesto">
       <div className="wrap">
         <div className="manifesto-grid">
           <div>
-            <div className="eyebrow reveal">01 — Position</div>
+            <SectionEyebrow id="manifesto" label="Position" />
             <h2 className="h1 reveal reveal-d1" style={{ marginTop: 22 }}>
               We don’t report what <span className="accent">happened</span>.
               <br />

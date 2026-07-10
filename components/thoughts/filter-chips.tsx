@@ -80,7 +80,14 @@ export function FilterChips({ posts, categories }: Props) {
               data-tag={tagColor}
             >
               <span className="th-card-tag">{post.category}</span>
-              <h2 className="th-card-title">{post.title}</h2>
+              {post.title_display ? (
+                <h2
+                  className="th-card-title"
+                  dangerouslySetInnerHTML={{ __html: post.title_display }}
+                />
+              ) : (
+                <h2 className="th-card-title">{post.title}</h2>
+              )}
               <p className="th-card-excerpt">
                 {post.deck ?? post.meta_description}
               </p>

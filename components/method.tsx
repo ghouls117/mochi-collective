@@ -1,4 +1,5 @@
 import { METHOD } from "@/lib/method";
+import { SectionEyebrow } from "./section-eyebrow";
 
 export function Method() {
   return (
@@ -14,7 +15,7 @@ export function Method() {
           }}
         >
           <div>
-            <div className="eyebrow reveal">03 — The Methodology</div>
+            <SectionEyebrow id="method" label="The Methodology" />
             <h2 className="h1 reveal reveal-d1" style={{ marginTop: 22 }}>
               <span className="accent">Three</span> steps.
               <br />

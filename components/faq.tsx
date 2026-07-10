@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { EMAIL } from "@/lib/constants";
 import { FAQ } from "@/lib/faq";
+import { SectionEyebrow } from "./section-eyebrow";
 
 const ZCAL_PATH = "zcal.co/mochicollective/consultation";
 const ZCAL_URL = `https://${ZCAL_PATH}`;
@@ -39,7 +40,7 @@ export function Faq() {
   return (
     <section className="faq" id="faq">
       <div className="wrap">
-        <div className="eyebrow reveal">Answers</div>
+        <SectionEyebrow id="faq" label="Answers" />
         <h2
           className="h1 reveal reveal-d1"
           style={{ marginTop: 22, maxWidth: "18ch" }}

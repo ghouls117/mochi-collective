@@ -183,7 +183,14 @@ export default async function ThoughtsPostPage({
                       className="th-related-card"
                     >
                       <span className="th-related-tag">{r.category}</span>
-                      <div className="th-related-title">{r.title}</div>
+                      {r.title_display ? (
+                        <div
+                          className="th-related-title"
+                          dangerouslySetInnerHTML={{ __html: r.title_display }}
+                        />
+                      ) : (
+                        <div className="th-related-title">{r.title}</div>
+                      )}
                       <div className="th-related-meta">
                         {r.readingTimeMinutes} min ·{" "}
                         {formatFullDate(r.publish_date)}

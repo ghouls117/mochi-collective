@@ -2,6 +2,7 @@
 
 import { Fragment, useRef, useState } from "react";
 import { SERVICES } from "@/lib/services";
+import { SectionEyebrow } from "./section-eyebrow";
 
 export function Services() {
   const [active, setActive] = useState(0);
@@ -31,7 +32,7 @@ export function Services() {
       <div className="wrap">
         <div className="services-head">
           <div>
-            <div className="eyebrow reveal">02 — What we do</div>
+            <SectionEyebrow id="work" label="What we do" />
             <h2
               className="h1 services-headline reveal reveal-d1"
               style={{ marginTop: 22 }}
