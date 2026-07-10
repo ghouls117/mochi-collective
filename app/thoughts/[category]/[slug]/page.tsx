@@ -122,6 +122,7 @@ export default async function ThoughtsPostPage({
             <Link
               href={`/thoughts?tag=${post.categorySlug}`}
               className="th-art-tag"
+              data-tag={post.categorySlug}
             >
               {post.category}
             </Link>
@@ -182,7 +183,12 @@ export default async function ThoughtsPostPage({
                       href={r.urlPath}
                       className="th-related-card"
                     >
-                      <span className="th-related-tag">{r.category}</span>
+                      <span
+                        className="th-related-tag"
+                        data-tag={r.categorySlug}
+                      >
+                        {r.category}
+                      </span>
                       {r.title_display ? (
                         <div
                           className="th-related-title"

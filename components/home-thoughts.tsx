@@ -15,7 +15,7 @@ import { SectionEyebrow } from "./section-eyebrow";
 
 const CATEGORY_TAG_COLOR: Record<string, string> = {
   "thought-leadership": "brand",
-  "brand-strategy": "brand",
+  "brand-strategy": "brand-strategy",
   measurement: "measurement",
   "events-craft": "events-craft",
 };
