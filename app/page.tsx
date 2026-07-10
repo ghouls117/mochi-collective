@@ -4,6 +4,7 @@ import { Manifesto } from "@/components/manifesto";
 import { Services } from "@/components/services";
 import { Method } from "@/components/method";
 import { ConciergeSection } from "@/components/concierge-section";
+import { HomeThoughts } from "@/components/home-thoughts";
 import { Faq } from "@/components/faq";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
@@ -58,6 +59,7 @@ export default function HomePage() {
         <Services />
         <Method />
         <ConciergeSection />
+        <HomeThoughts />
         <Contact />
         <Faq />
       </main>
