@@ -1928,9 +1928,20 @@ footer .social-link svg {
    internal elements set their own reading-width caps so the article stays
    comfortable to read while the page frame aligns with the nav + footer. */
 .th-post {
+  /* Category-accent inherits the post's category chip color and drives
+     the drop cap and list markers inside .th-prose. Default is pink so
+     any uncategorised post still gets a considered accent. */
+  --category-accent: var(--color-pink);
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 90px var(--gutter) 120px;
+}
+.th-post[data-category="brand-strategy"],
+.th-post[data-category="measurement"] {
+  --category-accent: var(--color-blue);
+}
+.th-post[data-category="events-craft"] {
+  --category-accent: var(--color-sage);
 }
 .th-post .wrap {
   padding: 0;
@@ -2060,7 +2071,7 @@ footer .social-link svg {
   float: left;
   line-height: 0.9;
   padding: 8px 12px 0 0;
-  color: var(--color-pink);
+  color: var(--category-accent, var(--color-pink));
 }
 .th-prose h2 {
   font-family: var(--font-display);
@@ -2119,10 +2130,10 @@ footer .social-link svg {
 .th-prose ol li::marker {
   font-family: var(--font-display);
   font-weight: 700;
-  color: var(--color-pink);
+  color: var(--category-accent, var(--color-pink));
 }
 .th-prose ul li::marker {
-  color: var(--color-pink);
+  color: var(--category-accent, var(--color-pink));
 }
 
 /* Orb-list — numbered points with beige markers + orb colors on bold labels */

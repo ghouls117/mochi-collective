@@ -50,7 +50,7 @@ export async function generateMetadata({
       siteName: "Mochi Collective",
       type: "article",
       publishedTime: `${post.publish_date}T00:00:00+08:00`,
-      authors: ["Justin Ng"],
+      authors: ["Mochi Collective"],
       tags: post.tags,
     },
     twitter: {
@@ -99,9 +99,7 @@ export default async function ThoughtsPostPage({
     datePublished: `${post.publish_date}T09:00:00+08:00`,
     dateModified: `${post.publish_date}T09:00:00+08:00`,
     author: {
-      "@type": "Person",
-      name: "Justin Ng",
-      url: `${SITE_URL}/#org`,
+      "@id": `${SITE_URL}/#org`,
     },
     publisher: { "@id": `${SITE_URL}/#org` },
     keywords: post.tags.join(", "),
@@ -112,7 +110,7 @@ export default async function ThoughtsPostPage({
   return (
     <>
       <Nav />
-      <main id="main" className="th-post">
+      <main id="main" className="th-post" data-category={post.categorySlug}>
         <article className="wrap">
           <Link href="/thoughts" className="th-back">
             ← All Thoughts
@@ -137,7 +135,7 @@ export default async function ThoughtsPostPage({
             {post.deck && <p className="th-art-deck">{post.deck}</p>}
             <div className="th-art-meta">
               <span>
-                <strong>Justin Ng</strong>
+                <strong>Mochi Collective</strong>
               </span>
               <span className="dot">·</span>
               <span>{formatFullDate(post.publish_date)}</span>
