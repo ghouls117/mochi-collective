@@ -1,6 +1,13 @@
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/thoughts";
 
+/**
+ * Regenerate the sitemap every 15 minutes so scheduled posts appear
+ * (and get submitted to search engines) on their publish_date without
+ * a manual redeploy.
+ */
+export const revalidate = 900;
+
 const SITE_URL = "https://mochicollective.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {

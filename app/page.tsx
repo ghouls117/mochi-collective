@@ -12,6 +12,13 @@ import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { SERVICES } from "@/lib/services";
 import { FAQ } from "@/lib/faq";
 
+/**
+ * Revalidate the homepage every 15 minutes so scheduled Thoughts posts
+ * appear in the HomeThoughts section on their publish_date without
+ * requiring a manual redeploy. See lib/thoughts.ts publish-gate logic.
+ */
+export const revalidate = 900;
+
 const SITE_URL = "https://mochicollective.com";
 const ORG_ID = `${SITE_URL}/#org`;
 

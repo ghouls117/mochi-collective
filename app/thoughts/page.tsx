@@ -4,6 +4,12 @@ import { Footer } from "@/components/footer";
 import { FilterChips } from "@/components/thoughts/filter-chips";
 import { getPublishedPosts, getPublishedCategories } from "@/lib/thoughts";
 
+/**
+ * Revalidate every 15 minutes so scheduled posts show up on the index
+ * on their publish_date without a manual redeploy.
+ */
+export const revalidate = 900;
+
 const SITE_URL = "https://mochicollective.com";
 
 export const metadata: Metadata = {

@@ -11,6 +11,14 @@ import {
   getPublishedPosts,
 } from "@/lib/thoughts";
 
+/**
+ * Revalidate every 15 minutes so the noindex meta and related-post
+ * gating stay in sync with the current date. Without this, a post
+ * pre-generated when publish_date > today would keep noindex forever
+ * until the next full deploy.
+ */
+export const revalidate = 900;
+
 const SITE_URL = "https://mochicollective.com";
 
 type Params = { category: string; slug: string };
