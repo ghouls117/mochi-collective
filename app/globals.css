@@ -2069,15 +2069,20 @@ footer .social-link svg {
      descender) so a one-sentence first paragraph doesn't visually
      collide with the second paragraph. */
   display: flow-root;
-  min-height: calc(3.6em + 24px);
+  min-height: calc(2.4em + 12px);
 }
 .th-prose > p:first-of-type::first-letter {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 3.6em;
+  /* Sized to span ~1.5 body lines. Larger drop caps require a first
+     paragraph tall enough to wrap alongside — a one-sentence intro
+     (Post 2) leaves the letter sitting alone in empty space. 2.4em
+     is bold enough to read as a drop cap without demanding multi-line
+     paragraphs to fill the space beside it. */
+  font-size: 2.4em;
   float: left;
-  line-height: 0.9;
-  padding: 8px 12px 0 0;
+  line-height: 1;
+  padding: 4px 10px 0 0;
   color: var(--category-accent, var(--color-pink));
 }
 .th-prose h2 {
