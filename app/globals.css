@@ -2063,6 +2063,13 @@ footer .social-link svg {
   font-size: 19px;
   line-height: 1.55;
   color: var(--ink);
+  /* Establish a block formatting context so the floated ::first-letter
+     drop cap doesn't escape the paragraph, and guarantee enough vertical
+     room to contain it (3.6em glyph + 8px top padding + slack for
+     descender) so a one-sentence first paragraph doesn't visually
+     collide with the second paragraph. */
+  display: flow-root;
+  min-height: calc(3.6em + 24px);
 }
 .th-prose > p:first-of-type::first-letter {
   font-family: var(--font-display);

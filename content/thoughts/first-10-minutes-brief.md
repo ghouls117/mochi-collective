@@ -1,5 +1,6 @@
 ---
 title: The First 10 Minutes We Spend On A Brief
+title_display: <span class="accent">The First 10 Minutes</span> We Spend On A Brief
 slug: first-10-minutes-brief
 meta_title: How We Read Event Briefs During Discovery | Mochi Collective
 meta_description: Behind the process. The four things we check in the first ten minutes on a brief to know whether it can land — and whether we can help.
@@ -23,7 +24,7 @@ Here's what those ten minutes actually look like.
 3. Name the next decision downstream that this event makes easier
 4. Write the Monday sentence in advance — the one people say unprompted
 
-## Read for the feeling target (00:00–02:30)
+## Read for the feeling target <span class="accent">(00:00–02:30)</span>
 
 The first thing we do is scan the brief for the *feeling* — what the client wants attendees to walk out with, emotionally. Not what they want them to know. Not what they want them to have seen.
 
@@ -33,7 +34,7 @@ Nine briefs out of ten don't answer this. They say things like "engaged," "inspi
 
 If the brief doesn't answer this, we don't reject it — we ask. Sometimes the answer is already in the client's head; they just didn't write it down. Sometimes it's not, and the conversation that surfaces it is the most valuable thirty minutes we'll have together.
 
-## Check for three specific names (02:30–05:00)
+## Check for three specific names <span class="accent">(02:30–05:00)</span>
 
 Next: who is this experience actually for?
 
@@ -43,7 +44,7 @@ This is where a lot of briefs quietly fall apart. The brief will say "1,000 atte
 
 When the brief already names three specific people (or three specific personas by title), the rest of the work gets radically easier. When it doesn't, we go looking. Sometimes on the call. Sometimes over follow-up email. But we don't move to design until we have the three.
 
-## Name the next decision (05:00–07:30)
+## Name the next decision <span class="accent">(05:00–07:30)</span>
 
 The third pass is the commercial question. What decision does this experience make easier to make next?
 
@@ -51,7 +52,7 @@ Every brief we take on ladders to a moment downstream — a deal that closes, a 
 
 At Mochi Collective, we've watched this reframe unlock budget conversations more than once. This is also, incidentally, where finance teams stop pushing back on event budgets. The moment an event is "the setup that gets us to X decision by Y date" rather than "an offsite," the ROI conversation reframes entirely. That's not spin. It's the same event, described in the language of the people signing the invoice. Every engagement we take on ships with a proof report — see how that works in our [Impact Measurement practice](/impact-measurement).
 
-## Write the Monday sentence (07:30–10:00)
+## Write the Monday sentence <span class="accent">(07:30–10:00)</span>
 
 The last two and a half minutes are the sharpest test. We try to write, in advance, the one sentence the right people will say to each other on Monday morning.
 
@@ -75,7 +76,7 @@ Either way, by the tenth minute the client has more clarity than they walked in 
 
 ---
 
-## Want to know what we'd say about your brief?
+## Want to know what we'd say about <span class="accent">your brief</span>?
 
 The Brief Diagnostic is a free 30-minute conversation where we run these ten minutes on your actual upcoming event, community programme, wellness retreat, or brand activation.
 
