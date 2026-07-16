@@ -5,10 +5,10 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { ShareButtons } from "@/components/thoughts/share-buttons";
 import {
+  buildRelatedPosts,
   buildShareUrls,
   getAllPosts,
   getPost,
-  getPublishedPosts,
 } from "@/lib/thoughts";
 
 /**
@@ -88,12 +88,7 @@ export default async function ThoughtsPostPage({
   if (!post) notFound();
 
   const share = buildShareUrls(post);
-  // Related shows only posts that have already published. Future-dated
-  // drafts must stay off the page until their publish_date lands, so a
-  // live post doesn't leak titles of pieces that haven't been announced.
-  const related = getPublishedPosts()
-    .filter((p) => p.slug !== post.slug)
-    .slice(0, 2);
+  const related = buildRelatedPosts(post);
 
   const jsonLd = {
     "@context": "https://schema.org",

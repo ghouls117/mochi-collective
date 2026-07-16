@@ -140,6 +140,58 @@ export function getPublishedCategories(): CategoryFacet[] {
 }
 
 /**
+ * Continue-reading logic for the individual post page.
+ *
+ * Progression of behaviour as categories grow:
+ *   - 4+ same-category siblings (mature category) →
+ *     show the two most-recent same-category posts.
+ *   - 1–3 same-category siblings (still-emerging category) →
+ *     surface the earliest (flagship) same-category post + the
+ *     earliest anchor post from another category so readers still
+ *     get cross-category discovery until the category is deep.
+ *   - 0 same-category siblings (unique post in its category) →
+ *     fall back to the two most-recent Thought Leadership posts as
+ *     the site's anchor category; if TL doesn't yet have 2, take
+ *     whatever's published.
+ *
+ * Only counts posts that have already published (publish_date ≤ today).
+ */
+export function buildRelatedPosts(post: Post): Post[] {
+  const publishedOthers = getPublishedPosts().filter(
+    (p) => p.slug !== post.slug
+  );
+  const sameCategory = publishedOthers.filter(
+    (p) => p.categorySlug === post.categorySlug
+  );
+
+  if (sameCategory.length >= 4) {
+    return sameCategory.slice(0, 2);
+  }
+
+  const oldestFirst = [...publishedOthers].sort((a, b) =>
+    a.publish_date.localeCompare(b.publish_date)
+  );
+
+  if (sameCategory.length >= 1) {
+    const oldestSame = oldestFirst.find(
+      (p) => p.categorySlug === post.categorySlug
+    );
+    const oldestOther = oldestFirst.find(
+      (p) => p.categorySlug !== post.categorySlug
+    );
+    return [oldestSame, oldestOther].filter((p): p is Post => Boolean(p));
+  }
+
+  // 0 same-category siblings — anchor on Thought Leadership if enough
+  // posts live there, otherwise take whatever the site has to show.
+  const tl = publishedOthers.filter(
+    (p) => p.categorySlug === "thought-leadership"
+  );
+  if (tl.length >= 2) return tl.slice(0, 2);
+  return publishedOthers.slice(0, 2);
+}
+
+/**
  * Build the four UTM-tagged share URLs used by the post page. Each medium
  * has a distinct tag so referrer reporting stays clean.
  */

@@ -2167,6 +2167,15 @@ footer .social-link svg {
 .th-prose .c-honey { color: var(--color-honey); font-weight: 600; }
 .th-prose .c-slate { color: var(--color-slate-orb); font-weight: 600; }
 
+/* Tint-only variants — color the text but let the underlying tag's
+   own weight win (used on <strong> labels so they stay fully bold
+   while gaining an orb tint). */
+.th-prose .tint-pink { color: var(--color-pink); }
+.th-prose .tint-blue { color: var(--color-blue); }
+.th-prose .tint-sage { color: var(--color-sage); }
+.th-prose .tint-honey { color: var(--color-honey); }
+.th-prose .tint-slate { color: var(--color-slate-orb); }
+
 /* Pull quote — gradient border-image left rule, Poppins bold */
 .th-prose blockquote.pull {
   margin: 20px 0;
