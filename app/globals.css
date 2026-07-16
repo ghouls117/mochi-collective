@@ -1748,8 +1748,7 @@ footer .social-link svg {
   color: var(--color-pink);
   background: color-mix(in oklab, var(--color-pink) 12%, transparent);
 }
-.th-card[data-tag="brand-strategy"] .th-card-tag,
-.th-card[data-tag="measurement"] .th-card-tag {
+.th-card[data-tag="brand-strategy"] .th-card-tag {
   color: var(--color-blue);
   background: color-mix(in oklab, var(--color-blue) 12%, transparent);
 }
@@ -1936,8 +1935,7 @@ footer .social-link svg {
   margin: 0 auto;
   padding: 90px var(--gutter) 120px;
 }
-.th-post[data-category="brand-strategy"],
-.th-post[data-category="measurement"] {
+.th-post[data-category="brand-strategy"] {
   --category-accent: var(--color-blue);
 }
 .th-post[data-category="events-craft"] {
@@ -1996,8 +1994,7 @@ footer .social-link svg {
   align-self: flex-start;
   text-decoration: none;
 }
-.th-art-tag[data-tag="brand-strategy"],
-.th-art-tag[data-tag="measurement"] {
+.th-art-tag[data-tag="brand-strategy"] {
   border-color: var(--color-blue);
   color: var(--color-blue);
   background: color-mix(in oklab, var(--color-blue) 12%, transparent);
@@ -2467,8 +2464,7 @@ footer .social-link svg {
   color: var(--color-pink);
   align-self: flex-start;
 }
-.th-related-tag[data-tag="brand-strategy"],
-.th-related-tag[data-tag="measurement"] {
+.th-related-tag[data-tag="brand-strategy"] {
   color: var(--color-blue);
 }
 .th-related-tag[data-tag="events-craft"] {
