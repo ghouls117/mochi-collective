@@ -11,9 +11,7 @@ canonical_url: https://mochicollective.com/thoughts/thought-leadership/first-10-
 deck: Every event brief that lands in our inbox gets the same first ten minutes. Not a formal review. Just four passes — each answering a specific question about whether the brief can support what it's asking for.
 ---
 
-Every event brief that lands in our inbox gets the same first ten minutes.
-
-Not a formal review. Not a scoring rubric. Just four passes — each of them is answering a specific question about whether the brief can support what it's asking for. By the tenth minute we usually know whether we can help.
+Every event brief that lands in our inbox gets the same first ten minutes. Not a formal review. Not a scoring rubric. Just four passes — each of them is answering a specific question about whether the brief can support what it's asking for. By the tenth minute we usually know whether we can help.
 
 Here's what those ten minutes actually look like.
 
