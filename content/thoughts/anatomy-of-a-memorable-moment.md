@@ -11,9 +11,7 @@ canonical_url: https://mochicollective.com/thoughts/events-craft/anatomy-of-a-me
 deck: Most of last year's events have faded. A few haven't. Here's what the ones that stuck have in common — and how to engineer them into your next experience.
 ---
 
-Try to recall the last five events, retreats, or activations you attended.
-
-You'll get to two easily. Maybe three. The rest have faded into a general sense of *"I was there,"* which is the polite version of *"I don't remember what happened."*
+Try to recall the last five events, retreats, or activations you attended. You'll get to two easily. Maybe three. The rest have faded into a general sense of *"I was there,"* which is the polite version of *"I don't remember what happened."*
 
 That's not a failure of your memory. It's a failure of the design.
 
@@ -21,7 +19,7 @@ Memorable moments aren't lucky accidents. They have shape. When we study the exp
 
 Here's the anatomy.
 
-## Compression — most of the experience is invisible
+## <span class="tint-sage">Compression</span> — most of the experience is invisible
 
 The average human forgets 90% of what happened at an event within seven days. What survives isn't a highlight reel. It's two or three flashes — sensory, specific, often small.
 
@@ -29,7 +27,7 @@ The design implication is uncomfortable: **the bulk of your run-of-show doesn't 
 
 This isn't a reason to skip the ninety percent — a bad venue, cold food, or a broken AV cue will actively *damage* the memory. But it is a reason to stop distributing effort evenly. Most experiences are over-produced in the middle and under-produced at the edges. The map of where money went rarely matches the map of what gets remembered.
 
-## Peaks — the moment that has to work
+## <span class="tint-sage">Peaks</span> — the moment that has to work
 
 Every memorable experience has a peak. One moment — usually 20 to 90 seconds long — that operates as the emotional apex.
 
@@ -39,7 +37,7 @@ Peaks share three traits: they are **specific** (you can describe the exact mome
 
 If you can't name the peak of your experience in one sentence before you build it, the experience doesn't have one. And if it doesn't have one, the memory will be flat.
 
-## Endings — the last five minutes overwrite the middle
+## <span class="tint-sage">Endings</span> — the last five minutes overwrite the middle
 
 There's a well-documented cognitive bias called the peak-end rule: people remember experiences based on how they felt at the peak and at the end, not on the average. Which means the last five minutes of your event carry disproportionate weight in the memory that forms afterwards.
 
@@ -49,7 +47,7 @@ The programming was great. The peak landed. Then the closing was a rushed "thank
 
 The endings we design toward are the opposite. They're deliberate. They're short. They give attendees a physical object, a shared line, or a moment of silence that lets the experience land. Sometimes it's a card handed to them as they leave. Sometimes it's a room where the lights change one last time. Sometimes it's a walk to the door in single file. The specifics don't matter. The principle does: **the last five minutes are load-bearing, and they need choreography, not logistics.**
 
-## Sensory anchoring — the sense that carries the memory
+## <span class="tint-sage">Sensory anchoring</span> — the sense that carries the memory
 
 Memory attaches to one sense more than the others. For most experiences it's smell, followed by sound, then a specific visual. Rarely taste. Rarely touch.
 
@@ -59,7 +57,7 @@ The smell of a specific tea served only during the closing circle. A particular 
 
 Most events under-invest here. They treat sensory design as ambience. It isn't ambience — it's the wire that reconnects the memory later.
 
-## Witnesses — memory that gets shared is memory that survives
+## <span class="tint-sage">Witnesses</span> — memory that gets shared is memory that survives
 
 The final component is social. A moment experienced alone has a half-life. A moment experienced *and shared* — mentioned to a friend, retold at a dinner, recognised by another attendee — gets reinforced every time it's said out loud.
 
@@ -69,7 +67,7 @@ The wellness retreat that had a specific ritual only known to attendees. The act
 
 ---
 
-## The four questions we design against
+## The <span class="accent">four questions</span> we design against
 
 Before we build any experience — event, community programme, wellness retreat, brand activation — we run the brief against four questions. All of them come from this anatomy.
 

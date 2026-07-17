@@ -37,7 +37,7 @@ The framework that follows fixes the three habits.
 
 Every experience produces three kinds of signal after the fact. Good measurement pulls from all three, not just one.
 
-### Behavioural signals — what people *did* differently
+### <span class="tint-pink">Behavioural signals</span> — what people *did* differently
 
 This is the strongest category, and the hardest to instrument. It's not what attendees say they'll do. It's what they actually did in the days and weeks that followed.
 
@@ -45,7 +45,7 @@ Did the team have the difficult conversation the retreat was designed to unlock?
 
 Behavioural signals require tracking someone across time. They cost something to collect — usually a light-touch follow-up thirty days and ninety days after. But they're the only signals that answer the actual question.
 
-### Commercial signals — what decision moved
+### <span class="tint-pink">Commercial signals</span> — what decision moved
 
 Every experience ladders to a downstream decision. A sales offsite ladders to a deal that closes. A wellness retreat ladders to a retention decision. A community programme ladders to a returning member. A brand activation ladders to a media buy that gets renewed.
 
@@ -53,7 +53,7 @@ If the experience was designed against a specific downstream decision (and it sh
 
 Commercial signals require the decision to be named in advance. If it wasn't, this category doesn't work retroactively. Which is exactly why we push clients to name the decision at the brief stage, before we design.
 
-### Cultural signals — what got said unprompted
+### <span class="tint-pink">Cultural signals</span> — what got said unprompted
 
 This is the softest category and often the most predictive. It's the language attendees use about the experience without being asked. In Slack messages. In LinkedIn posts they wrote themselves. In corridor conversations that get relayed back to you three weeks later. In the sentence someone says over dinner in a completely different room.
 
@@ -63,11 +63,11 @@ Cultural signals are hardest to instrument, but you can approximate them. Set up
 
 Different signals surface in different windows. Measure them all at 24 hours and you'll get noise. Measure them at the right window and you'll get a signal you can act on.
 
-**7 days out.** Sensory memory has settled. Fatigue has cleared. This is the window where the honest emotional read is available. Not "how would you rate the event" — but "when you think back to the day, what specific moment comes up first?" One question. Free text. Twenty responses tell you more than a hundred NPS scores.
+<strong class="tint-pink">7 days out.</strong> Sensory memory has settled. Fatigue has cleared. This is the window where the honest emotional read is available. Not "how would you rate the event" — but "when you think back to the day, what specific moment comes up first?" One question. Free text. Twenty responses tell you more than a hundred NPS scores.
 
-**30 days out.** Behavioural signals are starting to show. The follow-up meeting either happened or it didn't. The renewal conversation either got easier or it didn't. This is the window for the commercial signal check.
+<strong class="tint-pink">30 days out.</strong> Behavioural signals are starting to show. The follow-up meeting either happened or it didn't. The renewal conversation either got easier or it didn't. This is the window for the commercial signal check.
 
-**90 days out.** The peak-end memory has consolidated. What remains at 90 days is what people will still remember at 12 months. This is the window for the cultural signal — has anyone quoted the experience unprompted? Are people describing it accurately, or has the memory drifted?
+<strong class="tint-pink">90 days out.</strong> The peak-end memory has consolidated. What remains at 90 days is what people will still remember at 12 months. This is the window for the cultural signal — has anyone quoted the experience unprompted? Are people describing it accurately, or has the memory drifted?
 
 Measure at these three windows, not all at once, and the picture that emerges is honest.
 
