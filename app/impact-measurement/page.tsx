@@ -8,18 +8,29 @@ const SITE_URL = "https://mochicollective.com";
 const PAGE_PATH = "/impact-measurement";
 
 export const metadata: Metadata = {
-  title: "Impact Measurement for Events | Mochi Collective",
+  title:
+    "Event ROI & Impact Measurement for Events, Singapore | Mochi Collective",
   description:
-    "How we measure whether an event, program, or brand activation actually worked — a pre/during/post model that produces a report your stakeholder, sponsor or board can defend.",
+    "How we measure event ROI in Singapore and Southeast Asia — a pre/during/post model for events, programs and brand activations that produces a report your stakeholder, sponsor or board can read.",
   alternates: { canonical: PAGE_PATH },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Impact Measurement — the version that survives contact with a CFO",
+    title:
+      "Event ROI & Impact Measurement, Singapore — the version that survives contact with a CFO",
     description:
-      "A measurement frame designed into the experience, not bolted on afterwards. Pre, during, post. Built for Southeast Asia events, programmes and brand activations.",
+      "A measurement frame designed into the experience, not bolted on afterwards. Pre, during, post. Built for events, programmes and brand activations across Singapore and Southeast Asia.",
     url: `${SITE_URL}${PAGE_PATH}`,
     siteName: "Mochi Collective",
     type: "website",
+    locale: "en_SG",
+    images: [
+      {
+        url: `${SITE_URL}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Mochi Collective — Impact Measurement for Events",
+      },
+    ],
   },
 };
 
@@ -38,6 +49,34 @@ const JSON_LD_SERVICE = {
   url: `${SITE_URL}${PAGE_PATH}`,
 };
 
+/** Page-level FAQ. Question/answer text below MUST match the visible
+ *  content of the accordion at the bottom of the page (Google validates
+ *  the schema against the rendered copy). */
+const PAGE_FAQ = [
+  {
+    q: "How do you measure the ROI of an event?",
+    a: "We agree the metric before the moodboard, instrument the experience before, during and after — behaviour, follow-ups, sentiment, impact — and report against the number your sponsor or CFO actually cares about.",
+  },
+  {
+    q: "Can you measure an event another agency is producing?",
+    a: "Yes. Impact Measurement runs as a standalone practice: we design the proof model around your existing program and deliver the stakeholder-facing report.",
+  },
+  {
+    q: "What's in the impact report?",
+    a: "Pre/during/post movement on the agreed metric, engagement and follow-up behaviour, sentiment shift, and a plain-language readout your CFO, sponsor or board can read without a glossary.",
+  },
+];
+
+const JSON_LD_FAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: PAGE_FAQ.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
 export default function ImpactMeasurementPage() {
   return (
     <>
@@ -50,10 +89,12 @@ export default function ImpactMeasurementPage() {
             <span className="accent">not bolted on</span> at the end.
           </h1>
           <p className="lede">
-            Every engagement we take on ships with a proof report designed to
-            survive scrutiny from a CFO, a sponsor, or a board. That means the
-            measurement frame is a design decision — one we make at brief
-            stage, not after the venue lights come down.
+            Every engagement we take on ships with an event-ROI report
+            designed to survive scrutiny from a CFO, a sponsor, or a board.
+            That means the measurement frame is a design decision — one we
+            make at brief stage, not after the venue lights come down. Built
+            for events, programmes and brand activations across{" "}
+            <strong>Singapore and Southeast Asia</strong>.
           </p>
 
           <article className="prose">
@@ -198,6 +239,14 @@ export default function ImpactMeasurementPage() {
                 — the positioning wedge that makes measurement operational.
               </li>
             </ul>
+
+            <h2>Common questions</h2>
+            {PAGE_FAQ.map((item) => (
+              <div key={item.q} className="impact-faq-item">
+                <h3>{item.q}</h3>
+                <p>{item.a}</p>
+              </div>
+            ))}
           </article>
 
           <div
@@ -268,6 +317,10 @@ export default function ImpactMeasurementPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_SERVICE) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_FAQ) }}
       />
     </>
   );

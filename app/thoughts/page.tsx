@@ -25,6 +25,15 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/thoughts`,
     siteName: "Mochi Collective",
     type: "website",
+    locale: "en_SG",
+    images: [
+      {
+        url: `${SITE_URL}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Mochi Thoughts — notes on brand, measurement and events craft",
+      },
+    ],
   },
 };
 

@@ -122,6 +122,14 @@ export function Services() {
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
+                    {service.deepLink && (
+                      <a
+                        href={service.deepLink.href}
+                        className="pnl-link"
+                      >
+                        {service.deepLink.label} <span aria-hidden="true">→</span>
+                      </a>
+                    )}
                   </div>
                   <div className="pnl-foot">
                     <div>Practice / {String(i + 1).padStart(2, "0")}</div>

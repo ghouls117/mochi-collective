@@ -60,6 +60,15 @@ export async function generateMetadata({
       publishedTime: `${post.publish_date}T00:00:00+08:00`,
       authors: ["Mochi Collective"],
       tags: post.tags,
+      locale: "en_SG",
+      images: [
+        {
+          url: `${SITE_URL}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${post.title} — Mochi Collective`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",

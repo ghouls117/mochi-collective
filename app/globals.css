@@ -781,6 +781,23 @@ section {
   background: currentColor;
   opacity: 0.35;
 }
+.tab-panel .pnl-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 22px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--ink-soft);
+  transition: border-color 0.2s;
+}
+.tab-panel .pnl-link:hover {
+  border-bottom-color: var(--ink);
+}
 .tab-panel .pnl-foot {
   display: flex;
   justify-content: space-between;
@@ -1530,6 +1547,34 @@ footer .footer-entity-line {
   letter-spacing: 0.01em;
   color: var(--ink-soft);
   line-height: 1.5;
+}
+footer .footer-nap-line {
+  /* Homepage-visible NAP so entity + address surfaces without JSON-LD.
+     Helps AI extractors and local-signal parsers. */
+  font-size: 11px;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* ─── /impact-measurement page FAQ block ─────────────────────── */
+.impact-faq-item {
+  margin-top: 22px;
+}
+.impact-faq-item h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(17px, 1.4vw, 20px);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.impact-faq-item p {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
 }
 footer .links {
   display: flex;

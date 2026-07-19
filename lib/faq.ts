@@ -15,6 +15,10 @@ export const FAQ: FaqItem[] = [
     a: "We're a brand-experience, program design and events agency in Singapore. Activations, conferences, sponsor programs, community and membership formats — all designed with impact measurement baked in, so what we run ends with a measurable answer, not a recap deck and a feeling.",
   },
   {
+    q: "Where are you based?",
+    a: "Mochi Collective Pte. Ltd. is a Singapore-registered agency at 68 Circular Road, #02-01, Singapore 049422 (UEN 202538712H). We work across Singapore and Southeast Asia — most of the events, conferences and community programs we design run in-region.",
+  },
+  {
     q: "What kinds of events and programs do you run?",
     a: "New launches (brand or program), brand activations, conferences and multi-stage summits, membership programs, etc. If it puts people in a room — once or on repeat — we can make the room prove something.",
   },

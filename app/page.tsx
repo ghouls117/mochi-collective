@@ -32,7 +32,7 @@ const SERVICES_JSON_LD = {
   "@graph": SERVICES.map((s) => ({
     "@type": "Service",
     name: s.label,
-    serviceType: s.title,
+    serviceType: s.serviceType,
     description: s.body,
     provider: { "@id": ORG_ID },
     areaServed: "Singapore",

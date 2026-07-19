@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/thoughts";
 
@@ -9,6 +11,17 @@ import { getPublishedPosts } from "@/lib/thoughts";
 export const revalidate = 900;
 
 const SITE_URL = "https://mochicollective.com";
+
+/** Read a source file's real mtime so legal-page lastmod reflects the
+ * last content change (nav additions, sameAs growth) rather than a
+ * hand-pinned date that drifts stale. */
+function fileLastModified(relPath: string): Date {
+  try {
+    return fs.statSync(path.join(process.cwd(), relPath)).mtime;
+  } catch {
+    return new Date();
+  }
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getPublishedPosts();
@@ -42,13 +55,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...postEntries,
     {
       url: `${SITE_URL}/privacy`,
-      lastModified: new Date("2026-05-25"),
+      lastModified: fileLastModified("app/privacy/page.tsx"),
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${SITE_URL}/terms`,
-      lastModified: new Date("2026-05-25"),
+      lastModified: fileLastModified("app/terms/page.tsx"),
       changeFrequency: "yearly",
       priority: 0.3,
     },
