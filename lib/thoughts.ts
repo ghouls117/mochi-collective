@@ -206,6 +206,6 @@ export function buildShareUrls(post: Post) {
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(linkedinTarget)}`,
     copyLink: withUtm("sharelink"),
     email: withUtm("shareemail"),
-    bookDiscovery: `https://zcal.co/mochicollective/consultation?utm_source=website&utm_medium=postinterest&utm_campaign=${campaign}`,
+    bookDiscovery: `https://zcal.co/mochicollective/discovery?utm_source=website&utm_medium=postinterest&utm_campaign=${campaign}`,
   };
 }
