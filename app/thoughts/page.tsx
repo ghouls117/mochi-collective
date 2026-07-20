@@ -88,7 +88,7 @@ export default function ThoughtsIndexPage() {
               </p>
             </div>
             <a
-              href="https://zcal.co/mochicollective/consultation?utm_source=website&utm_medium=thoughtsindex&utm_campaign=thoughts"
+              href="https://zcal.co/mochicollective/discovery?utm_source=website&utm_medium=thoughtsindex&utm_campaign=thoughts"
               target="_blank"
               rel="noopener noreferrer"
               className="th-foot-cta-btn"
