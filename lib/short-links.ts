@@ -50,6 +50,13 @@ export const SHORT_LINKS: Record<string, ShortLink> = {
   },
 };
 
+"Villa-Finder": {
+    slug: "Villa-Finder",
+    url: "https://claude.ai/code/artifact/933390a1-b3c3-44be-b3e3-c6c9906717e2",
+    note: "Sketches for Villa Finder",
+    utm: { source: "artifact", medium: "directshare", campaign: "outreach" },
+  },
+
 /**
  * Build the redirect target for a slug — appends the entry's UTMs to
  * `url`, preserving any params already on the destination. Existing
