@@ -53,6 +53,16 @@ export const SHORT_LINKS: Record<string, ShortLink> = {
     url: "https://claude.ai/code/artifact/933390a1-b3c3-44be-b3e3-c6c9906717e2",
     note: "Sketches for Villa Finder",
   },
+  "6questions": {
+    slug: "6questions",
+    url: "https://mochicollective.com/thoughts/thought-leadership/6-questions-every-brief",
+    note: "6 Questions post — Instagram organic push, July 2026 W3.",
+    utm: {
+      source: "instagram",
+      medium: "organic-social",
+      campaign: "july-2026-w3",
+    },
+  },
 };
 
 /**
