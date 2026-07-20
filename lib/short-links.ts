@@ -54,7 +54,6 @@ export const SHORT_LINKS: Record<string, ShortLink> = {
     slug: "Villa-Finder",
     url: "https://claude.ai/code/artifact/933390a1-b3c3-44be-b3e3-c6c9906717e2",
     note: "Sketches for Villa Finder",
-    utm: { source: "artifact", medium: "directshare", campaign: "outreach" },
   },
 
 /**
