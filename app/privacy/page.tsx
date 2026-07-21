@@ -405,7 +405,7 @@ export default function PrivacyPage() {
             </p>
             <ul>
               <li>
-                Data Protection Officer Email:{" "}
+                <strong>Data Protection Officer Email:</strong>{" "}
                 <a href={`mailto:${EMAIL}?subject=Data%20request`}>
                   {EMAIL}
                 </a>
@@ -413,7 +413,7 @@ export default function PrivacyPage() {
                 &ldquo;Privacy&rdquo; in the subject line
               </li>
               <li>
-                {ENTITY}, {ADDRESS}
+                <strong>{ENTITY}</strong>, {ADDRESS}
               </li>
             </ul>
 
