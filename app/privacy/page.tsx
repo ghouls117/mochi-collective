@@ -26,15 +26,15 @@ export default function PrivacyPage() {
           <h1>Privacy Policy</h1>
           <p className="updated">Last updated: {LAST_UPDATED}</p>
           <p className="lede">
-            This policy explains how {ENTITY} (&ldquo;Mochi Collective&rdquo;,
-            &ldquo;we&rdquo;, &ldquo;us&rdquo;) collects, uses, discloses,
-            and protects personal data in connection with{" "}
-            <strong>mochicollective.com</strong> (the &ldquo;Site&rdquo;)
-            and our services. We are a Singapore company serving clients
-            primarily in Singapore and the wider Asia-Pacific region, and we
-            handle personal data in accordance with Singapore&rsquo;s
-            Personal Data Protection Act 2012 (&ldquo;PDPA&rdquo;). We apply
-            the same PDPA standards to every visitor, wherever you are.
+            This policy explains how {ENTITY} (&ldquo;Mochi
+            Collective&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) collects,
+            uses, discloses, and protects personal data in connection with
+            mochicollective.com (the &ldquo;Site&rdquo;) and our services.
+            We are a Singapore company serving clients primarily in
+            Singapore and the wider Asia-Pacific region, and we handle
+            personal data in accordance with Singapore&rsquo;s Personal
+            Data Protection Act 2012 (&ldquo;PDPA&rdquo;). We apply the
+            same PDPA standards to every visitor, wherever you are.
           </p>
 
           <article className="prose">
@@ -43,29 +43,29 @@ export default function PrivacyPage() {
               Four things happen automatically in the background when you
               visit the Site:
             </p>
-            <ol>
+            <ul>
               <li>
-                <strong>Analytics.</strong> We measure which pages people
-                read, how far they scroll, and where visitors come from &mdash;
-                so we know which content works.
+                Analytics. We measure which pages people read, how far they
+                scroll, and where visitors come from, so we know which
+                content works.
               </li>
               <li>
-                <strong>Ad tracking.</strong> If a Meta or Google ad brought
-                you here, we tell them you arrived. So we don&rsquo;t waste
-                money on ads that don&rsquo;t work.
+                Ad tracking. If a Meta or Google ad brought you here, we
+                tell them you arrived. So we don&rsquo;t waste money on
+                ads that don&rsquo;t work.
               </li>
               <li>
-                <strong>Session replays.</strong> Microsoft Clarity records
-                anonymous mouse movement and clicks on the homepage, so we
-                can spot confusing parts of the page.
+                Session replays. Microsoft Clarity records anonymous mouse
+                movement and clicks on the homepage, so we can spot
+                confusing parts of the page.
               </li>
               <li>
-                <strong>Concierge submissions.</strong> If you complete the
-                four-question Service Concierge, your answers are sent to
-                our team Slack. If you book a call, your name and email
-                come along too.
+                Concierge submissions. If you complete the four-question
+                Service Concierge, your answers are sent to our team
+                Slack. If you book a call, your name and email come along
+                too.
               </li>
-            </ol>
+            </ul>
             <p>
               We don&rsquo;t sell your data. We share it only with the
               third parties listed in this policy, and we keep only what
@@ -106,8 +106,7 @@ export default function PrivacyPage() {
             <p>
               Clicking &ldquo;Book a discovery call&rdquo; takes you to our
               scheduling provider, zcal, which asks for your name, email,
-              and an optional message. zcal handles this data per their
-              own{" "}
+              and an optional message. zcal handles this data per their own{" "}
               <a
                 href="https://zcal.co/privacy"
                 target="_blank"
@@ -138,20 +137,20 @@ export default function PrivacyPage() {
             <ul>
               <li>
                 When we measure on a client&rsquo;s behalf, we generally
-                act as a <strong>data intermediary (processor)</strong> for
-                that client under the PDPA. The client decides what is
-                collected and why; we process it under their instructions
-                and our agreement with them. Notices and consents for
-                attendees are agreed with the client as part of the
-                engagement, and wherever practicable we work with
-                aggregated or de-identified data for reporting.
+                act as a data intermediary (processor) for that client
+                under the PDPA. The client decides what is collected and
+                why; we process it under their instructions and our
+                agreement with them. Notices and consents for attendees
+                are agreed with the client as part of the engagement, and
+                wherever practicable we work with aggregated or
+                de-identified data for reporting.
               </li>
               <li>
                 If you attend an event we run and want to access, correct,
-                or remove personal data collected there &mdash; including
-                photographs &mdash; contact us at the address in section
-                10 and we will either handle it or route your request to
-                the client who controls the data.
+                or remove personal data collected there, including
+                photographs, contact us at the address in section 10 and
+                we will either handle it or route your request to the
+                client who controls the data.
               </li>
             </ul>
             <p>
@@ -199,9 +198,7 @@ export default function PrivacyPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                    <strong>Meta</strong> (Facebook/Instagram)
-                  </td>
+                  <td>Meta (Facebook/Instagram)</td>
                   <td>
                     Ad tracking via the Meta Pixel and Conversions API
                   </td>
@@ -212,9 +209,7 @@ export default function PrivacyPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <strong>Google</strong>
-                  </td>
+                  <td>Google</td>
                   <td>
                     Google Analytics 4; email hosting via Google Workspace
                   </td>
@@ -224,45 +219,33 @@ export default function PrivacyPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <strong>Microsoft</strong>
-                  </td>
+                  <td>Microsoft</td>
                   <td>Clarity session recordings and heatmaps</td>
                   <td>Anonymous interaction data</td>
                 </tr>
                 <tr>
-                  <td>
-                    <strong>LinkedIn</strong>
-                  </td>
-                  <td>
-                    Insight Tag for B2B analytics and retargeting
-                  </td>
+                  <td>LinkedIn</td>
+                  <td>Insight Tag for B2B analytics and retargeting</td>
                   <td>
                     Anonymous visit data; matched to your LinkedIn profile
-                    via LinkedIn&rsquo;s cookie only if you&rsquo;re logged
-                    in
+                    via LinkedIn&rsquo;s cookie only if you&rsquo;re
+                    logged in
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <strong>zcal</strong>
-                  </td>
+                  <td>zcal</td>
                   <td>Booking and calendar</td>
                   <td>
                     Their privacy policy applies once you book a call
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <strong>Vercel</strong>
-                  </td>
+                  <td>Vercel</td>
                   <td>Website hosting</td>
                   <td>Infrastructure provider</td>
                 </tr>
                 <tr>
-                  <td>
-                    <strong>Slack</strong>
-                  </td>
+                  <td>Slack</td>
                   <td>Internal team communication</td>
                   <td>
                     Concierge submissions and booking notifications are
@@ -278,13 +261,13 @@ export default function PrivacyPage() {
               obligations.
             </p>
             <p>
-              <strong>Cross-border transfers.</strong> Some of the
-              providers above store data outside Singapore (typically in
-              the United States or the European Union). Where personal
-              data leaves Singapore, we take steps required under the
-              PDPA to ensure it receives a comparable standard of
-              protection, through the providers&rsquo; contractual
-              commitments and data protection certifications.
+              Cross-border transfers. Some of the providers above store
+              data outside Singapore (typically in the United States or
+              the European Union). Where personal data leaves Singapore,
+              we take steps required under the PDPA to ensure it receives
+              a comparable standard of protection, through the
+              providers&rsquo; contractual commitments and data protection
+              certifications.
             </p>
 
             <h2>6. Your rights</h2>
@@ -295,7 +278,7 @@ export default function PrivacyPage() {
             </p>
             <ul>
               <li>
-                <strong>Access.</strong> Email{" "}
+                Access. Email{" "}
                 <a href={`mailto:${EMAIL}?subject=Data%20request`}>
                   {EMAIL}
                 </a>{" "}
@@ -311,28 +294,27 @@ export default function PrivacyPage() {
                 confidential commercial information).
               </li>
               <li>
-                <strong>Correction.</strong> Same email. If something we
-                hold about you is inaccurate, we&rsquo;ll correct it as
-                soon as practicable.
+                Correction. Same email. If something we hold about you is
+                inaccurate, we&rsquo;ll correct it as soon as
+                practicable.
               </li>
               <li>
-                <strong>Withdrawal of consent.</strong> Same email (see
-                section 4). We&rsquo;ll stop the relevant use of your
-                data, subject to any retention we&rsquo;re entitled or
-                required to keep.
+                Withdrawal of consent. Same email (see section 4).
+                We&rsquo;ll stop the relevant use of your data, subject
+                to any retention we&rsquo;re entitled or required to
+                keep.
               </li>
               <li>
-                <strong>Deletion requests.</strong> Singapore law
-                doesn&rsquo;t provide a general right to erasure, but in
-                practice we hold very little, and if you ask us to delete
-                your data we will do so where we have no continuing
-                business or legal need for it. Data held by the third
-                parties in section 5 is subject to their own processes.
+                Deletion requests. Singapore law doesn&rsquo;t provide a
+                general right to erasure, but in practice we hold very
+                little, and if you ask us to delete your data we will do
+                so where we have no continuing business or legal need
+                for it. Data held by the third parties in section 5 is
+                subject to their own processes.
               </li>
               <li>
-                <strong>Ad tracking opt-out.</strong> Use a browser
-                ad-blocker or extension (e.g. uBlock Origin), or
-                account-level settings:{" "}
+                Ad tracking opt-out. Use a browser ad-blocker or extension
+                (e.g. uBlock Origin), or account-level settings:{" "}
                 <a
                   href="https://www.facebook.com/off_facebook_activity"
                   target="_blank"
@@ -418,22 +400,22 @@ export default function PrivacyPage() {
 
             <h2>10. Data protection officer and contact</h2>
             <p>
-              Our Data Protection Officer oversees our compliance with
-              the PDPA and is the right contact for anything in this
-              policy:
+              Our Data Protection Officer oversees our compliance with the
+              PDPA and is the right contact for anything in this policy:
             </p>
-            <p>
-              <strong>Data Protection Officer email:</strong>{" "}
-              <a href={`mailto:${EMAIL}?subject=Data%20request`}>
-                {EMAIL}
-              </a>{" "}
-              &mdash; with &ldquo;Data request&rdquo; or
-              &ldquo;Privacy&rdquo; in the subject line.
-              <br />
-              <strong>{ENTITY}</strong>
-              <br />
-              {ADDRESS}
-            </p>
+            <ul>
+              <li>
+                Data Protection Officer Email:{" "}
+                <a href={`mailto:${EMAIL}?subject=Data%20request`}>
+                  {EMAIL}
+                </a>
+                , with &ldquo;Data request&rdquo; or
+                &ldquo;Privacy&rdquo; in the subject line
+              </li>
+              <li>
+                {ENTITY}, {ADDRESS}
+              </li>
+            </ul>
 
             <h2>11. Updates to this policy</h2>
             <p>
@@ -443,8 +425,8 @@ export default function PrivacyPage() {
             </p>
 
             <p className="footnote">
-              {ENTITY} (UEN {UEN}) is a private limited company
-              registered in Singapore.
+              {ENTITY} (UEN {UEN}) is a private limited company registered
+              in Singapore.
               <br />
               Registered office: {ADDRESS}.
             </p>

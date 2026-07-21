@@ -27,11 +27,11 @@ export default function TermsPage() {
           <h1>Terms of Use</h1>
           <p className="updated">Last updated: {LAST_UPDATED}</p>
           <p className="lede">
-            These Terms of Use (&ldquo;Terms&rdquo;) govern your use of{" "}
-            <strong>mochicollective.com</strong> (the &ldquo;Site&rdquo;),
-            operated by {ENTITY} (&ldquo;Mochi Collective&rdquo;,
-            &ldquo;we&rdquo;, &ldquo;us&rdquo;). By using the Site, you agree
-            to these Terms. If you do not agree, please do not use the Site.
+            These Terms of Use (&ldquo;Terms&rdquo;) govern your use of
+            mochicollective.com (the &ldquo;Site&rdquo;), operated by{" "}
+            {ENTITY} (&ldquo;Mochi Collective&rdquo;, &ldquo;we&rdquo;,
+            &ldquo;us&rdquo;). By using the Site, you agree to these Terms.
+            If you do not agree, please do not use the Site.
           </p>
 
           <article className="prose">
@@ -46,67 +46,64 @@ export default function TermsPage() {
             <p>The Site is not:</p>
             <ul>
               <li>
-                <strong>A binding offer of services.</strong> Nothing on the
-                Site constitutes an offer capable of acceptance. Any actual
-                engagement with Mochi Collective happens under a separate
-                written agreement after a consultation.
+                A binding offer of services. Nothing on the Site constitutes
+                an offer capable of acceptance. Any actual engagement with
+                Mochi Collective happens under a separate written agreement
+                after a consultation.
               </li>
               <li>
-                <strong>Professional advice.</strong> Content on the Site,
-                including any output of the Service Concierge tool, is
-                directional and informational only. It is not legal,
-                financial, or medical advice, and it creates no contractual
-                obligation on either side.
+                Professional advice. Content on the Site, including any
+                output of the Service Concierge tool, is directional and
+                informational only. It is not legal, financial, or medical
+                advice, and it creates no contractual obligation on either
+                side.
               </li>
               <li>
-                <strong>A storefront.</strong> Nothing on the Site can be
-                purchased directly. Placing a hold on our calendar is not a
-                payment and does not create a paid engagement.
+                A storefront. Nothing on the Site can be purchased directly.
+                Placing a hold on our calendar is not a payment and does not
+                create a paid engagement.
               </li>
             </ul>
 
             <h2>2. Who can use the Site</h2>
             <p>
-              The Site is intended for individuals who have reached the age of
-              majority in their jurisdiction (18 years old in most places).
-              The Service Concierge and booking pages are designed for people
-              exploring an engagement with Mochi Collective on behalf of an
-              organisation. You may use the Site for personal, non-commercial
-              reference; you may not resell access to it or systematically
-              harvest anything from it.
+              The Site is intended for individuals who have reached the age
+              of majority in their jurisdiction (18 years old in most
+              places). The Service Concierge and booking pages are designed
+              for people exploring an engagement with Mochi Collective on
+              behalf of an organisation. You may use the Site for personal,
+              non-commercial reference; you may not resell access to it or
+              systematically harvest anything from it.
             </p>
 
             <h2>3. What you may not do</h2>
             <p>When using the Site, you agree not to:</p>
             <ul>
               <li>
-                <strong>
-                  Reverse-engineer, copy, mirror, or systematically scrape
-                </strong>{" "}
-                the Site or its assets, including automated harvesting of our
+                Reverse-engineer, copy, mirror, or systematically scrape the
+                Site or its assets, including automated harvesting of our
                 copy, design, or visitor data;
               </li>
               <li>
-                <strong>Impersonate</strong> Mochi Collective, our hosts,
-                partners, or clients;
+                Impersonate Mochi Collective, our hosts, partners, or
+                clients;
               </li>
               <li>
-                <strong>Submit false or misleading information</strong>{" "}
-                through the Service Concierge or booking workflows. We screen
-                leads and may decline submissions we suspect are made in bad
-                faith;
+                Submit false or misleading information through the Service
+                Concierge or booking workflows. We screen leads and may
+                decline submissions we suspect are made in bad faith;
               </li>
               <li>
-                <strong>Interfere with the operation of the Site</strong>,
-                including denial-of-service attacks, security probing, or
-                injection attacks. If you find a genuine security issue, we
-                would like to hear about it: email{" "}
+                Interfere with the operation of the Site, including
+                denial-of-service attacks, security probing, or injection
+                attacks. If you find a genuine security issue, we would like
+                to hear about it: email{" "}
                 <a href={`mailto:${EMAIL}?subject=Security`}>{EMAIL}</a> with
                 &ldquo;Security&rdquo; in the subject line;
               </li>
               <li>
-                <strong>Use the Site to facilitate anything illegal</strong>{" "}
-                under the laws of Singapore or of your home jurisdiction.
+                Use the Site to facilitate anything illegal under the laws of
+                Singapore or of your home jurisdiction.
               </li>
             </ul>
 
@@ -115,23 +112,25 @@ export default function TermsPage() {
               Everything on the Site belongs to {ENTITY} unless otherwise
               indicated. This includes the copy, the design, our logo, the
               five-orb brand mark, photography, the Service Concierge logic,
-              and our program names (including &ldquo;Signal Series&rdquo;,
-              &ldquo;Stage Program&rdquo;, &ldquo;Inner Circle&rdquo;, and
+              and our program names (including &ldquo;Signal Series,&rdquo;
+              &ldquo;Stage Program,&rdquo; &ldquo;Inner Circle,&rdquo; and
               &ldquo;Closed Doors&rdquo;).
             </p>
-            <p>
-              <strong>You may</strong> view the Site, share links to it, and
-              quote brief excerpts for editorial purposes with attribution.
-              You may reference Mochi Collective in articles, press, or social
-              media, provided you do not claim an affiliation that
-              doesn&rsquo;t exist.
-            </p>
-            <p>
-              <strong>You may not</strong> use our brand mark or copy in your
-              own marketing materials without our written permission, or use
-              any content on the Site to train artificial intelligence models
-              without our written permission.
-            </p>
+            <ul>
+              <li>
+                You may: view the Site, share links to it, and quote brief
+                excerpts for editorial purposes with attribution. You may
+                reference Mochi Collective in articles, press, or social
+                media, provided you do not claim an affiliation that
+                doesn&rsquo;t exist.
+              </li>
+              <li>
+                You may not: use our brand mark or copy in your own
+                marketing materials without our written permission, or use
+                any content on the Site to train artificial intelligence
+                models without our written permission.
+              </li>
+            </ul>
 
             <h2>5. Your submissions</h2>
             <p>
@@ -166,10 +165,8 @@ export default function TermsPage() {
               If we agree to work together after a discovery call, that
               engagement will be governed by a separate Statement of Work
               covering scope, fees, ownership of deliverable IP, and
-              confidentiality.{" "}
-              <strong>
-                That document, not these Terms, controls any paid work.
-              </strong>
+              confidentiality. That document, not these Terms, controls any
+              paid work.
             </p>
             <p>
               You can cancel a discovery call at any time, with no fee and no
@@ -191,27 +188,21 @@ export default function TermsPage() {
             <h2>8. Disclaimers</h2>
             <p>
               The Site is provided &ldquo;as is&rdquo; and &ldquo;as
-              available&rdquo;. We make reasonable efforts to keep it up, but
+              available.&rdquo; We make reasonable efforts to keep it up, but
               we do not guarantee uninterrupted availability; among other
               things, outages at our third-party providers may affect the
-              Site.{" "}
-              <strong>
-                We may change, suspend, or discontinue any part of the Site,
-                and may restrict or deny access to it, at any time, at our
-                discretion and without notice.
-              </strong>
+              Site. We may change, suspend, or discontinue any part of the
+              Site, and may restrict or deny access to it, at any time, at
+              our discretion and without notice.
             </p>
             <p>
               Case studies, sample programs, and descriptions of our
               methodology reflect past work and our general approach. They
               are not guarantees of future results, and you should not rely
-              on anything on the Site as a substitute for your own
-              enquiries. The Service Concierge recommendation is a starting
-              point for a conversation;{" "}
-              <strong>
-                the right shape for your event always emerges from the
-                discovery call, not the quiz.
-              </strong>
+              on anything on the Site as a substitute for your own enquiries.
+              The Service Concierge recommendation is a starting point for a
+              conversation; the right shape for your event always emerges
+              from the discovery call, not the quiz.
             </p>
 
             <h2>9. Liability</h2>
@@ -238,8 +229,8 @@ export default function TermsPage() {
               Our total liability to you in connection with the Site is
               capped at the amount you have paid to Mochi Collective in the
               twelve months preceding the claim. If you have not paid us
-              anything &mdash; which is true of every visitor without a paid
-              engagement &mdash; that cap is SGD&nbsp;$0.
+              anything, which is true of every visitor without a paid
+              engagement, that cap is SGD&nbsp;$0.
             </p>
             <p>
               Nothing in these Terms excludes or limits liability that cannot
@@ -252,9 +243,9 @@ export default function TermsPage() {
               You agree to indemnify Mochi Collective against third-party
               claims, and the reasonable legal costs and damages arising from
               them, caused by your breach of these Terms or your conduct on
-              or through the Site &mdash; for example by submitting
-              infringing content through the Service Concierge or misusing
-              our brand assets.
+              or through the Site, for example by submitting infringing
+              content through the Service Concierge or misusing our brand
+              assets.
             </p>
 
             <h2>11. Changes to these Terms</h2>
@@ -276,24 +267,22 @@ export default function TermsPage() {
             <h2>13. General</h2>
             <p>
               If any provision of these Terms is found to be invalid or
-              unenforceable, the remaining provisions continue in full
-              force. Our not enforcing a provision is not a waiver of our
-              right to enforce it later. You may not assign your rights
-              under these Terms; we may assign ours as part of a corporate
-              reorganisation, merger, or sale. These Terms, together with
-              our <Link href="/privacy">Privacy Policy</Link>, are the
-              entire agreement between you and us regarding use of the Site
-              (they do not replace any Statement of Work or other written
-              agreement for paid engagements).
+              unenforceable, the remaining provisions continue in full force.
+              Our not enforcing a provision is not a waiver of our right to
+              enforce it later. You may not assign your rights under these
+              Terms; we may assign ours as part of a corporate reorganisation,
+              merger, or sale. These Terms, together with our{" "}
+              <Link href="/privacy">Privacy Policy</Link>, are the entire
+              agreement between you and us regarding use of the Site (they
+              do not replace any Statement of Work or other written agreement
+              for paid engagements).
             </p>
 
             <h2>14. Contact</h2>
             <p>
-              <strong>Email:</strong>{" "}
-              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-              <br />
-              <strong>Subject prefix for legal matters:</strong>{" "}
-              &ldquo;Legal&rdquo; or &ldquo;Terms&rdquo;
+              Questions about these Terms:{" "}
+              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>, with
+              &ldquo;Legal&rdquo; or &ldquo;Terms&rdquo; in the subject line.
             </p>
 
             <p className="footnote">
