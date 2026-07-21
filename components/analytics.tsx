@@ -23,7 +23,14 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
-const LINKEDIN_PARTNER_ID = process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID;
+/**
+ * LinkedIn Insight Tag Partner ID for Mochi Collective's LinkedIn Ads account.
+ * Hardcoded intentionally — the pixel is single-tenant, and we've been burned
+ * by a stale value in Vercel's env config drifting away from the real Campaign
+ * Manager ID. If this ever needs to change, do it here AND in Campaign Manager
+ * at the same time.
+ */
+const LINKEDIN_PARTNER_ID = "9648620";
 
 export function Analytics() {
   return (
