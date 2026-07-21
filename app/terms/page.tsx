@@ -4,7 +4,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { EMAIL } from "@/lib/constants";
 
-const LAST_UPDATED = "25 May 2026";
+const LAST_UPDATED = "21 July 2026";
 const ENTITY = "Mochi Collective Pte. Ltd.";
 const UEN = "202538712H";
 const ADDRESS = "68 Circular Road, #02-01, Singapore 049422";
@@ -12,7 +12,7 @@ const ADDRESS = "68 Circular Road, #02-01, Singapore 049422";
 export const metadata: Metadata = {
   title: "Terms of Use — Mochi Collective",
   description:
-    "Ground rules for using mochicollective.com — intellectual property, acceptable use, liability, governing law.",
+    "Ground rules for using mochicollective.com — intellectual property, acceptable use, bookings, liability, and governing law under Singapore jurisdiction.",
   alternates: { canonical: "/terms" },
   robots: { index: true, follow: true },
 };
@@ -27,184 +27,194 @@ export default function TermsPage() {
           <h1>Terms of Use</h1>
           <p className="updated">Last updated: {LAST_UPDATED}</p>
           <p className="lede">
-            The short version: by using <strong>mochicollective.com</strong>{" "}
-            you agree to a handful of basic ground rules. We&rsquo;re
-            plainspoken about them &mdash; no clauses written to trap anyone.
-            If something here looks off, email{" "}
-            <a href={`mailto:${EMAIL}`}>{EMAIL}</a> and we&rsquo;ll talk.
+            These Terms of Use (&ldquo;Terms&rdquo;) govern your use of{" "}
+            <strong>mochicollective.com</strong> (the &ldquo;Site&rdquo;),
+            operated by {ENTITY} (&ldquo;Mochi Collective&rdquo;,
+            &ldquo;we&rdquo;, &ldquo;us&rdquo;). By using the Site, you agree
+            to these Terms. If you do not agree, please do not use the Site.
           </p>
 
           <article className="prose">
-            <h2>What this website is, and what it isn&rsquo;t</h2>
+            <h2>1. What this website is, and what it isn&rsquo;t</h2>
             <p>
-              <strong>mochicollective.com</strong> is the public marketing
-              site for {ENTITY} &mdash; a Singapore-registered
-              experience-design studio. It exists to:
+              The Site exists to describe our services (brand experiences,
+              conferences and events, community and membership programs,
+              sponsor activations, and impact measurement), to let you book a
+              discovery call through our scheduling provider, zcal, and to
+              share our thinking, work, and updates.
             </p>
+            <p>The Site is not:</p>
             <ul>
               <li>
-                Describe what we do (brand experiences, conferences, community
-                programs, sponsor activations, impact measurement)
+                <strong>A binding offer of services.</strong> Nothing on the
+                Site constitutes an offer capable of acceptance. Any actual
+                engagement with Mochi Collective happens under a separate
+                written agreement after a consultation.
               </li>
               <li>
-                Let you book a discovery call with us via our zcal scheduling
-                link
-              </li>
-              <li>Share thinking, work, and updates from the studio</li>
-            </ul>
-            <p>The site is <strong>not</strong>:</p>
-            <ul>
-              <li>
-                A binding offer of services. Engagement happens through a
-                separate written agreement after we&rsquo;ve spoken.
-              </li>
-              <li>
-                Professional, legal, financial, or medical advice. The
-                concierge tool gives you a directional recommendation &mdash;
-                it is <strong>not a contract</strong> and creates no
+                <strong>Professional advice.</strong> Content on the Site,
+                including any output of the Service Concierge tool, is
+                directional and informational only. It is not legal,
+                financial, or medical advice, and it creates no contractual
                 obligation on either side.
               </li>
               <li>
-                A storefront. Nothing on the site can be purchased directly;
-                bookings are calendar holds, not payments.
+                <strong>A storefront.</strong> Nothing on the Site can be
+                purchased directly. Placing a hold on our calendar is not a
+                payment and does not create a paid engagement.
               </li>
             </ul>
 
-            <h2>Who can use the site</h2>
+            <h2>2. Who can use the Site</h2>
             <p>
-              Anyone who has reached the age of majority in their
-              jurisdiction (18 in most places). The concierge tool and
-              booking page are intended for people exploring an engagement
-              with Mochi Collective on behalf of their organisation. Personal
-              use is fine; resale or scraping is not.
+              The Site is intended for individuals who have reached the age of
+              majority in their jurisdiction (18 years old in most places).
+              The Service Concierge and booking pages are designed for people
+              exploring an engagement with Mochi Collective on behalf of an
+              organisation. You may use the Site for personal, non-commercial
+              reference; you may not resell access to it or systematically
+              harvest anything from it.
             </p>
 
-            <h2>What you may not do</h2>
-            <p>These are the boring-but-necessary protections:</p>
+            <h2>3. What you may not do</h2>
+            <p>When using the Site, you agree not to:</p>
             <ul>
               <li>
                 <strong>
                   Reverse-engineer, copy, mirror, or systematically scrape
                 </strong>{" "}
-                the site or its assets. We do not allow automated harvesting
-                of our copy, design, or visitor data.
+                the Site or its assets, including automated harvesting of our
+                copy, design, or visitor data;
               </li>
               <li>
-                <strong>Impersonate Mochi Collective</strong> or any of our
-                hosts, partners, or clients.
+                <strong>Impersonate</strong> Mochi Collective, our hosts,
+                partners, or clients;
               </li>
               <li>
-                <strong>Submit false information</strong> in the concierge or
-                booking flow. We screen leads and will decline calls we
-                suspect are submitted in bad faith.
+                <strong>Submit false or misleading information</strong>{" "}
+                through the Service Concierge or booking workflows. We screen
+                leads and may decline submissions we suspect are made in bad
+                faith;
               </li>
               <li>
-                <strong>Interfere with the site&rsquo;s operation</strong>{" "}
-                &mdash; no DoS, no probing, no injection. If you spot a
-                genuine security issue, email{" "}
+                <strong>Interfere with the operation of the Site</strong>,
+                including denial-of-service attacks, security probing, or
+                injection attacks. If you find a genuine security issue, we
+                would like to hear about it: email{" "}
                 <a href={`mailto:${EMAIL}?subject=Security`}>{EMAIL}</a> with
-                &ldquo;Security&rdquo; in the subject and we&rsquo;ll
-                respond.
+                &ldquo;Security&rdquo; in the subject line;
               </li>
               <li>
-                <strong>Use the site to facilitate anything illegal</strong>{" "}
-                under Singapore law or the law of your own jurisdiction.
+                <strong>Use the Site to facilitate anything illegal</strong>{" "}
+                under the laws of Singapore or of your home jurisdiction.
               </li>
             </ul>
 
-            <h2>Intellectual property</h2>
+            <h2>4. Intellectual property</h2>
             <p>
-              Everything on mochicollective.com &mdash; copy, design, logo,
-              the 5-orb brand mark, photography, the concierge logic, the
-              program names (&ldquo;Signal Series&rdquo;, &ldquo;Stage
-              Program&rdquo;, &ldquo;Inner Circle&rdquo;, &ldquo;Closed
-              Doors&rdquo;) &mdash; is owned by {ENTITY} or licensed to us.
+              Everything on the Site belongs to {ENTITY} unless otherwise
+              indicated. This includes the copy, the design, our logo, the
+              five-orb brand mark, photography, the Service Concierge logic,
+              and our program names (including &ldquo;Signal Series&rdquo;,
+              &ldquo;Stage Program&rdquo;, &ldquo;Inner Circle&rdquo;, and
+              &ldquo;Closed Doors&rdquo;).
             </p>
             <p>
-              <strong>You may:</strong>
+              <strong>You may</strong> view the Site, share links to it, and
+              quote brief excerpts for editorial purposes with attribution.
+              You may reference Mochi Collective in articles, press, or social
+              media, provided you do not claim an affiliation that
+              doesn&rsquo;t exist.
             </p>
-            <ul>
-              <li>
-                View the site, share links to it, and quote short excerpts
-                for editorial purposes with attribution
-              </li>
-              <li>
-                Reference us in articles, press, or social posts as long as
-                you don&rsquo;t claim affiliation we haven&rsquo;t given
-              </li>
-            </ul>
             <p>
-              <strong>You may not:</strong>
-            </p>
-            <ul>
-              <li>
-                Use our brand mark or copy in your own marketing materials
-                without written permission
-              </li>
-              <li>
-                Train an AI model on our content without written permission
-              </li>
-            </ul>
-
-            <h2>Bookings and engagements</h2>
-            <p>
-              When you click &ldquo;Book a Discovery&rdquo; or &ldquo;Secure
-              a Consultation&rdquo;:
-            </p>
-            <ul>
-              <li>
-                You&rsquo;re scheduling a free 30-minute discovery call. No
-                payment is taken at this stage.
-              </li>
-              <li>
-                The booking is governed by zcal&rsquo;s terms (your name,
-                email, and scheduling preferences flow to them). See our{" "}
-                <Link href="/privacy">Privacy Policy</Link> for what data we
-                collect.
-              </li>
-              <li>
-                If we proceed to engagement after the call, we&rsquo;ll send
-                a separate Statement of Work covering scope, fee, IP
-                ownership of deliverables, and a confidentiality clause.{" "}
-                <strong>
-                  That document &mdash; not these Terms &mdash; governs paid
-                  work.
-                </strong>
-              </li>
-            </ul>
-            <p>
-              Cancelling a discovery call: no fee, no questions. Just decline
-              the calendar invite or email us.
+              <strong>You may not</strong> use our brand mark or copy in your
+              own marketing materials without our written permission, or use
+              any content on the Site to train artificial intelligence models
+              without our written permission.
             </p>
 
-            <h2>Disclaimers</h2>
+            <h2>5. Your submissions</h2>
             <p>
-              The site is provided &ldquo;as is&rdquo; and &ldquo;as
-              available&rdquo;. We make reasonable efforts to keep it correct
-              and online but:
+              When you submit information through the Service Concierge, a
+              booking form, or by email, you grant us a non-exclusive licence
+              to use that information to respond to you, prepare for a
+              discovery call, and improve our services. Any ideas,
+              suggestions, or feedback you volunteer about our services or
+              the Site may be used by us without restriction or compensation.
+              You remain responsible for what you submit, and you confirm
+              that your submissions do not infringe anyone else&rsquo;s
+              rights.
             </p>
-            <ul>
-              <li>
-                We can&rsquo;t guarantee continuous uptime &mdash; third-party
-                providers (Vercel, zcal, Google Workspace) sometimes have
-                outages.
-              </li>
-              <li>
-                Information on case studies, sample programs, or methodology
-                is descriptive of past work and approach, not a guarantee of
-                future results.
-              </li>
-              <li>
-                The concierge recommendation is a starting point for
-                conversation.{" "}
-                <strong>
-                  The right shape for your event always emerges from the
-                  discovery call, not the quiz.
-                </strong>
-              </li>
-            </ul>
+            <p>
+              Please do not send us confidential or commercially sensitive
+              information through the Site. Until a mutual confidentiality
+              agreement or Statement of Work is in place, treat anything you
+              submit as a business enquiry, not a confidential disclosure.
+            </p>
 
-            <h2>Liability</h2>
+            <h2>6. Bookings and engagements</h2>
+            <p>
+              Clicking &ldquo;Book a Discovery&rdquo; or &ldquo;Secure a
+              Consultation&rdquo; starts the scheduling of a free 30-minute
+              discovery call. No payment is collected at the booking stage.
+              Scheduling is handled by zcal and is subject to zcal&rsquo;s
+              own terms; your name, email address, and scheduling preferences
+              are transmitted to zcal as described in our{" "}
+              <Link href="/privacy">Privacy Policy</Link>.
+            </p>
+            <p>
+              If we agree to work together after a discovery call, that
+              engagement will be governed by a separate Statement of Work
+              covering scope, fees, ownership of deliverable IP, and
+              confidentiality.{" "}
+              <strong>
+                That document, not these Terms, controls any paid work.
+              </strong>
+            </p>
+            <p>
+              You can cancel a discovery call at any time, with no fee and no
+              questions asked: decline the calendar invite or email us
+              directly.
+            </p>
+
+            <h2>7. Third-party services and links</h2>
+            <p>
+              The Site relies on third-party providers (including Vercel for
+              hosting, zcal for scheduling, and Google Workspace for email)
+              and links out to third-party platforms such as Instagram,
+              LinkedIn, and TikTok. We do not control those services, and
+              your use of them is governed by their own terms and privacy
+              policies. We are not responsible for the availability, content,
+              or data practices of third-party services.
+            </p>
+
+            <h2>8. Disclaimers</h2>
+            <p>
+              The Site is provided &ldquo;as is&rdquo; and &ldquo;as
+              available&rdquo;. We make reasonable efforts to keep it up, but
+              we do not guarantee uninterrupted availability; among other
+              things, outages at our third-party providers may affect the
+              Site.{" "}
+              <strong>
+                We may change, suspend, or discontinue any part of the Site,
+                and may restrict or deny access to it, at any time, at our
+                discretion and without notice.
+              </strong>
+            </p>
+            <p>
+              Case studies, sample programs, and descriptions of our
+              methodology reflect past work and our general approach. They
+              are not guarantees of future results, and you should not rely
+              on anything on the Site as a substitute for your own
+              enquiries. The Service Concierge recommendation is a starting
+              point for a conversation;{" "}
+              <strong>
+                the right shape for your event always emerges from the
+                discovery call, not the quiz.
+              </strong>
+            </p>
+
+            <h2>9. Liability</h2>
             <p>
               To the maximum extent permitted by Singapore law, {ENTITY} is
               not liable for:
@@ -212,68 +222,72 @@ export default function TermsPage() {
             <ul>
               <li>
                 Indirect, consequential, or punitive damages arising from
-                your use of the site
+                your use of the Site;
               </li>
               <li>
-                Loss of profits, data, or business opportunity attributed to
-                information on the site
+                Loss of profits, data, or business opportunity arising from
+                information on the Site;
               </li>
               <li>
-                Third-party actions (e.g. if zcal loses your booking data,
-                our liability is limited to what we can practically recover)
+                The acts or omissions of third-party providers (for example,
+                a loss of data held by zcal), beyond what we can practically
+                recover on your behalf.
               </li>
             </ul>
             <p>
-              If you do suffer harm directly caused by an issue we&rsquo;re
-              responsible for, our total liability is capped at the amount
-              paid by you to Mochi Collective in the 12 months preceding the
-              incident (which, for visitors who haven&rsquo;t engaged us, is
-              SGD&nbsp;$0).
+              Our total liability to you in connection with the Site is
+              capped at the amount you have paid to Mochi Collective in the
+              twelve months preceding the claim. If you have not paid us
+              anything &mdash; which is true of every visitor without a paid
+              engagement &mdash; that cap is SGD&nbsp;$0.
             </p>
-
-            <h2>Indemnity</h2>
             <p>
-              If something you do via the site (e.g. submitting infringing
-              content in the concierge open-text field, or misusing a brand
-              asset) causes a third party to come after us, you&rsquo;ll
-              cover our reasonable legal costs and damages from that.
+              Nothing in these Terms excludes or limits liability that cannot
+              be excluded or limited under applicable law, including
+              liability for fraud.
             </p>
 
-            <h2>Changes to these Terms</h2>
+            <h2>10. Indemnity</h2>
             <p>
-              We may update these Terms as the business grows &mdash; for
-              instance, if we add new services, change processors, or refine
-              our IP policy. When we do:
+              You agree to indemnify Mochi Collective against third-party
+              claims, and the reasonable legal costs and damages arising from
+              them, caused by your breach of these Terms or your conduct on
+              or through the Site &mdash; for example by submitting
+              infringing content through the Service Concierge or misusing
+              our brand assets.
             </p>
-            <ul>
-              <li>We update the &ldquo;Last updated&rdquo; date at the top</li>
-              <li>
-                For material changes (e.g. a new processor that handles your
-                data), we&rsquo;ll notify anyone with a recent booking by
-                email
-              </li>
-              <li>
-                Continuing to use the site after a change means you accept
-                the updated Terms
-              </li>
-            </ul>
 
-            <h2>Governing law and dispute resolution</h2>
-            <ul>
-              <li>
-                These Terms are governed by the laws of Singapore.
-              </li>
-              <li>
-                Disputes that can&rsquo;t be resolved informally are subject
-                to the exclusive jurisdiction of the courts of Singapore.
-              </li>
-              <li>
-                We strongly prefer to talk things through before escalating.
-                Email first.
-              </li>
-            </ul>
+            <h2>11. Changes to these Terms</h2>
+            <p>
+              We may update these Terms from time to time at our discretion.
+              When we do, we will revise the &ldquo;Last updated&rdquo; date
+              at the top of this page. Continuing to use the Site after an
+              update means you accept the revised Terms.
+            </p>
 
-            <h2>Contact</h2>
+            <h2>12. Governing law and dispute resolution</h2>
+            <p>
+              These Terms are governed by the laws of Singapore, and any
+              dispute is subject to the exclusive jurisdiction of the
+              Singapore courts. That said, we would much rather resolve
+              things informally. If something is wrong, email us first.
+            </p>
+
+            <h2>13. General</h2>
+            <p>
+              If any provision of these Terms is found to be invalid or
+              unenforceable, the remaining provisions continue in full
+              force. Our not enforcing a provision is not a waiver of our
+              right to enforce it later. You may not assign your rights
+              under these Terms; we may assign ours as part of a corporate
+              reorganisation, merger, or sale. These Terms, together with
+              our <Link href="/privacy">Privacy Policy</Link>, are the
+              entire agreement between you and us regarding use of the Site
+              (they do not replace any Statement of Work or other written
+              agreement for paid engagements).
+            </p>
+
+            <h2>14. Contact</h2>
             <p>
               <strong>Email:</strong>{" "}
               <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
