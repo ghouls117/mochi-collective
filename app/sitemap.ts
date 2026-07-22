@@ -1,26 +1,37 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/thoughts";
 
 /**
  * Regenerate the sitemap every 15 minutes so scheduled posts appear
  * (and get submitted to search engines) on their publish_date without
- * a manual redeploy.
+ * a manual redeploy. The content markdown is bundled into this route's
+ * function via outputFileTracingIncludes (see next.config.ts) — without
+ * that, getPublishedPosts() returns [] at revalidation and the articles
+ * drop out of the sitemap.
  */
 export const revalidate = 900;
 
 const SITE_URL = "https://mochicollective.com";
 
-/** Read a source file's real mtime so legal-page lastmod reflects the
- * last content change (nav additions, sameAs growth) rather than a
- * hand-pinned date that drifts stale. */
-function fileLastModified(relPath: string): Date {
-  try {
-    return fs.statSync(path.join(process.cwd(), relPath)).mtime;
-  } catch {
-    return new Date();
-  }
+/**
+ * Content-modified dates for the static pages, in Asia/Singapore time.
+ *
+ * Deliberately hardcoded rather than read from source-file mtime: on Vercel
+ * every file is checked out fresh at deploy, which resets all mtimes to the
+ * build time — so an mtime-based lastmod collapses every URL onto one
+ * identical build timestamp (SEO re-audit 2026-07-23, finding N12). Bump the
+ * relevant date here when a page's content meaningfully changes.
+ */
+const PAGE_LASTMOD: Record<string, string> = {
+  home: "2026-07-19",
+  impact: "2026-07-19",
+  privacy: "2026-07-22",
+  terms: "2026-07-22",
+};
+
+/** Local-midnight Date for a YYYY-MM-DD string in Asia/Singapore (+08:00). */
+function sgDate(day: string): Date {
+  return new Date(`${day}T00:00:00+08:00`);
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -28,40 +39,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const postEntries: MetadataRoute.Sitemap = posts.map((p) => ({
     url: `${SITE_URL}${p.urlPath}`,
-    lastModified: new Date(`${p.publish_date}T00:00:00+08:00`),
+    lastModified: sgDate(p.publish_date),
     changeFrequency: "yearly",
     priority: 0.7,
   }));
 
+  // The /thoughts index is as fresh as its newest published post.
+  const newestPostDay = posts[0]?.publish_date;
+
   return [
     {
       url: SITE_URL,
-      lastModified: new Date(),
+      lastModified: sgDate(PAGE_LASTMOD.home),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${SITE_URL}/thoughts`,
-      lastModified: new Date(),
+      lastModified: newestPostDay ? sgDate(newestPostDay) : sgDate(PAGE_LASTMOD.home),
       changeFrequency: posts.length > 0 ? "weekly" : "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/impact-measurement`,
-      lastModified: new Date(),
+      lastModified: sgDate(PAGE_LASTMOD.impact),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     ...postEntries,
     {
       url: `${SITE_URL}/privacy`,
-      lastModified: fileLastModified("app/privacy/page.tsx"),
+      lastModified: sgDate(PAGE_LASTMOD.privacy),
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${SITE_URL}/terms`,
-      lastModified: fileLastModified("app/terms/page.tsx"),
+      lastModified: sgDate(PAGE_LASTMOD.terms),
       changeFrequency: "yearly",
       priority: 0.3,
     },
