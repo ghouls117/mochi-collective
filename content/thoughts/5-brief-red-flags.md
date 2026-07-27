@@ -1,5 +1,6 @@
 ---
 title: 5 Red Flags We Spot In Event Briefs
+title_display: <span class="accent">5 Red Flags</span> We Spot In Event Briefs
 slug: 5-brief-red-flags
 meta_title: 5 Event Brief Red Flags (and How to Fix Them) | Mochi Collective
 meta_description: Five phrases that quietly signal an event brief needs sharpening before it becomes a project. Plus the reframe that fixes each one.
@@ -88,7 +89,7 @@ If any of these red flags live at the top of a brief you're writing right now, d
 
 ---
 
-## Not sure if your brief has any of these?
+## Not sure if <span class="accent">your brief</span> has any of these?
 
 The Brief Diagnostic is a free 30-minute conversation where we look at your actual brief — event, community programme, wellness retreat, brand activation — and tell you honestly whether any of these red flags are present, and how to reframe them before the brief becomes a project.
 
