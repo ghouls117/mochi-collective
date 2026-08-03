@@ -4,7 +4,7 @@ title_display: How Community Programmes <span class="accent">Compound</span> (An
 slug: how-community-programmes-compound
 meta_title: How Community Programmes Compound (And Why Most Don't) | Mochi Collective
 meta_description: Most community programmes plateau by session four. The ones that keep working have a designed system for how strangers become members and members bring in the next generation. Here's the system.
-publish_date: 2026-08-03
+publish_date: 2026-08-25
 category: Events Craft
 tags: [community programmes, membership design, community building, network effects, experience design, singapore community]
 canonical_url: https://mochicollective.com/thoughts/events-craft/how-community-programmes-compound

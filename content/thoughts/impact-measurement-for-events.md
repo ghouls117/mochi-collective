@@ -4,7 +4,7 @@ title_display: <span class="accent">Impact Measurement</span> for Events — Wha
 slug: impact-measurement-for-events
 meta_title: How to Measure Whether an Event Worked | Mochi Collective
 meta_description: Most events measure the wrong things at the wrong times. Here's the framework we use to answer "did it work?" — three signal categories, three timing windows, and one metric that beats them all.
-publish_date: 2026-08-03
+publish_date: 2026-08-04
 category: Thought Leadership
 tags: [impact measurement, event roi, event measurement, experience design, event evaluation, singapore events, brand activation, wellness retreat]
 canonical_url: https://mochicollective.com/thoughts/thought-leadership/impact-measurement-for-events

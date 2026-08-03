@@ -4,7 +4,7 @@ title_display: The Wellness Retreat That <span class="accent">Actually Changes</
 slug: wellness-retreat-that-changes
 meta_title: The Wellness Retreat That Actually Changes Its Attendees | Mochi Collective
 meta_description: Most wellness retreats end with warm feelings and no shift. The ones that change people are designed around a single transformation — here's what that looks like.
-publish_date: 2026-08-03
+publish_date: 2026-08-11
 category: Events Craft
 tags: [wellness retreats, retreat design, transformation design, experience design, singapore retreats, peak-end rule]
 canonical_url: https://mochicollective.com/thoughts/events-craft/wellness-retreat-that-changes
