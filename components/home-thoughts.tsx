@@ -21,7 +21,14 @@ const CATEGORY_TAG_COLOR: Record<string, string> = {
 
 function formatShortDate(iso: string): string {
   const d = new Date(`${iso}T00:00:00+08:00`);
-  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  // Pin to SG time so the date is identical whether this renders on the
+  // server (Vercel, UTC) or the client — otherwise a +08:00 midnight rolls
+  // back a day under UTC and mismatches the /thoughts grid.
+  return d.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    timeZone: "Asia/Singapore",
+  });
 }
 
 export function HomeThoughts() {

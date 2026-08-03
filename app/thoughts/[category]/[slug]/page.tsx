@@ -84,6 +84,7 @@ function formatFullDate(iso: string): string {
     day: "numeric",
     month: "long",
     year: "numeric",
+    timeZone: "Asia/Singapore",
   });
 }
 
