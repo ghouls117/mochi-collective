@@ -397,7 +397,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
     ],
     "reading": [
       {
-        "href": "/thoughts/events-craft/how-community-programmes-compound",
+        "href": "/thoughts/events-craft/how-community-programs-compound",
         "label": "How Community Programs Compound (And Why Most Don't)",
         "note": "the long-form argument behind this practice — the four design moves in full, and why programs stall at session four"
       },

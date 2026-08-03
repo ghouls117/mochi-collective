@@ -1,13 +1,13 @@
 ---
 title: How Community Programs Compound (And Why Most Don't)
 title_display: How Community Programs <span class="accent">Compound</span> (And Why Most Don't)
-slug: how-community-programmes-compound
+slug: how-community-programs-compound
 meta_title: How Community Programs Compound (And Why Most Don't) | Mochi Collective
 meta_description: Most community programs plateau by session four. The ones that keep working have a designed system for how strangers become members and members bring in the next generation. Here's the system.
 publish_date: 2026-08-25
 category: Events Craft
 tags: [community programs, membership design, community building, network effects, experience design, singapore community]
-canonical_url: https://mochicollective.com/thoughts/events-craft/how-community-programmes-compound
+canonical_url: https://mochicollective.com/thoughts/events-craft/how-community-programs-compound
 deck: Most community programs plateau by session four. The ones that keep working have a designed system for how strangers become members — and members bring in the next generation. Here's the system.
 ---
 
