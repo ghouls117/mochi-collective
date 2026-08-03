@@ -31,6 +31,7 @@ export const SERVICES: Service[] = [
       "Casting, talent, hosting",
       "Social + content strategy",
     ],
+    deepLink: { href: "/brand-experience", label: "How we design brand experiences — the full model" },
   },
   {
     label: "Impact Measurement",
@@ -60,6 +61,7 @@ export const SERVICES: Service[] = [
       "Production + technical",
       "Pre / during / post measurement",
     ],
+    deepLink: { href: "/conferences-and-events", label: "How we produce conferences — the full model" },
   },
   {
     label: "Sponsor Programs",
@@ -74,6 +76,7 @@ export const SERVICES: Service[] = [
       "Renewal-grade reporting",
       "Outcome conversion + relationship depth report",
     ],
+    deepLink: { href: "/sponsor-programs", label: "How we design sponsor programs — the full model" },
   },
   {
     label: "Community & Membership",
@@ -88,5 +91,6 @@ export const SERVICES: Service[] = [
       "Members integration + retention frameworks",
       "Curation systems",
     ],
+    deepLink: { href: "/community-and-membership", label: "How we build community — the full model" },
   },
 ];

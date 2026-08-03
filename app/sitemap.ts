@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/thoughts";
+import { PRACTICE_LIST } from "@/lib/practices";
 
 /**
  * Regenerate the sitemap every 15 minutes so scheduled posts appear
@@ -27,6 +28,7 @@ const PAGE_LASTMOD: Record<string, string> = {
   impact: "2026-07-19",
   privacy: "2026-07-22",
   terms: "2026-07-22",
+  practices: "2026-08-03",
 };
 
 /** Local-midnight Date for a YYYY-MM-DD string in Asia/Singapore (+08:00). */
@@ -47,6 +49,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // The /thoughts index is as fresh as its newest published post.
   const newestPostDay = posts[0]?.publish_date;
 
+  // The four practice pages (Impact Measurement has its own bespoke entry below).
+  const practiceEntries: MetadataRoute.Sitemap = PRACTICE_LIST.map((p) => ({
+    url: `${SITE_URL}/${p.slug}`,
+    lastModified: sgDate(PAGE_LASTMOD.practices),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   return [
     {
       url: SITE_URL,
@@ -66,6 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    ...practiceEntries,
     ...postEntries,
     {
       url: `${SITE_URL}/privacy`,

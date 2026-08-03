@@ -213,26 +213,38 @@ export default function ImpactMeasurementPage() {
             <h2>Reading on how we think about this</h2>
             <ul>
               <li>
-                <Link href="/thoughts/thought-leadership/6-questions-every-brief">
+                <Link
+                  href="/thoughts/thought-leadership/6-questions-every-brief"
+                  style={{ color: "var(--color-pink)" }}
+                >
                   6 Questions Every Event Brief Must Answer
                 </Link>{" "}
                 — the filter we put at the top of every brief before
                 measurement can be designed against it.
               </li>
               <li>
-                <Link href="/thoughts/thought-leadership/first-10-minutes-brief">
+                <Link
+                  href="/thoughts/thought-leadership/first-10-minutes-brief"
+                  style={{ color: "var(--color-pink)" }}
+                >
                   How We Read Event Briefs During Discovery
                 </Link>{" "}
                 — the four passes that tell us whether measurement can hold.
               </li>
               <li>
-                <Link href="/thoughts/thought-leadership/5-brief-red-flags">
+                <Link
+                  href="/thoughts/thought-leadership/5-brief-red-flags"
+                  style={{ color: "var(--color-pink)" }}
+                >
                   5 Event Brief Red Flags (and How to Fix Them)
                 </Link>{" "}
                 — the signals that a brief will fight measurement.
               </li>
               <li>
-                <Link href="/thoughts/brand-strategy/make-it-worth-talking-about">
+                <Link
+                  href="/thoughts/brand-strategy/make-it-worth-talking-about"
+                  style={{ color: "var(--color-blue)" }}
+                >
                   What we mean when we say &ldquo;make it worth talking
                   about&rdquo;
                 </Link>{" "}
@@ -240,7 +252,9 @@ export default function ImpactMeasurementPage() {
               </li>
             </ul>
 
-            <h2>Common questions</h2>
+            <h2>
+              <span className="accent">Common questions</span>
+            </h2>
             {PAGE_FAQ.map((item) => (
               <div key={item.q} className="impact-faq-item">
                 <h3>{item.q}</h3>

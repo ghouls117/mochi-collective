@@ -4,7 +4,7 @@ title_display: When Your Brand <span class="accent">Becomes a Room</span>
 slug: when-your-brand-becomes-a-room
 meta_title: When Your Brand Becomes a Room — Designing Brand Experiences That Actually Shift Perception | Mochi Collective
 meta_description: Most brand activations get great production and no memory. Here's what separates the ones that actually shift how people describe your brand from the ones that just look expensive.
-publish_date: 2026-08-25
+publish_date: 2026-08-03
 category: Brand Strategy
 tags: [brand experiences, brand activations, brand strategy, experience design, sensory design, brand perception, singapore brand activations]
 canonical_url: https://mochicollective.com/thoughts/brand-strategy/when-your-brand-becomes-a-room
