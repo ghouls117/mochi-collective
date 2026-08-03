@@ -79,7 +79,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
     ],
     "reading": [
       {
-        "href": "/thoughts/brand-strategy/when-your-brand-becomes-a-room",
+        "href": "/thoughts/events-craft/when-your-brand-becomes-a-room",
         "label": "When Your Brand Becomes a Room",
         "note": "the long-form argument this entire practice is built on"
       },

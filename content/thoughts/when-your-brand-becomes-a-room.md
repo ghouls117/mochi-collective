@@ -5,9 +5,9 @@ slug: when-your-brand-becomes-a-room
 meta_title: When Your Brand Becomes a Room — Designing Brand Experiences That Actually Shift Perception | Mochi Collective
 meta_description: Most brand activations get great production and no memory. Here's what separates the ones that actually shift how people describe your brand from the ones that just look expensive.
 publish_date: 2026-09-01
-category: Brand Strategy
+category: Events Craft
 tags: [brand experiences, brand activations, brand strategy, experience design, sensory design, brand perception, singapore brand activations]
-canonical_url: https://mochicollective.com/thoughts/brand-strategy/when-your-brand-becomes-a-room
+canonical_url: https://mochicollective.com/thoughts/events-craft/when-your-brand-becomes-a-room
 deck: Most brand activations get great production and no memory. Here's what separates the ones that actually shift how people describe your brand from the ones that just look expensive.
 ---
 
@@ -17,7 +17,7 @@ The event happened. Attendance was strong. The photos looked great. And the bran
 
 This isn't a rare outcome. It's the default. Most brand activations produce great production and no memory. Here's what separates the ones that actually change how attendees describe the brand from the ones that just look expensive.
 
-## The activation is not the message. The activation is <span class="tint-blue">the medium</span>.
+## The activation is not the message. The activation is <span class="tint-sage">the medium</span>.
 
 The most common brand-activation mistake is treating the event as the message.
 
@@ -29,7 +29,7 @@ Brand experiences that shift perception work the opposite way. The brand rarely 
 
 Then, when attendees describe the event to a friend the following week, they'll describe the feeling first and the brand second. That's when perception shifts.
 
-## Design the <span class="tint-blue">feeling target</span> before the venue
+## Design the <span class="tint-sage">feeling target</span> before the venue
 
 Before the venue is booked, before the run-of-show is drafted, before the invitation goes out, the design question that has to be answered is: *what should an attendee walk out of this room feeling that they weren't feeling when they walked in?*
 
@@ -41,7 +41,7 @@ The activations that land have an answer like *"reassured that this brand actual
 
 If the feeling target is precise, the design of the activation writes itself. If the feeling target is vague, no amount of production budget can save the memory. It's the same discipline behind [what we mean when we say "make it worth talking about"](/thoughts/brand-strategy/make-it-worth-talking-about) — name the outcome first, then design toward it.
 
-## The <span class="tint-blue">sensory anchor</span> is the receipt
+## The <span class="tint-sage">sensory anchor</span> is the receipt
 
 Every brand activation we've watched succeed has a **sensory anchor** — a specific sensory element that appears in the peak of the activation and again at the ending, and nowhere else during the attendee's regular week.
 
@@ -53,7 +53,7 @@ This is why the brand associations that last decades often trace back to specifi
 
 Design a brand activation without a sensory anchor and you're spending activation budget on decoration. Design one with, and the activation keeps working for months.
 
-## Design the <span class="tint-blue">exit</span> like it's the message
+## Design the <span class="tint-sage">exit</span> like it's the message
 
 The [peak-end rule](/thoughts/events-craft/anatomy-of-a-memorable-moment) (Kahneman) says people remember experiences by the peak and the ending, not the average. Brand activations that shift perception treat the exit as the most important five minutes of the activation — not the arrival, not the keynote, not the reveal.
 
@@ -63,7 +63,7 @@ Brand activations that hold onto their impact do the opposite. The exit is chore
 
 None of this is expensive. All of it is deliberate. The activation ends with the same design intent it opened with, and the memory that consolidates in the days afterward is anchored to the feeling — not the taxi queue.
 
-## What this means for <span class="tint-blue">the brief</span>
+## What this means for <span class="tint-sage">the brief</span>
 
 If you're commissioning a brand activation — or building one for a client — the brief-stage questions worth asking are:
 
