@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title:
       "Event ROI & Impact Measurement, Singapore — the version that survives contact with a CFO",
     description:
-      "A measurement frame designed into the experience, not bolted on afterwards. Pre, during, post. Built for events, programmes and brand activations across Singapore and Southeast Asia.",
+      "A measurement frame designed into the experience, not bolted on afterwards. Pre, during, post. Built for events, programs and brand activations across Singapore and Southeast Asia.",
     url: `${SITE_URL}${PAGE_PATH}`,
     siteName: "Mochi Collective",
     type: "website",
@@ -93,7 +93,7 @@ export default function ImpactMeasurementPage() {
             designed to survive scrutiny from a CFO, a sponsor, or a board.
             That means the measurement frame is a design decision — one we
             make at brief stage, not after the venue lights come down. Built
-            for events, programmes and brand activations across{" "}
+            for events, programs and brand activations across{" "}
             <strong>Singapore and Southeast Asia</strong>.
           </p>
 
@@ -117,7 +117,7 @@ export default function ImpactMeasurementPage() {
 
             <h2>What we measure — the four categories</h2>
             <p>
-              Across the events, community programmes, and brand activations
+              Across the events, community programs, and brand activations
               we&rsquo;ve run, the answers cluster into four durable
               categories. We test all four, every time.
             </p>

@@ -47,7 +47,7 @@ Behavioural signals require tracking someone across time. They cost something to
 
 ### <span class="tint-blue">Commercial signals</span> — what decision moved
 
-Every experience ladders to a downstream decision. A sales offsite ladders to a deal that closes. A wellness retreat ladders to a retention decision. A community programme ladders to a returning member. A brand activation ladders to a media buy that gets renewed.
+Every experience ladders to a downstream decision. A sales offsite ladders to a deal that closes. A wellness retreat ladders to a retention decision. A community program ladders to a returning member. A brand activation ladders to a media buy that gets renewed.
 
 If the experience was designed against a specific downstream decision (and it should have been — this is one of our six brief questions), then you can measure whether that decision moved. Not just whether it closed favourably — whether the experience made the decision *easier to make*. Did the pipeline shorten? Did the negotiation get less abrasive? Did the renewal come in without pushback?
 
@@ -108,7 +108,7 @@ That's what our [Impact Measurement practice](/impact-measurement) is for. And t
 
 ## Want us to help you name what <span class="accent">"worked"</span> would look like?
 
-The Brief Diagnostic is a free 30-minute conversation. We take your upcoming event, community programme, wellness retreat, or brand activation, and we work through what signals would actually tell you whether the experience did its job.
+The Brief Diagnostic is a free 30-minute conversation. We take your upcoming event, community program, wellness retreat, or brand activation, and we work through what signals would actually tell you whether the experience did its job.
 
 You leave with the Monday sentence, the three signals to track, and the three measurement windows to run them at.
 

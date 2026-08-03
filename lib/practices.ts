@@ -121,17 +121,17 @@ export const PRACTICES: Record<string, PracticeContent> = {
     "slug": "conferences-and-events",
     "label": "Conferences & Events",
     "metaTitle": "Conference & Event Production, Singapore | Mochi Collective",
-    "metaDescription": "End-to-end conference and event production across Singapore and Southeast Asia — multi-day programmes built around sponsor and attendee outcomes from day one.",
-    "ogTitle": "Conference & Event Production, Singapore — programmes that outlast Friday",
+    "metaDescription": "End-to-end conference and event production across Singapore and Southeast Asia — multi-day programs built around sponsor and attendee outcomes from day one.",
+    "ogTitle": "Conference & Event Production, Singapore — programs that outlast Friday",
     "ogDescription": "Multi-day, multi-stage conferences built around sponsor and attendee outcomes from day one. We design the curation, the room logic and the throughline — the value that survives past Friday afternoon. Singapore and Southeast Asia.",
-    "h1Html": "Multi-day programmes built around the outcome — <span class=\"accent\">not the agenda</span>.",
-    "ledeHtml": "We design multi-day, multi-stage conferences around sponsor and attendee outcomes from the first brief — the curation, the room logic and the throughline — so the value lasts past the closing keynote, not just the closing drinks. Built for conferences, summits and member programmes across <strong>Singapore and Southeast Asia</strong>.",
+    "h1Html": "Multi-day programs built around the outcome — <span class=\"accent\">not the agenda</span>.",
+    "ledeHtml": "We design multi-day, multi-stage conferences around sponsor and attendee outcomes from the first brief — the curation, the room logic and the throughline — so the value lasts past the closing keynote, not just the closing drinks. Built for conferences, summits and member programs across <strong>Singapore and Southeast Asia</strong>.",
     "serviceType": "Conference and event production",
     "jsonldDescription": "End-to-end production of multi-day, multi-stage conferences and events, designed around sponsor and attendee outcomes from brief stage. Spans curation, room logic, membership design, sponsor coordination, production and technical, and pre / during / post measurement.",
     "blocks": [
       {
         "type": "h2",
-        "text": "The run of show is not the programme"
+        "text": "The run of show is not the program"
       },
       {
         "type": "p",
@@ -139,7 +139,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "type": "p",
-        "html": "So we start somewhere else. Every programme we take on has to make a single argument — one throughline the whole thing ladders back to. If we can't name that argument with you at brief stage, we won't take the brief. A multi-day conference without a throughline is an expensive agenda, and no amount of production saves it."
+        "html": "So we start somewhere else. Every program we take on has to make a single argument — one throughline the whole thing ladders back to. If we can't name that argument with you at brief stage, we won't take the brief. A multi-day conference without a throughline is an expensive agenda, and no amount of production saves it."
       },
       {
         "type": "h2",
@@ -147,19 +147,19 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "type": "p",
-        "html": "Past Friday afternoon, three things carry whatever value the programme created. We design all three deliberately, from the brief — none of them are left to chance on the day, and none of them are the timetable."
+        "html": "Past Friday afternoon, three things carry whatever value the program created. We design all three deliberately, from the brief — none of them are left to chance on the day, and none of them are the timetable."
       },
       {
         "type": "ul",
         "items": [
           "<strong>Curation.</strong> Who is in the room, and why. The value of a conference is set by the guest list and the pairing logic before a single session is programmed — a room of the wrong people cannot be rescued by a good agenda.",
           "<strong>Room logic.</strong> How attention and introductions are engineered. Which sessions cluster the right people, where the deliberate collisions happen, and how a 400-person hall still produces the two conversations an attendee actually remembers.",
-          "<strong>Throughline.</strong> The single argument the programme makes across every day and every stage. One idea everything ladders back to, so day three reinforces day one instead of drifting into an unrelated agenda."
+          "<strong>Throughline.</strong> The single argument the program makes across every day and every stage. One idea everything ladders back to, so day three reinforces day one instead of drifting into an unrelated agenda."
         ]
       },
       {
         "type": "h2",
-        "text": "How the programme runs"
+        "text": "How the program runs"
       },
       {
         "type": "p",
@@ -167,7 +167,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "type": "p",
-        "html": "A programme people remember is not uniformly good for three days — it is anchored by a peak and closed well, which is why we engineer specific moments rather than hope one occurs. Then we prove it moved: the same pre / during / post frame our <a href=\"/impact-measurement\">measurement practice</a> uses, so the report answers to the person who signed the cheque, not to the run of show."
+        "html": "A program people remember is not uniformly good for three days — it is anchored by a peak and closed well, which is why we engineer specific moments rather than hope one occurs. Then we prove it moved: the same pre / during / post frame our <a href=\"/impact-measurement\">measurement practice</a> uses, so the report answers to the person who signed the cheque, not to the run of show."
       },
       {
         "type": "h2",
@@ -175,19 +175,19 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "type": "p",
-        "html": "The earlier the better, and multi-day programmes need more runway than a single event — curation and sponsor coordination both compound with lead time. Bring us in at brief stage and we design the room, the throughline and the measurement together. Come in once the agenda and venue are locked and we can still sharpen the programme, but the curation and the room logic are the hardest things to retrofit."
+        "html": "The earlier the better, and multi-day programs need more runway than a single event — curation and sponsor coordination both compound with lead time. Bring us in at brief stage and we design the room, the throughline and the measurement together. Come in once the agenda and venue are locked and we can still sharpen the program, but the curation and the room logic are the hardest things to retrofit."
       }
     ],
     "reading": [
       {
         "href": "/thoughts/events-craft/anatomy-of-a-memorable-moment",
         "label": "Anatomy of a Memorable Moment",
-        "note": "— the peak-end rule, and how we engineer the moment a multi-day programme is remembered by"
+        "note": "— the peak-end rule, and how we engineer the moment a multi-day program is remembered by"
       },
       {
         "href": "/impact-measurement",
         "label": "Impact Measurement",
-        "note": "— the pre / during / post model we use to prove the programme moved the outcome a sponsor paid for"
+        "note": "— the pre / during / post model we use to prove the program moved the outcome a sponsor paid for"
       },
       {
         "href": "/thoughts/thought-leadership/6-questions-every-brief",
@@ -203,7 +203,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
     "faq": [
       {
         "q": "What makes a conference worth sponsoring?",
-        "a": "A conference is worth sponsoring when the programme is built around a sponsor outcome from day one — a specific relationship, pipeline or renewal the sponsor can name — rather than a logo on a banner. We design the curation and the room logic so sponsors meet the right attendees in the right context, and we measure whether that outcome actually moved."
+        "a": "A conference is worth sponsoring when the program is built around a sponsor outcome from day one — a specific relationship, pipeline or renewal the sponsor can name — rather than a logo on a banner. We design the curation and the room logic so sponsors meet the right attendees in the right context, and we measure whether that outcome actually moved."
       },
       {
         "q": "Do you handle production and technical, or only the creative direction?",
@@ -211,24 +211,24 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "q": "What is a conference throughline?",
-        "a": "A throughline is the single argument a multi-day programme makes — the one idea every stage, session and format ladders back to. Without it, a conference is a filled agenda people forget by Monday. We define the throughline at brief stage, before the speaker list or the venue, then design the curation and room logic to carry it."
+        "a": "A throughline is the single argument a multi-day program makes — the one idea every stage, session and format ladders back to. Without it, a conference is a filled agenda people forget by Monday. We define the throughline at brief stage, before the speaker list or the venue, then design the curation and room logic to carry it."
       }
     ],
     "ctaHeadline": "Bring us in before the agenda locks.",
-    "ctaSub": "A free 30-minute discovery call — no pitch, no deck, just the questions we'd ask about your programme's throughline, its sponsors, and who's in the room.",
+    "ctaSub": "A free 30-minute discovery call — no pitch, no deck, just the questions we'd ask about your program's throughline, its sponsors, and who's in the room.",
     "utm": "conferencesevents"
   },
   "sponsor-programs": {
     "slug": "sponsor-programs",
     "label": "Sponsor Programs",
-    "metaTitle": "Sponsor Programme Design for Renewal, Singapore | Mochi Collective",
-    "metaDescription": "Sponsor programmes designed backwards from the partner's real metric — pipeline, perception, hiring or retention — and built to renew. Singapore and SE Asia.",
+    "metaTitle": "Sponsor Program Design for Renewal, Singapore | Mochi Collective",
+    "metaDescription": "Sponsor programs designed backwards from the partner's real metric — pipeline, perception, hiring or retention — and built to renew. Singapore and SE Asia.",
     "ogTitle": "Sponsorships that renew — designed backwards from the metric",
     "ogDescription": "Most sponsorships are sold as logo placement and die at renewal. We design from the sponsor's real metric and ship a report they can forward straight to their own board.",
     "h1Html": "Sponsorship designed backwards from <span class=\"accent\">the metric that renews it</span>.",
-    "ledeHtml": "Sponsor-grade programmes engineered for one outcome: the partner renews. We align the activation to the metric the sponsor is actually judged on, integrate them into the experience rather than the signage, and hand back a report they can forward straight to their own stakeholders. Built for brand programmes and events across <strong>Singapore and Southeast Asia</strong>.",
+    "ledeHtml": "Sponsor-grade programs engineered for one outcome: the partner renews. We align the activation to the metric the sponsor is actually judged on, integrate them into the experience rather than the signage, and hand back a report they can forward straight to their own stakeholders. Built for brand programs and events across <strong>Singapore and Southeast Asia</strong>.",
     "serviceType": "Sponsorship program design",
-    "jsonldDescription": "Sponsorship programme design that starts from the partner's real metric — pipeline, category perception, hiring or retention — integrates the partner natively into the experience, and ships a renewal-grade report the sponsor can forward to their own stakeholders.",
+    "jsonldDescription": "Sponsorship program design that starts from the partner's real metric — pipeline, category perception, hiring or retention — integrates the partner natively into the experience, and ships a renewal-grade report the sponsor can forward to their own stakeholders.",
     "blocks": [
       {
         "type": "h2",
@@ -269,7 +269,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "type": "p",
-        "html": "Every programme ships with a report the sponsor can hand straight to their own stakeholders — no rewrite, no translation. It reads against the metric we agreed at brief stage, pairs outcome conversion with relationship depth, and leans on the same discipline as our <a href=\"/impact-measurement\">impact measurement</a> practice, because renewal is an evidence argument and the report is the evidence. Renewal is the North Star: if the report does not make the case for next year, the programme did not do its job."
+        "html": "Every program ships with a report the sponsor can hand straight to their own stakeholders — no rewrite, no translation. It reads against the metric we agreed at brief stage, pairs outcome conversion with relationship depth, and leans on the same discipline as our <a href=\"/impact-measurement\">impact measurement</a> practice, because renewal is an evidence argument and the report is the evidence. Renewal is the North Star: if the report does not make the case for next year, the program did not do its job."
       },
       {
         "type": "h2",
@@ -281,14 +281,14 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "type": "p",
-        "html": "Either way, it starts at the brief. The questions worth asking there are simple and uncomfortable: what number is this sponsor judged on internally, who signs off the renewal, and what would that person need to see to sign again. Answer those three and the programme almost designs itself. Dodge them and you have bought another year of logo placement."
+        "html": "Either way, it starts at the brief. The questions worth asking there are simple and uncomfortable: what number is this sponsor judged on internally, who signs off the renewal, and what would that person need to see to sign again. Answer those three and the program almost designs itself. Dodge them and you have bought another year of logo placement."
       }
     ],
     "reading": [
       {
         "href": "/impact-measurement",
         "label": "Impact Measurement — the full model",
-        "note": "proving the programme moved the metric is the renewal argument, and this is how we build the proof."
+        "note": "proving the program moved the metric is the renewal argument, and this is how we build the proof."
       },
       {
         "href": "/thoughts/thought-leadership/6-questions-every-brief",
@@ -317,7 +317,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "q": "What's in a sponsor report?",
-        "a": "A renewal-grade report the sponsor can forward to their own stakeholders without rewriting it. It reads against the metric agreed at brief stage, pairs outcome conversion — the leads, meetings or perception shift generated — with how much deeper the partner relationship went, and states in plain language whether the programme earned another year. It is built to be the renewal argument, not a photo gallery."
+        "a": "A renewal-grade report the sponsor can forward to their own stakeholders without rewriting it. It reads against the metric agreed at brief stage, pairs outcome conversion — the leads, meetings or perception shift generated — with how much deeper the partner relationship went, and states in plain language whether the program earned another year. It is built to be the renewal argument, not a photo gallery."
       }
     ],
     "ctaHeadline": "Name the metric before you sell the tier.",
@@ -327,30 +327,30 @@ export const PRACTICES: Record<string, PracticeContent> = {
   "community-and-membership": {
     "slug": "community-and-membership",
     "label": "Community & Membership",
-    "metaTitle": "Community & Membership Programme Design, Singapore | Mochi Collective",
-    "metaDescription": "We design members-first community programmes in Singapore and Southeast Asia that compound — arc, belonging signal, ritual and founder-independence built in.",
+    "metaTitle": "Community & Membership Program Design, Singapore | Mochi Collective",
+    "metaDescription": "We design members-first community programs in Singapore and Southeast Asia that compound — arc, belonging signal, ritual and founder-independence built in.",
     "ogTitle": "Community & Membership — rooms people protect, three years in",
     "ogDescription": "Members-first programming designed to compound: the arc, the belonging signal, the ritual and the founder-independence test, built in before session one. Singapore and Southeast Asia.",
-    "h1Html": "Programmes that compound. <span class=\"accent\">Rooms people protect.</span>",
-    "ledeHtml": "You don't want a calendar of nice evenings. You want a programme where each gathering earns the next, each format makes the brand harder to copy, and a host can hold the room on-tone three years in. We design members-first programmes to compound — for founders and brands building community across <strong>Singapore and Southeast Asia</strong>.",
+    "h1Html": "Programs that compound. <span class=\"accent\">Rooms people protect.</span>",
+    "ledeHtml": "You don't want a calendar of nice evenings. You want a program where each gathering earns the next, each format makes the brand harder to copy, and a host can hold the room on-tone three years in. We design members-first programs to compound — for founders and brands building community across <strong>Singapore and Southeast Asia</strong>.",
     "serviceType": "Community and membership program design",
-    "jsonldDescription": "Members-first community and membership programme design that compounds — built around a multi-month arc, an engineered belonging signal, an insider ritual, and a founder-independence test. Serving Singapore and Southeast Asia.",
+    "jsonldDescription": "Members-first community and membership program design that compounds — built around a multi-month arc, an engineered belonging signal, an insider ritual, and a founder-independence test. Serving Singapore and Southeast Asia.",
     "blocks": [
       {
         "type": "h2",
-        "text": "The programme that stalls at session four"
+        "text": "The program that stalls at session four"
       },
       {
         "type": "p",
-        "html": "Most community programmes open well. Session one is full — everyone came to see what this is. By session four the same faces say the same things, the founder is quietly carrying the room, and new arrivals can't find a way in. It looks like a scheduling problem. It's a design one: the thing was booked as a run of gatherings, never built as a system that turns strangers into members and members into hosts."
+        "html": "Most community programs open well. Session one is full — everyone came to see what this is. By session four the same faces say the same things, the founder is quietly carrying the room, and new arrivals can't find a way in. It looks like a scheduling problem. It's a design one: the thing was booked as a run of gatherings, never built as a system that turns strangers into members and members into hosts."
       },
       {
         "type": "p",
-        "html": "So we start at the arc, not the invite list. If you can't tell us where a member should stand at month six versus month one, there isn't a programme yet — there's a calendar. That's our honesty test: <em>if we can't name the twelve-month arc with you, we won't take the brief.</em> Naming it is what lets every session afterwards earn the next."
+        "html": "So we start at the arc, not the invite list. If you can't tell us where a member should stand at month six versus month one, there isn't a program yet — there's a calendar. That's our honesty test: <em>if we can't name the twelve-month arc with you, we won't take the brief.</em> Naming it is what lets every session afterwards earn the next."
       },
       {
         "type": "h2",
-        "text": "What we build into a programme"
+        "text": "What we build into a program"
       },
       {
         "type": "p",
@@ -362,16 +362,16 @@ export const PRACTICES: Record<string, PracticeContent> = {
           "<strong>Concept + creative direction.</strong> The through-line that makes a room recognisably yours — why it exists, who it's for, and the tone a host can hold three years in without a script.",
           "<strong>Salon + dinner formats.</strong> The actual containers — table sizes, seating logic, the shape of a conversation — designed so the right people meet in the right order, not left to whoever sits down first.",
           "<strong>Members integration + retention frameworks.</strong> The engineered path from first-timer to regular to host, plus the belonging signal that tells a member they've crossed over instead of leaving them to guess.",
-          "<strong>Curation systems.</strong> The repeatable way you decide who's in the room next time — so the programme keeps its character as it grows, and growth doesn't dilute the thing people joined for."
+          "<strong>Curation systems.</strong> The repeatable way you decide who's in the room next time — so the program keeps its character as it grows, and growth doesn't dilute the thing people joined for."
         ]
       },
       {
         "type": "h2",
-        "text": "How the programme runs"
+        "text": "How the program runs"
       },
       {
         "type": "p",
-        "html": "Underneath the formats, four design moves decide whether a programme compounds or plateaus. We build all four in before session one, not after the drop-off starts."
+        "html": "Underneath the formats, four design moves decide whether a program compounds or plateaus. We build all four in before session one, not after the drop-off starts."
       },
       {
         "type": "ul",
@@ -388,7 +388,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "type": "p",
-        "html": "Before session one, ideally — the arc, the belonging signal and the ritual are cheap to design early and expensive to retrofit once a cohort has settled into habits. We also take on programmes that have already plateaued; there the first job is diagnostic, working out which of the four moves was never designed and whether the existing members can carry a reset. Either way, the sooner the arc is named, the more of it we can still engineer."
+        "html": "Before session one, ideally — the arc, the belonging signal and the ritual are cheap to design early and expensive to retrofit once a cohort has settled into habits. We also take on programs that have already plateaued; there the first job is diagnostic, working out which of the four moves was never designed and whether the existing members can carry a reset. Either way, the sooner the arc is named, the more of it we can still engineer."
       },
       {
         "type": "p",
@@ -398,13 +398,13 @@ export const PRACTICES: Record<string, PracticeContent> = {
     "reading": [
       {
         "href": "/thoughts/events-craft/how-community-programmes-compound",
-        "label": "How Community Programmes Compound (And Why Most Don't)",
-        "note": "the long-form argument behind this practice — the four design moves in full, and why programmes stall at session four"
+        "label": "How Community Programs Compound (And Why Most Don't)",
+        "note": "the long-form argument behind this practice — the four design moves in full, and why programs stall at session four"
       },
       {
         "href": "/impact-measurement",
         "label": "Impact Measurement for Events",
-        "note": "the sibling practice — how we prove a programme actually compounded rather than just felt warm"
+        "note": "the sibling practice — how we prove a program actually compounded rather than just felt warm"
       },
       {
         "href": "/thoughts/events-craft/anatomy-of-a-memorable-moment",
@@ -419,19 +419,19 @@ export const PRACTICES: Record<string, PracticeContent> = {
     ],
     "faq": [
       {
-        "q": "What makes a community programme compound instead of plateau?",
-        "a": "A designed arc, an engineered belonging signal, a ritual only insiders know, and a founder-independence test — all built in before the first session. Programmes that stall have none of these; they run as a series of good gatherings that lean on the founder's energy until it runs out. Programmes that compound are built so members carry the design forward."
+        "q": "What makes a community program compound instead of plateau?",
+        "a": "A designed arc, an engineered belonging signal, a ritual only insiders know, and a founder-independence test — all built in before the first session. Programs that stall have none of these; they run as a series of good gatherings that lean on the founder's energy until it runs out. Programs that compound are built so members carry the design forward."
       },
       {
-        "q": "Can you fix a community programme that has already plateaued?",
-        "a": "Yes. We start with a diagnostic — which of the four design moves (arc, belonging signal, ritual, founder-independence) was never built — then decide whether the existing members can carry a reset. Sometimes the fix is a new arc; sometimes it's handing a format to members so the founder stops carrying the room. The earlier a programme has stalled, the more of it we can still rework."
+        "q": "Can you fix a community program that has already plateaued?",
+        "a": "Yes. We start with a diagnostic — which of the four design moves (arc, belonging signal, ritual, founder-independence) was never built — then decide whether the existing members can carry a reset. Sometimes the fix is a new arc; sometimes it's handing a format to members so the founder stops carrying the room. The earlier a program has stalled, the more of it we can still rework."
       },
       {
         "q": "What formats do you design for community and membership?",
-        "a": "Mostly salon and dinner formats — small rooms where seating, table size and the order of conversation are designed so the right members meet, rather than left to chance. Around them we build the membership path, retention framework and curation system that decide who's in the room next time and keep the programme on-tone as it grows."
+        "a": "Mostly salon and dinner formats — small rooms where seating, table size and the order of conversation are designed so the right members meet, rather than left to chance. Around them we build the membership path, retention framework and curation system that decide who's in the room next time and keep the program on-tone as it grows."
       }
     ],
-    "ctaHeadline": "Put your programme against the four questions",
+    "ctaHeadline": "Put your program against the four questions",
     "ctaSub": "A free 30-minute Brief Diagnostic: we put your community or membership brief against the arc, the belonging signal, the ritual and the founder-independence test. No pitch. No deck. Just the questions we'd ask anyway.",
     "utm": "communitymembership"
   }

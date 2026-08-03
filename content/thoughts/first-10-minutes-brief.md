@@ -76,7 +76,7 @@ Either way, by the tenth minute the client has more clarity than they walked in 
 
 ## Want to know what we'd say about <span class="accent">your brief</span>?
 
-The Brief Diagnostic is a free 30-minute conversation where we run these ten minutes on your actual upcoming event, community programme, wellness retreat, or brand activation.
+The Brief Diagnostic is a free 30-minute conversation where we run these ten minutes on your actual upcoming event, community program, wellness retreat, or brand activation.
 
 You'll leave with an honest read on whether your brief can land, where it's weak, and what to sharpen before you commit budget.
 

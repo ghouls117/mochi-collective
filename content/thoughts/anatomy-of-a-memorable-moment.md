@@ -31,7 +31,7 @@ This isn't a reason to skip the ninety percent — a bad venue, cold food, or a 
 
 Every memorable experience has a peak. One moment — usually 20 to 90 seconds long — that operates as the emotional apex.
 
-Peaks aren't necessarily the biggest thing on the run-of-show. A wellness retreat's peak might be a single silent walk at dawn, not the headline yoga teacher. A brand launch's peak might be the twenty seconds when the room lights change and one product hits the plinth, not the two hours of programming around it. A community programme's peak might be a stranger's story told without slides, not the panel discussion.
+Peaks aren't necessarily the biggest thing on the run-of-show. A wellness retreat's peak might be a single silent walk at dawn, not the headline yoga teacher. A brand launch's peak might be the twenty seconds when the room lights change and one product hits the plinth, not the two hours of programming around it. A community program's peak might be a stranger's story told without slides, not the panel discussion.
 
 Peaks share three traits: they are **specific** (you can describe the exact moment), **novel** (they don't happen in your attendees' regular week), and **emotionally singular** (they trigger one feeling, not a mix).
 
@@ -63,13 +63,13 @@ The final component is social. A moment experienced alone has a half-life. A mom
 
 Designing for witnesses means designing moments people *want* to talk about. Not moments that ask them to (photo walls, hashtag prompts, "share on social" cards). Moments that are so specific, so slightly-strange, so genuinely worth describing that attendees do the work themselves.
 
-The wellness retreat that had a specific ritual only known to attendees. The activation that gave you a physical token you couldn't have got any other way. The community programme where the closing question was asked in a way you'd never heard it asked before. These moments travel because they're worth traveling. Nothing has to be prompted.
+The wellness retreat that had a specific ritual only known to attendees. The activation that gave you a physical token you couldn't have got any other way. The community program where the closing question was asked in a way you'd never heard it asked before. These moments travel because they're worth traveling. Nothing has to be prompted.
 
 ---
 
 ## The <span class="accent">four questions</span> we design against
 
-Before we build any experience — event, community programme, wellness retreat, brand activation — we run the brief against four questions. All of them come from this anatomy.
+Before we build any experience — event, community program, wellness retreat, brand activation — we run the brief against four questions. All of them come from this anatomy.
 
 1. **What is the peak, and can I describe it in one sentence?**
 2. **What is the last five minutes, and does it carry weight?**
@@ -90,7 +90,7 @@ Something rarely does.
 
 ## Want to know where <span class="accent">your next experience's peak</span> should land?
 
-The Brief Diagnostic is a free 30-minute conversation. We take your actual upcoming event, community programme, wellness retreat, or brand activation, and we work through the four questions above — plus the six we published in [our earlier post](/thoughts/thought-leadership/6-questions-every-brief) — against your brief.
+The Brief Diagnostic is a free 30-minute conversation. We take your actual upcoming event, community program, wellness retreat, or brand activation, and we work through the four questions above — plus the six we published in [our earlier post](/thoughts/thought-leadership/6-questions-every-brief) — against your brief.
 
 You leave with an honest read on where the memorable moments will (and won't) be — and what to sharpen before you commit budget.
 
