@@ -76,7 +76,7 @@ Answer those four honestly and the rest — the venue, the AV, the seating, the 
 
 ## Will your activation <span class="accent">shift perception</span>, or just look expensive?
 
-Brand Experiences is one of our four practices at Mochi Collective. We start every activation with the feeling target, engineer the sensory anchor, design the peak deliberately, and choreograph the exit as the most important five minutes of the room.
+[Brand Experiences](/brand-experience) is one of our five practices at Mochi Collective — and the same feeling-first discipline scales into [Conferences & Events](/conferences-and-events) when the room is a multi-day programme. We start every activation with the feeling target, engineer the sensory anchor, design the peak deliberately, and choreograph the exit as the most important five minutes of the room.
 
 The Brief Diagnostic is a free 30-minute conversation. We put your activation brief against the four questions above.
 

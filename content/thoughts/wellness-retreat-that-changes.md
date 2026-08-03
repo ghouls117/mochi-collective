@@ -74,7 +74,7 @@ Answer those four honestly and the rest — the yoga schedule, the meals, the ve
 
 ## Want an honest read on whether your <span class="accent">retreat design</span> will land?
 
-Wellness Retreats is one of our four practices at Mochi Collective. We design retreats around a single transformation, engineer the peak deliberately, choreograph the ending, and build in the Wednesday touchpoint — because the retreat isn't the product, the change is.
+Wellness retreats sit inside our [Community & Membership](/community-and-membership) practice — one of our five at Mochi Collective — because the retreats that actually change people give patrons a way to keep using what they found long after they leave. We design retreats around a single transformation, engineer the peak deliberately, choreograph the ending, and build in the Wednesday touchpoint — because the retreat isn't the product, the change is.
 
 The Brief Diagnostic is a free 30-minute conversation. We put your retreat brief against the four questions above, tell you where the peak is (or isn't), and what's missing from the last five minutes.
 

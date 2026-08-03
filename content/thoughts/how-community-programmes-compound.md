@@ -72,7 +72,7 @@ Answering those four honestly will tell you whether you're building a compoundin
 
 ## Is your community designed to <span class="accent">compound</span>, or to stall?
 
-Community Programmes is one of our four practices at Mochi Collective. We design the arc, engineer the belonging signal, install the rituals, and build the founder-independence test into the programme from day one — because a programme that compounds is worth ten programmes that don't.
+[Community & Membership](/community-and-membership) is one of our five practices at Mochi Collective, and community programmes are its core. We design the arc, engineer the belonging signal, install the rituals, and build the founder-independence test into the programme from day one — because a programme that compounds is worth ten programmes that don't.
 
 The Brief Diagnostic is a free 30-minute conversation. We put your programme brief against the four questions above.
 

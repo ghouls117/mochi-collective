@@ -17,7 +17,7 @@ Most of it misses the point.
 
 Not because AI can't do the things it claims to do — some of it works, technically. But because the things AI is being asked to do in impact measurement often confuse *inputs to human judgment* with *substitutes for human judgment*. And when the question is whether an experience actually worked — an event, a wellness retreat, a community programme, a brand activation — that distinction is the whole game.
 
-We use AI at Mochi Collective. We use it deliberately, in specific places, across every one of our four practices. And we tell our clients exactly where and why. Here's the honest breakdown of where it earns its keep — and where we refuse to let it near.
+We use AI at Mochi Collective. We use it deliberately, in specific places, across every one of our five practices — most of all in [Impact Measurement](/impact-measurement), where the whole question is whether the work landed. And we tell our clients exactly where and why. Here's the honest breakdown of where it earns its keep — and where we refuse to let it near.
 
 ## Where we DO use AI
 
