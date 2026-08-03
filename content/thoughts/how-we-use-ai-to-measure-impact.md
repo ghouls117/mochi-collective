@@ -5,9 +5,9 @@ slug: how-we-use-ai-to-measure-impact
 meta_title: How We Use AI to Measure Impact (and Where We Refuse To) | Mochi Collective
 meta_description: The AI-in-experiences pitch is loud. Most of it misses the point of measurement. Here's the three places AI genuinely helps us measure impact across events, retreats, community programs, and brand activations — and the three places we refuse to let it near.
 publish_date: 2026-08-18
-category: Thought Leadership
+category: Brand Strategy
 tags: [ai in experience design, impact measurement, ai ethics, wellness retreats, community programs, brand experiences, honest ai use]
-canonical_url: https://mochicollective.com/thoughts/thought-leadership/how-we-use-ai-to-measure-impact
+canonical_url: https://mochicollective.com/thoughts/brand-strategy/how-we-use-ai-to-measure-impact
 deck: The AI-in-experiences pitch is loud, and most of it misses the point of measurement. Here are the three places AI genuinely helps us measure impact — and the three places we refuse to let it near.
 ---
 
