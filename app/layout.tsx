@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
-import { SOCIAL_LINKS } from "@/lib/constants";
+import { DIRECTORY_PROFILES, SOCIAL_LINKS } from "@/lib/constants";
 
 const SITE_URL = "https://mochicollective.com";
 const SITE_NAME = "Mochi Collective";
@@ -99,9 +99,10 @@ const ORG_JSON_LD = {
     SOCIAL_LINKS.tiktok,
     // Agency-directory citations — help Google's Knowledge Graph
     // consolidate the entity across the web (entity disambiguation).
-    "https://www.sortlist.com/agency/mochicollective",
-    "https://www.goodfirms.co/company/mochi-collective-pte-ltd",
-    "https://clutch.co/profile/mochi-collective-pte",
+    // Shared with llms.txt so the two can't drift apart.
+    DIRECTORY_PROFILES.sortlist,
+    DIRECTORY_PROFILES.goodfirms,
+    DIRECTORY_PROFILES.clutch,
   ],
 };
 

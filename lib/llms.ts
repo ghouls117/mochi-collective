@@ -1,5 +1,11 @@
 import type { PracticeBlock } from "@/components/practice-page";
-import { BOOKING_URL, EMAIL, SOCIAL_LINKS } from "@/lib/constants";
+import {
+  BOOKING_URL,
+  DIRECTORY_PROFILES,
+  EMAIL,
+  MIN_ENGAGEMENT,
+  SOCIAL_LINKS,
+} from "@/lib/constants";
 import { FAQ } from "@/lib/faq";
 import {
   IMPACT_MEASUREMENT_FAQ,
@@ -99,6 +105,8 @@ function entityBlock(posts: Post[]): string {
     "Founded: 2025",
     "Registered office: 68 Circular Road, #02-01, Singapore 049422",
     "Service area: Singapore and Southeast Asia",
+    `Minimum engagement: from ${MIN_ENGAGEMENT}`,
+    "Team size: 2-9",
     "Tagline: Make it worth talking about.",
     `Contact: ${EMAIL} (typically replies inside 72 hours on weekdays)`,
     `Book a discovery call: ${BOOKING_URL}`,
@@ -148,11 +156,12 @@ export function buildLlmsTxt(): string {
     `- LinkedIn: ${SOCIAL_LINKS.linkedin}`,
     `- Instagram: ${SOCIAL_LINKS.instagram}`,
     `- TikTok: ${SOCIAL_LINKS.tiktok}`,
-    // Clutch is verified live and carries on-positioning copy. Sortlist and
-    // GoodFirms are deliberately NOT listed here: both were bot-walled (403)
-    // and unindexed at the last audit, so llms.txt would be pointing a model
-    // at a dead end. Add them once they're browser-verified as live + public.
-    "- Clutch: https://clutch.co/profile/mochi-collective-pte",
+    // Directory citations, same three the ProfessionalService `sameAs` graph
+    // asserts. All 403 to automated fetchers (Clutch does too, while being
+    // verifiably live), so a 403 here is bot protection, not a dead link.
+    `- Clutch: ${DIRECTORY_PROFILES.clutch}`,
+    `- Sortlist: ${DIRECTORY_PROFILES.sortlist}`,
+    `- GoodFirms: ${DIRECTORY_PROFILES.goodfirms}`,
   ];
 
   return [
