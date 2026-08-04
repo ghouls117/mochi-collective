@@ -21,6 +21,11 @@ const nextConfig: NextConfig = {
     "/sitemap.xml": ["./content/**/*"],
     "/thoughts": ["./content/**/*"],
     "/thoughts/[category]/[slug]": ["./content/**/*"],
+    // llms.txt lists every published essay and llms-full.txt inlines their
+    // full bodies — both call getPublishedPosts(), so they need the markdown
+    // bundled for the same reason the sitemap does.
+    "/llms.txt": ["./content/**/*"],
+    "/llms-full.txt": ["./content/**/*"],
   },
 };
 

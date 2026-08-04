@@ -43,6 +43,9 @@ export type PostFrontmatter = {
 
 export type Post = PostFrontmatter & {
   contentHtml: string;
+  /** Raw markdown body (frontmatter stripped). Used to build llms-full.txt
+   *  from the same source the page renders, so the two can't drift. */
+  contentMarkdown: string;
   readingTimeMinutes: number;
   categorySlug: string;
   urlPath: string;
@@ -91,6 +94,7 @@ function loadPostFromFile(filename: string): Post {
     publish_date,
     tags: front.tags ?? [],
     contentHtml: html,
+    contentMarkdown: content.trim(),
     readingTimeMinutes:
       front.reading_time_override ?? computeReadingTime(content),
     categorySlug,

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { BOOKING_URL } from "@/lib/constants";
+import { IMPACT_MEASUREMENT_FAQ } from "@/lib/impact-measurement";
 
 const SITE_URL = "https://mochicollective.com";
 const PAGE_PATH = "/impact-measurement";
@@ -49,23 +50,9 @@ const JSON_LD_SERVICE = {
   url: `${SITE_URL}${PAGE_PATH}`,
 };
 
-/** Page-level FAQ. Question/answer text below MUST match the visible
- *  content of the accordion at the bottom of the page (Google validates
- *  the schema against the rendered copy). */
-const PAGE_FAQ = [
-  {
-    q: "How do you measure the ROI of an event?",
-    a: "We agree the metric before the moodboard, instrument the experience before, during and after — behaviour, follow-ups, sentiment, impact — and report against the number your sponsor or CFO actually cares about.",
-  },
-  {
-    q: "Can you measure an event another agency is producing?",
-    a: "Yes. Impact Measurement runs as a standalone practice: we design the proof model around your existing program and deliver the stakeholder-facing report.",
-  },
-  {
-    q: "What's in the impact report?",
-    a: "Pre/during/post movement on the agreed metric, engagement and follow-up behaviour, sentiment shift, and a plain-language readout your CFO, sponsor or board can read without a glossary.",
-  },
-];
+/** Page-level FAQ — single source in lib/impact-measurement.ts so the visible
+ *  copy, the FAQPage JSON-LD below, and llms-full.txt can't drift apart. */
+const PAGE_FAQ = IMPACT_MEASUREMENT_FAQ;
 
 const JSON_LD_FAQ = {
   "@context": "https://schema.org",
