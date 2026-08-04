@@ -3,6 +3,30 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   /**
+   * Cache fonts hard.
+   *
+   * Files under public/ aren't content-hashed by Next, so they inherit a
+   * conservative default — the fonts were being served
+   * `max-age=0, must-revalidate`, meaning every repeat visit spent a
+   * round-trip revalidating each font before text could render.
+   *
+   * They're immutable in practice: if a face ever changes, change the
+   * FILENAME too (that's the price of the long max-age).
+   */
+  async headers() {
+    return [
+      {
+        source: "/fonts/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
+  },
+  /**
    * Bundle the Thoughts markdown into every route that reads it.
    *
    * sitemap.ts, /thoughts and the post pages all call getPublishedPosts(),
@@ -26,6 +50,8 @@ const nextConfig: NextConfig = {
     // bundled for the same reason the sitemap does.
     "/llms.txt": ["./content/**/*"],
     "/llms-full.txt": ["./content/**/*"],
+    // The OG image renderer reads these TTFs from disk at render time.
+    "/opengraph-image": ["./assets/fonts/**/*"],
   },
 };
 

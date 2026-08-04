@@ -24,8 +24,11 @@ const ORBS = [
 
 export default async function OpenGraphImage() {
   const [poppinsBold, poppinsRegular] = await Promise.all([
-    readFile(join(process.cwd(), "public/fonts/Poppins-Bold.ttf")),
-    readFile(join(process.cwd(), "public/fonts/Poppins-Regular.ttf")),
+    // Satori (ImageResponse) can't parse WOFF2, so the OG renderer keeps its
+    // own subset TTFs. They live outside public/ deliberately — browsers must
+    // never download them; the site itself loads the WOFF2 faces.
+    readFile(join(process.cwd(), "assets/fonts/Poppins-Bold.ttf")),
+    readFile(join(process.cwd(), "assets/fonts/Poppins-Regular.ttf")),
   ]);
 
   return new ImageResponse(
