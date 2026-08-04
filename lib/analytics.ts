@@ -30,7 +30,9 @@ declare global {
     fbq?: (
       command: "track" | "trackCustom" | "init",
       eventName: string,
-      params?: Record<string, unknown>
+      params?: Record<string, unknown>,
+      /** `{ eventID }` — the deduplication key paired with the CAPI event. */
+      options?: { eventID?: string }
     ) => void;
     gtag?: (
       command: "event" | "config" | "consent" | "set",
@@ -59,6 +61,86 @@ export function isTrackingHost(): boolean {
 /* ────────────────────────────────────────────────────────────── */
 /* Helpers                                                          */
 /* ────────────────────────────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────── */
+/* Meta Pixel + Conversions API                                     */
+/* ────────────────────────────────────────────────────────────── */
+
+/** Meta event names we fire from the browser and mirror server-side. */
+type MetaBrowserEvent = "PageView" | "ViewContent" | "Lead" | "Contact";
+
+/** Random per-event ID. Meta deduplicates on (event_name, event_id). */
+function newEventId(): string {
+  try {
+    if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
+  } catch {
+    /* fall through */
+  }
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+}
+
+/**
+ * Fire a Meta event on BOTH the browser Pixel and the Conversions API using
+ * one shared event ID.
+ *
+ * Meta merges the pair into a single conversion. When the browser call is
+ * lost — ad blocker, ITP, a beacon dropped on tab close — the server copy
+ * still lands, which is the entire point of running CAPI alongside the Pixel.
+ *
+ * The server call is fire-and-forget with `keepalive` so it survives the page
+ * unloading (the "Book a discovery call" click opens zcal in a new tab and
+ * can tear this one down mid-flight).
+ */
+function fireMetaEvent(
+  eventName: MetaBrowserEvent,
+  params: Record<string, unknown> = {}
+) {
+  if (!isTrackingHost()) return;
+  const eventId = newEventId();
+
+  try {
+    window.fbq?.("track", eventName, params, { eventID: eventId });
+  } catch {
+    /* swallow */
+  }
+
+  try {
+    void fetch("/api/meta-event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        eventName,
+        eventId,
+        sourceUrl: window.location.href,
+        customData: params,
+      }),
+      keepalive: true,
+    }).catch(() => {
+      /* analytics must never surface an error to the user */
+    });
+  } catch {
+    /* swallow */
+  }
+}
+
+/**
+ * Page view, deduplicated across Pixel + CAPI.
+ *
+ * Fired from <MetaPageView> on every route change. The base Pixel snippet
+ * only fires PageView once per hard load, so before this, soft navigations
+ * between App Router pages were invisible to Meta.
+ */
+export function trackPageView() {
+  fireMetaEvent("PageView");
+}
+
+/** Content page viewed (essay, practice page). */
+export function trackViewContent(contentName: string, contentCategory?: string) {
+  fireMetaEvent("ViewContent", {
+    content_name: contentName,
+    ...(contentCategory ? { content_category: contentCategory } : {}),
+  });
+}
 
 function labelFor(stepIdx: number, value: string | undefined): string | undefined {
   if (!value) return undefined;
@@ -89,16 +171,12 @@ export function trackConciergeEngaged(answers: Answers, program: Program) {
   if (!isTrackingHost()) return;
   const params = paramsFromAnswers(answers, program);
 
-  try {
-    window.fbq?.("track", "Lead", {
-      content_name: program.name,
-      content_category: "concierge_engaged",
-      value: 0,
-      currency: "SGD",
-    });
-  } catch {
-    /* swallow */
-  }
+  fireMetaEvent("Lead", {
+    content_name: program.name,
+    content_category: "concierge_engaged",
+    value: 0,
+    currency: "SGD",
+  });
 
   try {
     window.gtag?.("event", "concierge_completed", params);
@@ -127,16 +205,12 @@ export function trackBookingIntent(answers: Answers, program: Program) {
   if (!isTrackingHost()) return;
   const params = paramsFromAnswers(answers, program);
 
-  try {
-    window.fbq?.("track", "Contact", {
-      content_name: program.name,
-      content_category: "booking_intent",
-      value: 0,
-      currency: "SGD",
-    });
-  } catch {
-    /* swallow */
-  }
+  fireMetaEvent("Contact", {
+    content_name: program.name,
+    content_category: "booking_intent",
+    value: 0,
+    currency: "SGD",
+  });
 
   try {
     window.gtag?.("event", "booking_clicked", params);

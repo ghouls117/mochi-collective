@@ -26,11 +26,39 @@ export type MetaUserData = {
   lastName?: string;
   /** IANA timezone, e.g. "Asia/Singapore". Used to derive country code. */
   timezone?: string;
+  /**
+   * Browser identifiers, read server-side from the request. These are the
+   * single biggest lever on Meta's Event Match Quality score — a CAPI event
+   * without them is close to unattributable, and can't be matched against the
+   * browser event it's meant to deduplicate with.
+   *
+   * Per Meta's spec these are sent RAW, never hashed (unlike email/name).
+   */
+  /** `_fbp` cookie — the Meta browser ID set by the Pixel. */
+  fbp?: string;
+  /** `_fbc` cookie, or derived from an `fbclid` query param — click ID. */
+  fbc?: string;
+  clientIpAddress?: string;
+  clientUserAgent?: string;
 };
+
+/**
+ * Event names we send. Must match the browser Pixel's event names exactly —
+ * Meta deduplicates on the (event_name, event_id) pair, so a mismatch on
+ * either side means the event is counted twice instead of merged.
+ */
+export type MetaEventName =
+  | "PageView"
+  | "ViewContent"
+  | "Lead"
+  | "Contact"
+  | "Schedule"
+  | "Purchase"
+  | "CompleteRegistration";
 
 export type MetaEventParams = {
   /** Standard Meta event name. */
-  eventName: "Lead" | "Contact" | "Schedule" | "Purchase" | "CompleteRegistration";
+  eventName: MetaEventName;
   /** Stable identifier for this event — used by Meta to dedupe with the
    *  client-side Pixel if both fire the same event. */
   eventId: string;
@@ -118,6 +146,15 @@ export async function sendCapiEvent(
   if (lnHash) userData.ln = lnHash;
   const countryCode = timezoneToCountryCode(params.userData.timezone);
   if (countryCode) userData.country = sha256(countryCode);
+
+  // Browser/network identifiers go RAW — Meta hashes nothing here, and
+  // hashing them would break matching entirely.
+  if (params.userData.fbp) userData.fbp = params.userData.fbp;
+  if (params.userData.fbc) userData.fbc = params.userData.fbc;
+  if (params.userData.clientIpAddress)
+    userData.client_ip_address = params.userData.clientIpAddress;
+  if (params.userData.clientUserAgent)
+    userData.client_user_agent = params.userData.clientUserAgent;
 
   const event = {
     event_name: params.eventName,

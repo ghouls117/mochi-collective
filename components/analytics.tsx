@@ -19,6 +19,7 @@
 
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { MetaPageView } from "@/components/meta-page-view";
 
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -62,10 +63,14 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${pixelId}');
-fbq('track', 'PageView');
           `,
         }}
       />
+      {/* PageView is fired by <MetaPageView> instead of inline here, so it can
+          carry an eventID for Pixel/CAPI deduplication and so client-side route
+          changes are tracked too. fbq queues calls made before the script
+          finishes loading, so nothing is lost by moving it. */}
+      <MetaPageView />
       {/* No-script tracking pixel for users who block JS. */}
       <noscript>
         <img
