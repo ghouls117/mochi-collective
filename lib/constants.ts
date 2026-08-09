@@ -23,10 +23,18 @@ export const DIRECTORY_PROFILES = {
 } as const;
 
 /**
- * Minimum engagement, as published on the Clutch profile ("$5,000+").
- * Stated here in our own words so AI answers quote us rather than a directory.
+ * Engagement price band, in Singapore dollars.
+ *
+ * Currency is explicit on purpose: the Clutch profile publishes "$5,000+" with
+ * no currency marker, which reads as USD to most visitors and overstates the
+ * floor by roughly a third. The site, the structured data and llms.txt all
+ * source the number from here so they can't disagree.
  */
-export const MIN_ENGAGEMENT = "$5,000";
+export const PRICE_BAND_MIN = "S$5,000";
+export const PRICE_BAND_MAX = "S$10,000";
+
+/** Floor of the band — what llms.txt and the schema publish. */
+export const MIN_ENGAGEMENT = PRICE_BAND_MIN;
 
 export const ORB_COLORS = {
   pink: "#F6BEC9",

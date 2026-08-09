@@ -117,6 +117,103 @@ export const PRACTICES: Record<string, PracticeContent> = {
     "ctaSub": "A free 30-minute discovery call where we put your activation brief against the feeling target, the sensory anchor, the peak and the exit — no pitch, no deck, just the questions we'd ask anyway.",
     "utm": "brandexperience"
   },
+  "hackathons": {
+    "slug": "hackathons",
+    "label": "Hackathons & Developer Programs",
+    "metaTitle": "Hackathon & Developer Program Design, Singapore | Mochi Collective",
+    "metaDescription": "Hackathons that end in artefacts, not impressions — prototypes, teams that formed, developers still building at ninety days. Singapore and Southeast Asia.",
+    "ogTitle": "Hackathons, Singapore — the most measurable event we run",
+    "ogDescription": "Recruit to your ICP rather than to the room, make the judging criteria the strategy, and measure retention at ninety days instead of sign-ups on the night. Run by the team that spent five years at AngelHack.",
+    "h1Html": "The most measurable <span class=\"accent\">event we run</span>.",
+    "ledeHtml": "Hackathons and developer programs that end in artefacts rather than impressions — working prototypes, teams that formed, developers still building on your platform ninety days later. Built for platform, developer-relations and corporate innovation teams across <strong>Singapore and Southeast Asia</strong>.",
+    "serviceType": "Hackathon and developer program design",
+    "jsonldDescription": "Hackathon and developer program design for platform, developer-relations and corporate innovation teams. Participants are recruited against the client's ideal customer profile, judging criteria are set from the outcome the program is meant to produce, and success is measured on ninety-day platform retention rather than sign-ups on the night. Singapore and Southeast Asia.",
+    "blocks": [
+      {
+        "type": "h2",
+        "text": "The output is in the repo"
+      },
+      {
+        "type": "p",
+        "html": "There's a particular feeling at 2am on the second day, when a team that met on Friday finally gets the thing to compile. You can't manufacture that with a stage and a sponsor banner. You can design for it."
+      },
+      {
+        "type": "p",
+        "html": "Everything we build is meant to produce evidence, and hackathons make it easy, because they end in artefacts. Working prototypes. Submitted projects. Teams that formed. Developers who signed up for your platform and were still building on it ninety days later. Nobody has to argue about whether something happened."
+      },
+      {
+        "type": "p",
+        "html": "Justin Ng, our co-founder, spent five years at AngelHack — the world's largest hackathon organisation, with a global developer community over 500,000 strong — before starting Mochi. We know what separates a hackathon that produces a press release from one that produces a pipeline."
+      },
+      {
+        "type": "h2",
+        "text": "Three things we do differently"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "<strong>Recruit for the outcome, not the room.</strong> Two hundred warm bodies is a photo. Forty developers who match your ICP is a pipeline. We recruit against who you actually want building on your platform.",
+          "<strong>Judge on what you want to happen next.</strong> The judging criteria are the strategy — they tell every team what to optimise for. Most hackathons pick them the week before.",
+          "<strong>Measure at ninety days, not on the night.</strong> Sign-ups on the day tell you about your marketing. Retention at ninety days tells you about your platform."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Who this is for"
+      },
+      {
+        "type": "p",
+        "html": "Platform and developer-relations teams, corporate innovation and R&D groups, and companies who need to be credible with a technical audience rather than merely visible to it. The buyer here is usually different from the brand-marketing buyer, and so is the room."
+      },
+      {
+        "type": "h2",
+        "text": "When to bring us in"
+      },
+      {
+        "type": "p",
+        "html": "Early enough that the judging criteria can still be designed rather than picked. Recruitment against an ICP takes lead time, and the ninety-day measurement window only exists if the instrumentation is agreed before the event, not bolted on after it. Eight to twelve weeks out is comfortable."
+      }
+    ],
+    "reading": [
+      {
+        "href": "/impact-measurement",
+        "label": "Impact Measurement",
+        "note": "the operating system underneath every practice, including this one."
+      },
+      {
+        "href": "/thoughts/events-craft/anatomy-of-a-memorable-moment",
+        "label": "The Anatomy of a Memorable Moment",
+        "note": "why the 2am moment is designed, not lucky."
+      },
+      {
+        "href": "/thoughts/thought-leadership/6-questions-every-brief",
+        "label": "6 Questions That Should Live At The Top Of Every Brief",
+        "note": "the brief-stage filter we apply before agreeing to run anything."
+      },
+      {
+        "href": "/thoughts/thought-leadership/impact-measurement-for-events",
+        "label": "Impact Measurement for Events",
+        "note": "the three signal categories and three timing windows we measure against."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do you measure whether a hackathon worked?",
+        "a": "Sign-ups on the day tell you about your marketing, so we measure at ninety days instead: how many developers are still building on your platform, how many teams stayed together, and what actually shipped. Hackathons make this unusually clean because they end in artefacts — the output is in the repo, so nobody has to argue about whether something happened."
+      },
+      {
+        "q": "How many developers should a hackathon aim for?",
+        "a": "Fewer than you would expect, matched more tightly than is comfortable. Two hundred warm bodies is a photo; forty developers who match your ideal customer profile is a pipeline. We recruit against the outcome you want rather than against the size of the room."
+      },
+      {
+        "q": "Who runs hackathons at Mochi Collective?",
+        "a": "Justin Ng, our co-founder, spent five years at AngelHack — the world's largest hackathon organisation, with a global developer community over 500,000 strong — running programs there before starting Mochi. You get founders on the work rather than a pitch team."
+      }
+    ],
+    "ctaHeadline": "Put your hackathon brief on the table",
+    "ctaSub": "A free 30-minute discovery call. We'll look at who you're trying to reach, what the judging criteria should be, and what you'd need to see at ninety days to call it worth repeating.",
+    "utm": "hackathons"
+  },
   "conferences-and-events": {
     "slug": "conferences-and-events",
     "label": "Conferences & Events",

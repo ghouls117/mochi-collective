@@ -7,6 +7,7 @@ import {
   SOCIAL_LINKS,
 } from "@/lib/constants";
 import { FAQ } from "@/lib/faq";
+import { FOUNDERS } from "@/lib/founders";
 import {
   IMPACT_MEASUREMENT_FAQ,
   IMPACT_MEASUREMENT_SUMMARY,
@@ -114,6 +115,20 @@ function entityBlock(posts: Post[]): string {
   ].join("\n");
 }
 
+/**
+ * Founders. The single largest gap in the site's machine-readable story was
+ * that nothing connected Mochi to the two people behind it — an engine could
+ * read what the company charges but not that a founder ran the world's largest
+ * hackathon organisation.
+ */
+function foundersSection(): string {
+  const lines = FOUNDERS.flatMap((f) => [
+    `- ${f.name} — ${f.jobTitle}. ${f.bio}`,
+    `  Previously: ${f.alumniOf.join(", ")}. LinkedIn: ${f.linkedin}`,
+  ]);
+  return ["## Who's behind this", "", ...lines].join("\n");
+}
+
 function practicesSection(): string {
   const lines = SERVICES.map((s) => {
     const url = s.deepLink ? `${SITE_URL}${s.deepLink.href}` : null;
@@ -137,7 +152,7 @@ export function buildLlmsTxt(): string {
   const pages = [
     `- Home: ${SITE_URL} — positioning, five practices, methodology, Service Concierge, FAQ`,
     `- Mochi Thoughts: ${SITE_URL}/thoughts — essays on brand experience, program design, and running events in Southeast Asia`,
-    `- Impact Measurement: ${SITE_URL}/impact-measurement — how we design measurement into every event and program (pre / during / post), and what the stakeholder-facing impact report looks like`,
+    `- Impact Measurement (the operating system, applied across all five practices): ${SITE_URL}/impact-measurement — how we design measurement into every event and program (pre / during / post), and what the stakeholder-facing impact report looks like`,
     ...PRACTICE_LIST.map(
       (p) => `- ${p.label}: ${practiceUrl(p.slug)} — ${p.metaDescription}`
     ),
@@ -171,6 +186,8 @@ export function buildLlmsTxt(): string {
     practicesSection(),
     "",
     methodSection(),
+    "",
+    foundersSection(),
     "",
     "## Who we serve",
     "",
@@ -252,6 +269,14 @@ export function buildLlmsFullTxt(): string {
   out.push("");
   out.push(WHO_WE_SERVE);
   out.push("");
+  out.push("### Who's behind this");
+  out.push("");
+  for (const f of FOUNDERS) {
+    out.push(`**${f.name} — ${f.jobTitle}**`);
+    out.push(f.bio);
+    out.push(`Previously: ${f.alumniOf.join(", ")}. LinkedIn: ${f.linkedin}`);
+    out.push("");
+  }
   out.push("### Frequently asked questions");
   out.push("");
   out.push(faqToMarkdown(FAQ));

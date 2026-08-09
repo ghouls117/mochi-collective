@@ -10,6 +10,7 @@ import {
   getAllPosts,
   getPost,
 } from "@/lib/thoughts";
+import { AUTHOR_FOUNDER, founderId } from "@/lib/founders";
 
 /**
  * Revalidate every 15 minutes so the noindex meta and related-post
@@ -58,7 +59,7 @@ export async function generateMetadata({
       siteName: "Mochi Collective",
       type: "article",
       publishedTime: `${post.publish_date}T00:00:00+08:00`,
-      authors: ["Mochi Collective"],
+      authors: [AUTHOR_FOUNDER.name],
       tags: post.tags,
       locale: "en_SG",
       images: [
@@ -111,8 +112,12 @@ export default async function ThoughtsPostPage({
     description: post.meta_description,
     datePublished: `${post.publish_date}T09:00:00+08:00`,
     dateModified: `${post.publish_date}T09:00:00+08:00`,
+    // Author is a Person, not the organisation. Author authority is a real
+    // factor in whether an answer engine quotes a page, and six essays
+    // attributed to a company entity build authority for nobody. The @id
+    // resolves to the Person node emitted in the root layout's graph.
     author: {
-      "@id": `${SITE_URL}/#org`,
+      "@id": founderId(SITE_URL, AUTHOR_FOUNDER.name),
     },
     publisher: { "@id": `${SITE_URL}/#org` },
     keywords: post.tags.join(", "),
@@ -148,7 +153,7 @@ export default async function ThoughtsPostPage({
             {post.deck && <p className="th-art-deck">{post.deck}</p>}
             <div className="th-art-meta">
               <span>
-                <strong>Mochi Collective</strong>
+                <strong>{AUTHOR_FOUNDER.name}</strong>
               </span>
               <span className="dot">·</span>
               <span>{formatFullDate(post.publish_date)}</span>

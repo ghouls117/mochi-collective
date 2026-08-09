@@ -1,7 +1,8 @@
 "use client";
 
 import { Fragment, useRef, useState } from "react";
-import { SERVICES } from "@/lib/services";
+import Link from "next/link";
+import { SERVICES, FORMATS } from "@/lib/services";
 import { SectionEyebrow } from "./section-eyebrow";
 
 export function Services() {
@@ -42,9 +43,18 @@ export function Services() {
               <span className="accent">One</span> operating system.
             </h2>
           </div>
+          {/* The operating system IS impact measurement — this lede is where
+              that practice now lives, and it links out to the page so the
+              claim has somewhere to prove itself. */}
           <p className="lede reveal reveal-d2">
-            Held together by the same proof model, Mochi’s experiential concept
-            can be applied to any type and scale of initiative.
+            The operating system is{" "}
+            <Link href="/impact-measurement" className="lede-link">
+              impact measurement
+            </Link>
+            . One metric, agreed in writing before we design anything, then
+            instrumented before, during and after — with a control built in
+            wherever the format allows. Five different rooms; the same proof
+            model underneath every one.
           </p>
         </div>
 
@@ -143,6 +153,17 @@ export function Services() {
               );
             })}
           </div>
+        </div>
+
+        {/* Plain-language restatement of the five, for people who scan past
+            the tab interaction without opening a panel. */}
+        <div className="formats reveal">
+          <span className="formats-label">Formats we&rsquo;re known for</span>
+          <ul className="formats-list">
+            {FORMATS.map((f) => (
+              <li key={f}>{f}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

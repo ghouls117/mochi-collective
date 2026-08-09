@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
 import { DIRECTORY_PROFILES, SOCIAL_LINKS } from "@/lib/constants";
+import { FOUNDERS, founderId } from "@/lib/founders";
 
 const SITE_URL = "https://mochicollective.com";
 const SITE_NAME = "Mochi Collective";
@@ -59,8 +60,27 @@ export const viewport: Viewport = {
  * disambiguate "Mochi Collective" from mochi dessert brands and unrelated
  * products, and so structured data appears on legal + future service pages.
  */
+/**
+ * Person entities for the two founders.
+ *
+ * Without these, an answer engine can read what Mochi does and charges but has
+ * no machine-readable way to know that a founder ran the world's largest
+ * hackathon organisation. `sameAs` is what ties each Person to the LinkedIn
+ * profile carrying the actual track record, and `@id` lets the company entity
+ * and every BlogPosting reference the same person rather than duplicating them.
+ */
+const FOUNDER_JSON_LD = FOUNDERS.map((f) => ({
+  "@type": "Person",
+  "@id": founderId(SITE_URL, f.name),
+  name: f.name,
+  jobTitle: f.jobTitle,
+  worksFor: { "@id": `${SITE_URL}/#org` },
+  alumniOf: f.alumniOf.map((org) => ({ "@type": "Organization", name: org })),
+  sameAs: [f.linkedin],
+}));
+
 const ORG_JSON_LD = {
-  "@context": "https://schema.org",
+  // @context lives on ORG_GRAPH, which wraps this node.
   "@type": "ProfessionalService",
   "@id": `${SITE_URL}/#org`,
   name: SITE_NAME,
@@ -92,6 +112,9 @@ const ORG_JSON_LD = {
     "sponsorship programs",
     "community programs",
     "membership program design",
+    "hackathons",
+    "developer programs",
+    "developer relations",
   ],
   sameAs: [
     SOCIAL_LINKS.linkedin,
@@ -104,6 +127,13 @@ const ORG_JSON_LD = {
     DIRECTORY_PROFILES.goodfirms,
     DIRECTORY_PROFILES.clutch,
   ],
+  founder: FOUNDER_JSON_LD.map((p) => ({ "@id": p["@id"] })),
+};
+
+/** Company + both founders as one graph, so the Person nodes resolve. */
+const ORG_GRAPH = {
+  "@context": "https://schema.org",
+  "@graph": [ORG_JSON_LD, ...FOUNDER_JSON_LD],
 };
 
 export default function RootLayout({
@@ -148,7 +178,7 @@ export default function RootLayout({
         <Analytics />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_GRAPH) }}
         />
       </body>
     </html>

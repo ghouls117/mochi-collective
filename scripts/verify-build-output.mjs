@@ -29,6 +29,7 @@ const CORE_PATHS = [
   "/thoughts",
   "/impact-measurement",
   "/brand-experience",
+  "/hackathons",
   "/conferences-and-events",
   "/sponsor-programs",
   "/community-and-membership",

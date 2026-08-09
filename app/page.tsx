@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero";
 import { Manifesto } from "@/components/manifesto";
 import { Services } from "@/components/services";
 import { Method } from "@/components/method";
+import { Founders } from "@/components/founders";
 import { ConciergeSection } from "@/components/concierge-section";
 import { HomeThoughts } from "@/components/home-thoughts";
 import { Faq } from "@/components/faq";
@@ -65,6 +66,7 @@ export default function HomePage() {
         <Manifesto />
         <Services />
         <Method />
+        <Founders />
         <ConciergeSection />
         <HomeThoughts />
         <Contact />

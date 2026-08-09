@@ -25,6 +25,6 @@ export const METHOD: MethodStep[] = [
     h: "Proof",
     tone: "#F9C84A",
     body:
-      "Pre, during and post. Behaviour, follow-ups, sentiment, impact. A report you can hand to any of your or a partner’s stakeholder without a single flinch.",
+      "Pre, during and post, against the number we agreed at the start. Where the format allows it we build in a control: a held-back invite list, a comparison period, an unprogrammed night. That’s what separates this worked from this happened at the same time as something else. You get a report you can hand to any stakeholder without a flinch, including the parts that didn’t move.",
   },
 ];

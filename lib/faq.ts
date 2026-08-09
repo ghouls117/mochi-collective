@@ -24,7 +24,7 @@ export const FAQ: FaqItem[] = [
   },
   {
     q: "How do you measure ROI?",
-    a: "We start with the metric, not the moodboard. Agree what the event or program has to change, instrument it before, during and after — behaviour, follow-ups, sentiment, impact — and report against the number your stakeholder, sponsor or board actually cares about.",
+    a: "We agree the metric with you before we design anything, and we put it in writing: one primary number, a target, and the window. Then we build a control into the design wherever the format allows. A held-back invite list, a comparison period, an unprogrammed night or site. That's what lets us say something changed because of the event, rather than merely that it changed. We're straight about the limits. At forty guests you don't get statistical significance, and anyone telling you otherwise is selling. What you get is decision-grade evidence, enough to know whether to run it again, change it, or stop. We report the ones that didn't move too. And we always ask people what they remember. It's the question that tells you the most and gets asked the least.",
   },
   {
     q: "How fast do you turn around a proposal?",

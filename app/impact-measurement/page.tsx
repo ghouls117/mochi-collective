@@ -70,7 +70,9 @@ export default function ImpactMeasurementPage() {
       <Nav />
       <main id="main" className="subpage">
         <div className="wrap">
-          <div className="eyebrow">Practice · Impact Measurement</div>
+          {/* Not badged as a practice: measurement is the operating system
+              underneath all five, not a sixth thing you buy separately. */}
+          <div className="eyebrow">The operating system · Impact Measurement</div>
           <h1>
             Impact measurement, built into the experience —{" "}
             <span className="accent">not bolted on</span> at the end.

@@ -30,10 +30,10 @@ export function Hero() {
             <div className="hero-sub reveal reveal-d2">
               <p>
                 Singapore&rsquo;s brand-experience, program design and events
-                agency for teams whose events and programs have to prove their
-                worth. Brand activations, conferences and community programs
-                with impact measurement baked in &mdash; so the report writes
-                itself and the next one funds itself.
+                agency. We build the moments people are still talking about
+                months later, and we can show you in numbers that they are.
+                Brand activations, conferences and community programs, with the
+                proof built in from the brief.
               </p>
             </div>
             <div className="hero-actions reveal reveal-d3">

@@ -1,5 +1,6 @@
 import { Concierge } from "./concierge";
 import { SectionEyebrow } from "./section-eyebrow";
+import { PRICE_BAND_MAX, PRICE_BAND_MIN } from "@/lib/constants";
 
 export function ConciergeSection() {
   return (
@@ -21,6 +22,18 @@ export function ConciergeSection() {
         <div className="reveal reveal-d3">
           <Concierge />
         </div>
+        {/* A price floor filters inbound before it costs an hour. It was
+            already declared in llms.txt, so machines knew it and humans
+            didn't — this puts the same number where people can see it. */}
+        <p className="concierge-price reveal">
+          Most engagements start between{" "}
+          <strong>
+            {PRICE_BAND_MIN}&ndash;{PRICE_BAND_MAX}
+          </strong>
+          , depending on how much of it we run. If you&rsquo;re not there yet, say
+          so in the form &mdash; we&rsquo;ll tell you honestly whether we&rsquo;re
+          the right call, or point you to someone who is.
+        </p>
       </div>
     </section>
   );

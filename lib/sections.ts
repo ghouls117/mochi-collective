@@ -11,6 +11,7 @@ export const SECTIONS = [
   "manifesto",
   "work",
   "method",
+  "founders",
   "concierge",
   "thoughts",
   "contact",

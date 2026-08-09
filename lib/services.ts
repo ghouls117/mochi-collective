@@ -17,6 +17,19 @@ export type Service = {
   deepLink?: { href: string; label: string };
 };
 
+/**
+ * Formats strip under the five practice panels — a plain-language restatement
+ * of the practices for people who scan past the tab interaction. Deliberately
+ * mirrors the five rather than introducing new categories.
+ */
+export const FORMATS: string[] = [
+  "Brand experience & launch moments",
+  "Hackathons & developer programs",
+  "Conferences & events",
+  "Sponsor programs",
+  "Community & membership programs",
+];
+
 export const SERVICES: Service[] = [
   {
     label: "Brand Experiences",
@@ -34,19 +47,22 @@ export const SERVICES: Service[] = [
     deepLink: { href: "/brand-experience", label: "How we design brand experiences — the full model" },
   },
   {
-    label: "Impact Measurement",
-    title: "The proof model is the brief.",
-    serviceType: "Event impact measurement and reporting",
+    label: "Hackathons & Developer Programs",
+    title: "The most measurable event we run.",
+    serviceType: "Hackathon and developer program design",
     color: "#93ADBF",
     body:
-      "A measurement frame your stakeholders, your sponsor / target accounts or pipeline, and your team that will all trust. We design measurement in — not bolt it on at the end — so the report is a by-product of the experience itself.",
+      "Everything we build is meant to produce evidence, and hackathons make it easy — they end in artefacts. Working prototypes. Teams that formed. Developers still building on your platform ninety days later. Nobody has to argue about whether something happened.",
     list: [
-      "Pre / post structure design",
-      "Pre, during, and post engagement",
-      "Stakeholder-facing reporting",
-      "Behaviour + sentiment tracking",
+      "Recruit to your ICP, not to the room",
+      "Judging criteria as strategy",
+      "Sponsor + platform integration",
+      "90-day retention measurement",
     ],
-    deepLink: { href: "/impact-measurement", label: "How we measure — the full model" },
+    deepLink: {
+      href: "/hackathons",
+      label: "How we run hackathons — the full model",
+    },
   },
   {
     label: "Conferences & Events",
