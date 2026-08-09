@@ -20,6 +20,7 @@
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { MetaPageView } from "@/components/meta-page-view";
+import { GOOGLE_ADS_ID } from "@/lib/constants";
 
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -38,6 +39,7 @@ export function Analytics() {
     <>
       {META_PIXEL_ID && <MetaPixel pixelId={META_PIXEL_ID} />}
       {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
+      {GA_ID && <GoogleAdsTag />}
       {CLARITY_ID && <MicrosoftClarity projectId={CLARITY_ID} />}
       {LINKEDIN_PARTNER_ID && (
         <LinkedInInsightTag partnerId={LINKEDIN_PARTNER_ID} />
@@ -82,6 +84,33 @@ fbq('init', '${pixelId}');
         />
       </noscript>
     </>
+  );
+}
+
+/**
+ * Google Ads conversion tracking.
+ *
+ * Deliberately does NOT load gtag.js — GA4 already loads it on every page, and
+ * Google's instructions for that case are to add only the extra `config`
+ * command for the Ads account. Loading the library twice would be redundant.
+ *
+ * Pushing straight to dataLayer is safe regardless of script order: gtag.js
+ * drains whatever is already queued when it initialises. Gated on GA_ID
+ * because that's what puts gtag.js on the page in the first place.
+ */
+function GoogleAdsTag() {
+  return (
+    <Script
+      id="google-ads-config"
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('config', '${GOOGLE_ADS_ID}');
+        `,
+      }}
+    />
   );
 }
 

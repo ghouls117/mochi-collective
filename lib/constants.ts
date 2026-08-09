@@ -36,6 +36,29 @@ export const PRICE_BAND_MAX = "S$10,000";
 /** Floor of the band — what llms.txt and the schema publish. */
 export const MIN_ENGAGEMENT = PRICE_BAND_MIN;
 
+/**
+ * Google Ads conversion tracking.
+ *
+ * Hardcoded rather than env-driven, for the same reason as the LinkedIn
+ * partner ID: these are public client-side identifiers, single-tenant, and a
+ * stale Vercel env var already silently broke one pixel for weeks.
+ *
+ * gtag.js itself is NOT loaded here — GA4 already loads it site-wide via
+ * @next/third-parties, so we only add the extra `config` for the Ads account
+ * (this is Google's own documented path when the tag is already installed).
+ */
+export const GOOGLE_ADS_ID = "AW-18292013361";
+
+/**
+ * Conversion label for "booking intent" — a click on Book a Discovery.
+ *
+ * NOTE: the label Google issued was generated against a **Page view**
+ * conversion action. There is no thank-you page on this site (bookings finish
+ * on zcal.co), so it must be switched to a custom action in Google Ads or it
+ * will never fire correctly. See the note in trackBookingIntent.
+ */
+export const GOOGLE_ADS_BOOKING_LABEL = "I3LkCOWlj94cELHyp5JE";
+
 export const ORB_COLORS = {
   pink: "#F6BEC9",
   blue: "#7ECADF",

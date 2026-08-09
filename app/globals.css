@@ -541,9 +541,11 @@ section {
   padding-bottom: calc(var(--section-y) * 0.6);
 }
 /* Single reading column — the argument runs through five subheads and a pull
-   quote, which the previous two-column grid couldn't carry. */
+   quote, which the previous two-column grid couldn't carry. Width is left to
+   .wrap so the section lines up with .method-grid and .founders-grid rather
+   than sitting visibly narrower than its neighbours. */
 .manifesto-col {
-  max-width: 62ch;
+  max-width: none;
 }
 .manifesto-body {
   display: flex;
@@ -553,6 +555,7 @@ section {
   line-height: 1.6;
   color: var(--ink-2);
   margin-top: 30px;
+  max-width: none;
 }
 .manifesto-body strong {
   color: var(--ink);
@@ -964,15 +967,27 @@ section {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 10px;
+  gap: 8px;
 }
-.formats-list li {
-  font-size: 13.5px;
+.formats-list a {
+  display: inline-block;
+  font-size: 13px;
   color: var(--ink-2);
   border: 1px solid var(--line);
   border-radius: 100px;
-  padding: 5px 13px;
+  padding: 5px 11px;
   line-height: 1.3;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+/* Each oval is a link to its practice page — lift it on hover so it reads as
+   clickable without an underline. */
+.formats-list a:hover,
+.formats-list a:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink-soft);
+  background: var(--card);
 }
 
 /* ─── Founders (Section 04) ──────────────────────────────────── */

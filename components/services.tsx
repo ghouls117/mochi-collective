@@ -161,7 +161,9 @@ export function Services() {
           <span className="formats-label">Formats we&rsquo;re known for</span>
           <ul className="formats-list">
             {FORMATS.map((f) => (
-              <li key={f}>{f}</li>
+              <li key={f.href}>
+                <Link href={f.href}>{f.label}</Link>
+              </li>
             ))}
           </ul>
         </div>

@@ -22,12 +22,12 @@ export type Service = {
  * of the practices for people who scan past the tab interaction. Deliberately
  * mirrors the five rather than introducing new categories.
  */
-export const FORMATS: string[] = [
-  "Brand experience & launch moments",
-  "Hackathons & developer programs",
-  "Conferences & events",
-  "Sponsor programs",
-  "Community & membership programs",
+export const FORMATS: { label: string; href: string }[] = [
+  { label: "Brand experience & launch moments", href: "/brand-experience" },
+  { label: "Hackathons & developer programs", href: "/hackathons" },
+  { label: "Conferences & events", href: "/conferences-and-events" },
+  { label: "Sponsor programs", href: "/sponsor-programs" },
+  { label: "Community & membership programs", href: "/community-and-membership" },
 ];
 
 export const SERVICES: Service[] = [
