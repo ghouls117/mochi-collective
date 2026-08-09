@@ -110,7 +110,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "q": "Can you measure whether a brand activation worked?",
-        "a": "Yes, if the proof is designed in at brief stage rather than bolted on afterwards. We name the feeling target and the downstream signal up front, so press, social, word of mouth and the behaviour that follows can be tracked after the doors close. The standalone version of that work runs as our Impact Measurement practice, and can wrap an activation another agency is producing."
+        "a": "Yes, if the proof is designed in at brief stage rather than bolted on afterwards. We name the feeling target and the downstream signal up front, so press, social, word of mouth and the behaviour that follows can be tracked after the doors close. Impact measurement is the operating system under everything we run — and it can also wrap an activation another agency is producing."
       }
     ],
     "ctaHeadline": "Put your activation brief on the table",
@@ -303,8 +303,8 @@ export const PRACTICES: Record<string, PracticeContent> = {
         "a": "A conference is worth sponsoring when the program is built around a sponsor outcome from day one — a specific relationship, pipeline or renewal the sponsor can name — rather than a logo on a banner. We design the curation and the room logic so sponsors meet the right attendees in the right context, and we measure whether that outcome actually moved."
       },
       {
-        "q": "Do you handle production and technical, or only the creative direction?",
-        "a": "Both. Conferences & Events is end-to-end: membership design, sponsor coordination, production and technical, and pre / during / post measurement all run under one team. We can also take on production against a concept another partner has already set, but the throughline has to hold — otherwise the logistics have nothing to serve."
+        "q": "Can you take over production on a conference someone else has already designed?",
+        "a": "Yes, if the throughline holds. We'll run production, technical and sponsor coordination against a concept another partner has set — but the single argument the program makes has to be defensible, otherwise the logistics have nothing to serve. Where there isn't one, we'll fix that first or tell you we're not the right team. Taken from scratch, Conferences & Events is end-to-end: curation, sponsor coordination, production and technical, and pre / during / post measurement."
       },
       {
         "q": "What is a conference throughline?",

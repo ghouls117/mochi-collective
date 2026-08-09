@@ -114,29 +114,29 @@ export const QUIZ_STEPS: QuizStep[] = [
     key: "budget",
     q: "And the working budget?",
     helper:
-      "Order of magnitude. We design to it — and tell you when it doesn’t add up.",
+      "Order of magnitude, in Singapore dollars — the total working budget for the event, not our fee. We design to it, and tell you when it doesn’t add up.",
     options: [
       {
         value: "b-s",
-        label: "Under $50k",
+        label: "Under S$50k",
         sub: "Lean, sharp, one beautiful idea.",
         dot: "#F9C84A",
       },
       {
         value: "b-m",
-        label: "$50k – $250k",
+        label: "S$50k – S$250k",
         sub: "Most of our community + activation work.",
         dot: "#BFDEA3",
       },
       {
         value: "b-l",
-        label: "$250k – $1M",
+        label: "S$250k – S$1M",
         sub: "Full conference and multi-touch programs.",
         dot: "#7ECADF",
       },
       {
         value: "b-xl",
-        label: "$1M+",
+        label: "S$1M+",
         sub: "Flagship, multi-city, season-long.",
         dot: "#F6BEC9",
       },

@@ -6,6 +6,15 @@ import { SectionEyebrow } from "./section-eyebrow";
 const ZCAL_PATH = "zcal.co/mochicollective/consultation";
 const ZCAL_URL = `https://${ZCAL_PATH}`;
 
+/** Spell small counts, so the lede reads as prose rather than "The 10". */
+const NUMBER_WORDS = [
+  "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+  "nine", "ten", "eleven", "twelve",
+];
+function numberWord(n: number): string {
+  return NUMBER_WORDS[n] ?? String(n);
+}
+
 /**
  * Render a plain-text answer with the primary contact email and the zcal
  * booking URL turned into links. Source data in lib/faq.ts stays as plain
@@ -48,9 +57,12 @@ export function Faq() {
           Questions before the <span className="accent">call</span>.
         </h2>
         <p className="lede reveal reveal-d2">
-          The nine we get asked most. If yours isn&rsquo;t here, email{" "}
-          <a href={`mailto:${EMAIL}`}>{EMAIL}</a> &mdash; we typically reply
-          inside 72 hours on weekdays.
+          {/* Counted from the array, not typed. This line read "The nine" above
+              ten questions for two deploys — on the section of the site that
+              argues hardest for getting numbers right. */}
+          The {numberWord(FAQ.length)} we get asked most. If yours isn&rsquo;t
+          here, email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> &mdash; we
+          typically reply inside 72 hours on weekdays.
         </p>
 
         <div className="faq-list">
