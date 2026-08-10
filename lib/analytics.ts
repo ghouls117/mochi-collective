@@ -16,7 +16,6 @@
  */
 
 import type { Answers, Program } from "@/components/concierge/data";
-import { GOOGLE_ADS_BOOKING_LABEL, GOOGLE_ADS_ID } from "@/lib/constants";
 import {
   QUIZ_STEPS,
   pressureLabels,
@@ -219,24 +218,23 @@ export function trackBookingIntent(answers: Answers, program: Program) {
     /* swallow */
   }
 
-  // Google Ads conversion. Booking intent is the strongest signal that exists
-  // on this domain — the booking itself completes on zcal.co, which we don't
-  // control, so there is no thank-you page to fire a page-view conversion on.
+  // No separate Google Ads conversion call here on purpose.
   //
-  // Requires the conversion action in Google Ads to be a CUSTOM action, not
-  // the "Page view" type the label was originally generated against.
+  // The Ads conversion actions are keyed on the gtag event NAME
+  // ("booking_clicked" above, "concierge_completed" in trackConciergeEngaged),
+  // and the AW account is configured on every page in components/analytics.tsx.
+  // That is all Google Ads needs — the event it counts is the one already
+  // fired above.
   //
-  // This over-counts relative to confirmed bookings: it fires on click-through,
-  // not on a completed booking. The accurate version is offline conversion
+  // A second gtag('event','conversion',{send_to: AW-…/label}) used to live here,
+  // aimed at an earlier "Page view" conversion action. With event-keyed actions
+  // in place that call would let one click register against two conversion
+  // actions, so it was removed.
+  //
+  // Still worth knowing: this counts click-through to zcal, not a confirmed
+  // booking, so it over-reports. The accurate version is offline conversion
   // import — capture the GCLID on landing, carry it through the concierge, and
   // report from the zcal webhook that already fires Meta's CAPI event.
-  try {
-    window.gtag?.("event", "conversion", {
-      send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_BOOKING_LABEL}`,
-    });
-  } catch {
-    /* swallow */
-  }
 
   try {
     window.clarity?.("set", "concierge_stage", "intent");
