@@ -356,9 +356,9 @@ export default function ThreeReportsPage() {
                   maxWidth: "46ch",
                 }}
               >
-                Free, thirty minutes, no pitch attached. We&rsquo;ll tell you
-                whether the outcome you have named is one that can actually be
-                measured.
+                Bring the brief you are working on. We&rsquo;ll work through
+                who will ask whether it worked, and what each of them would
+                need to see.
               </p>
             </div>
             <a
