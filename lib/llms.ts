@@ -156,6 +156,7 @@ export function buildLlmsTxt(): string {
     ...PRACTICE_LIST.map(
       (p) => `- ${p.label}: ${practiceUrl(p.slug)} — ${p.metaDescription}`
     ),
+    `- The Three Reports: ${SITE_URL}/three-reports — what leadership, sponsors and go-to-market each need after an event, the reporting structure that answers all three, and what event measurement cannot honestly claim`,
     `- Privacy Policy: ${SITE_URL}/privacy`,
     `- Terms of Use: ${SITE_URL}/terms`,
   ];

@@ -51,6 +51,7 @@ import {
   type ParsedBooking,
 } from "@/lib/slack";
 import { sendCapiEvent } from "@/lib/meta-capi";
+import { sendGa4Event } from "@/lib/ga4";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -353,10 +354,10 @@ export async function POST(request: Request) {
     console.error("[zcal-webhook] Slack notify failed:", result.error);
   }
 
-  // ── Meta Conversions API (server-side conversion) ────────────────
-  // Only fire on the create event — reschedules and cancellations
-  // don't represent a new conversion.
-  if (stage === "created" && parsed.guestEmail) {
+  // ── Server-side conversions ──────────────────────────────────────
+  // Only on the create event — reschedules and cancellations don't
+  // represent a new conversion.
+  if (stage === "created") {
     const bookingDataId =
       (typeof payload === "object" &&
         payload !== null &&
@@ -364,42 +365,79 @@ export async function POST(request: Request) {
           | Record<string, unknown>
           | undefined)?.id) ??
       undefined;
-    const eventId =
+    const bookingKey =
       typeof bookingDataId === "string" && bookingDataId.length > 0
-        ? `zcal-booking-${bookingDataId}`
-        : `zcal-booking-${Date.now()}`;
+        ? bookingDataId
+        : String(Date.now());
+    const eventId = `zcal-booking-${bookingKey}`;
 
-    const guestNameParts = (parsed.guestName ?? "").trim().split(/\s+/);
-    const firstName = guestNameParts.shift();
-    const lastName = guestNameParts.join(" ") || undefined;
-
-    const capiResult = await sendCapiEvent({
-      eventName: "Schedule",
-      eventId,
-      eventTime: parsed.bookingTimeISO
-        ? new Date(parsed.bookingTimeISO)
-        : undefined,
-      sourceUrl: "https://mochicollective.com",
-      userData: {
-        email: parsed.guestEmail,
-        firstName,
-        lastName,
-        timezone: parsed.bookingTimeZone,
-      },
-      customData: {
-        currency: "SGD",
-        value: 0,
-        content_name: parsed.programName,
-        content_category: "booking_confirmed",
+    // ── GA4 key event: zcal_invite_submit ──────────────────────────
+    // Fired here rather than on the booking-button click on purpose: a click
+    // only means someone opened the scheduler, and a meaningful share of
+    // those abandon at the time-slot step. This counts confirmed bookings.
+    //
+    // No guestEmail guard — a booking is a conversion whether or not zcal
+    // gave us an email, and GA4 needs no PII.
+    //
+    // Attribution caveat lives in lib/ga4.ts: without the visitor's real
+    // client_id these land as (direct)/(none), so the COUNT is right but the
+    // campaign credit is not.
+    const gaResult = await sendGa4Event({
+      name: "zcal_invite_submit",
+      fallbackSeed: bookingKey,
+      params: {
+        booking_id: bookingKey,
+        program_name: parsed.programName,
+        booking_type: parsed.type,
+        booking_timing: parsed.timing,
+        booking_budget: parsed.budget,
       },
     });
 
-    if (!capiResult.ok) {
-      console.error("[zcal-webhook] Meta CAPI failed:", capiResult.error);
+    if (!gaResult.ok) {
+      console.error("[zcal-webhook] GA4 zcal_invite_submit failed:", gaResult.error);
     } else {
       console.log(
-        `[zcal-webhook] Meta CAPI Schedule fired for ${eventId}`
+        `[zcal-webhook] GA4 zcal_invite_submit fired for ${eventId}`
       );
+    }
+
+    // ── Meta Conversions API ───────────────────────────────────────
+    // Needs an email to match the conversion to a person, so it stays
+    // guarded where the GA4 event above is not.
+    if (parsed.guestEmail) {
+      const guestNameParts = (parsed.guestName ?? "").trim().split(/\s+/);
+      const firstName = guestNameParts.shift();
+      const lastName = guestNameParts.join(" ") || undefined;
+
+      const capiResult = await sendCapiEvent({
+        eventName: "Schedule",
+        eventId,
+        eventTime: parsed.bookingTimeISO
+          ? new Date(parsed.bookingTimeISO)
+          : undefined,
+        sourceUrl: "https://mochicollective.com",
+        userData: {
+          email: parsed.guestEmail,
+          firstName,
+          lastName,
+          timezone: parsed.bookingTimeZone,
+        },
+        customData: {
+          currency: "SGD",
+          value: 0,
+          content_name: parsed.programName,
+          content_category: "booking_confirmed",
+        },
+      });
+
+      if (!capiResult.ok) {
+        console.error("[zcal-webhook] Meta CAPI failed:", capiResult.error);
+      } else {
+        console.log(
+          `[zcal-webhook] Meta CAPI Schedule fired for ${eventId}`
+        );
+      }
     }
   }
 

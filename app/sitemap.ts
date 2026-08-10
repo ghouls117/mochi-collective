@@ -29,6 +29,7 @@ const PAGE_LASTMOD: Record<string, string> = {
   privacy: "2026-07-22",
   terms: "2026-07-22",
   practices: "2026-08-03",
+  threeReports: "2026-08-10",
 };
 
 /** Local-midnight Date for a YYYY-MM-DD string in Asia/Singapore (+08:00). */
@@ -73,6 +74,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${SITE_URL}/impact-measurement`,
       lastModified: sgDate(PAGE_LASTMOD.impact),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/three-reports`,
+      lastModified: sgDate(PAGE_LASTMOD.threeReports),
       changeFrequency: "monthly",
       priority: 0.8,
     },

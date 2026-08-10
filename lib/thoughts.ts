@@ -18,6 +18,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { BOOKING_URL } from "@/lib/constants";
 
 export type PostFrontmatter = {
   title: string;
@@ -210,6 +211,6 @@ export function buildShareUrls(post: Post) {
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(linkedinTarget)}`,
     copyLink: withUtm("sharelink"),
     email: withUtm("shareemail"),
-    bookDiscovery: `https://zcal.co/mochicollective/discovery?utm_source=website&utm_medium=postinterest&utm_campaign=${campaign}`,
+    bookDiscovery: `${BOOKING_URL}?utm_source=website&utm_medium=postinterest&utm_campaign=${campaign}`,
   };
 }

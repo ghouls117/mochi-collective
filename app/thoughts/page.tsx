@@ -3,6 +3,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { FilterChips } from "@/components/thoughts/filter-chips";
 import { getPublishedPosts, getPublishedCategories } from "@/lib/thoughts";
+import { BOOKING_URL } from "@/lib/constants";
 
 /**
  * Revalidate every 15 minutes so scheduled posts show up on the index
@@ -88,7 +89,7 @@ export default function ThoughtsIndexPage() {
               </p>
             </div>
             <a
-              href="https://zcal.co/mochicollective/discovery?utm_source=website&utm_medium=thoughtsindex&utm_campaign=thoughts"
+              href={`${BOOKING_URL}?utm_source=website&utm_medium=thoughtsindex&utm_campaign=thoughts`}
               target="_blank"
               rel="noopener noreferrer"
               className="th-foot-cta-btn"

@@ -1718,6 +1718,64 @@ section {
   line-height: 1.6;
 }
 
+/* ─── Related-reading list (standalone pages) ────────────────────
+   Anchors inherit the list's --ink-2 with no underline by default, which
+   makes them indistinguishable from the trailing description text. Mirror
+   the .prose a treatment so they read as links. */
+.related-reading {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.related-reading a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-soft);
+  transition: border-color 0.2s ease;
+}
+.related-reading a:hover {
+  border-bottom-color: var(--ink);
+}
+
+/* ─── Standalone-page CTA block ──────────────────────────────────
+   Used by /impact-measurement and /three-reports.
+
+   Was inline-styled on both pages as a fixed two-column grid
+   (minmax(0,1fr) auto). At 375px the `auto` button column claimed ~215px
+   of a 327px content box, squeezing the text column to ~30–70px — the
+   heading wrapped one or two characters per line and the box grew to
+   ~530px tall. Lives here now so it can stack on narrow viewports, which
+   an inline style can't do. */
+.impact-cta {
+  margin-top: 48px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+}
+@media (max-width: 720px) {
+  .impact-cta {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding: 24px;
+    align-items: start;
+  }
+  /* Let the label wrap rather than force a pill wider than the viewport. */
+  .impact-cta a {
+    justify-self: start;
+    white-space: normal;
+  }
+}
+
 /* ─── Footer ─────────────────────────────────────────────────── */
 footer {
   border-top: 1px solid var(--line);

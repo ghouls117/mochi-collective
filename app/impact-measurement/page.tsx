@@ -252,20 +252,9 @@ export default function ImpactMeasurementPage() {
             ))}
           </article>
 
-          <div
-            className="impact-cta"
-            style={{
-              marginTop: 48,
-              padding: 32,
-              border: "1px solid var(--line)",
-              background: "var(--card)",
-              borderRadius: 4,
-              display: "grid",
-              gridTemplateColumns: "minmax(0, 1fr) auto",
-              gap: 24,
-              alignItems: "center",
-            }}
-          >
+          {/* Layout lives in globals.css (.impact-cta) so it can stack on
+              mobile — an inline grid can't carry a media query. */}
+          <div className="impact-cta">
             <div>
               <div
                 style={{
