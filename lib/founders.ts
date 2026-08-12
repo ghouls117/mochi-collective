@@ -23,7 +23,11 @@ export const FOUNDERS: Founder[] = [
   {
     name: "Justin Ng",
     jobTitle: "Co-founder, Sales & Operations",
-    bio: "Five years at AngelHack, most of them running programs that create impact — the world's largest hackathon organisation, with a global developer community over 500,000 strong. Before that, he led B2B conference and executive roundtable programs across Asia Pacific at IDC. He has delivered programs for corporate sponsors around the world and been accountable for whether they renewed.",
+    // "Leading", not "largest": AngelHack's own site calls itself "The World's
+    // Leading Hackathon Agency" and never claims largest. Sourcing a superlative
+    // we can't support would be a poor look on a site built on refusing those.
+    // Community figure and city count verbatim from angelhack.com (500K+, 100+).
+    bio: "Five years at AngelHack as Director of Ecosystem Development, most of them running programs that create impact — the world's leading hackathon agency, with a global developer community 500,000 strong across more than a hundred cities. Before that, he led B2B conference and executive roundtable programs across Asia Pacific at IDC. He has delivered programs for corporate sponsors around the world and been accountable for whether they renewed.",
     linkedin: "https://www.linkedin.com/in/justinngbr/",
     alumniOf: ["AngelHack", "International Data Corporation (IDC)"],
   },

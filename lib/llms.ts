@@ -116,10 +116,10 @@ function entityBlock(posts: Post[]): string {
 }
 
 /**
- * Founders. The single largest gap in the site's machine-readable story was
+ * Founders. The single biggest gap in the site's machine-readable story was
  * that nothing connected Mochi to the two people behind it — an engine could
- * read what the company charges but not that a founder ran the world's largest
- * hackathon organisation.
+ * read what the company charges but not that a founder led the developer
+ * ecosystem at the world's leading hackathon agency.
  */
 function foundersSection(): string {
   const lines = FOUNDERS.flatMap((f) => [

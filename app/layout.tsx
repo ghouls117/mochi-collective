@@ -64,8 +64,8 @@ export const viewport: Viewport = {
  * Person entities for the two founders.
  *
  * Without these, an answer engine can read what Mochi does and charges but has
- * no machine-readable way to know that a founder ran the world's largest
- * hackathon organisation. `sameAs` is what ties each Person to the LinkedIn
+ * no machine-readable way to know that a founder led the developer ecosystem
+ * at the world's leading hackathon agency. `sameAs` ties each Person to the LinkedIn
  * profile carrying the actual track record, and `@id` lets the company entity
  * and every BlogPosting reference the same person rather than duplicating them.
  */

@@ -143,7 +143,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "type": "p",
-        "html": "Justin Ng, our co-founder, spent five years at AngelHack — the world's largest hackathon organisation, with a global developer community over 500,000 strong — before starting Mochi. We know what separates a hackathon that produces a press release from one that produces a pipeline."
+        "html": "Justin Ng, our co-founder, spent five years as Director of Ecosystem Development at AngelHack — the world's leading hackathon agency, with a global developer community 500,000 strong across more than a hundred cities — where he led the developer ecosystem before starting Mochi. We know what separates a hackathon that produces a press release from one that produces a pipeline."
       },
       {
         "type": "h2",
@@ -199,15 +199,15 @@ export const PRACTICES: Record<string, PracticeContent> = {
     "faq": [
       {
         "q": "How do you measure whether a hackathon worked?",
-        "a": "Sign-ups on the day tell you about your marketing, so we measure at ninety days instead: how many developers are still building on your platform, how many teams stayed together, and what actually shipped. Hackathons make this unusually clean because they end in artefacts — the output is in the repo, so nobody has to argue about whether something happened."
+        "a": "Hackathons have many metrics that can be measured but, most importantly, the metrics we measure show the impact that your program brings. Mochi will always start by defining the metric to measure and agreeing on the numbers before building the program."
       },
       {
         "q": "How many developers should a hackathon aim for?",
-        "a": "Fewer than you would expect, matched more tightly than is comfortable. Two hundred warm bodies is a photo; forty developers who match your ideal customer profile is a pipeline. We recruit against the outcome you want rather than against the size of the room."
+        "a": "The number can be a wide range of fifty to three or four hundred. Each hackathon size syncs up with a different metric that organisers are trying to achieve through the program — the number follows the metric, not the other way round. At any of those sizes, a room recruited against your ICP beats a bigger one that wasn't."
       },
       {
         "q": "Who runs hackathons at Mochi Collective?",
-        "a": "Justin Ng, our co-founder, spent five years at AngelHack — the world's largest hackathon organisation, with a global developer community over 500,000 strong — running programs there before starting Mochi. You get founders on the work rather than a pitch team."
+        "a": "Justin Ng, our co-founder, was Director of Ecosystem Development at AngelHack, where he led its developer ecosystem. He works on each hackathon and developer program himself, alongside a small team supporting operational execution."
       }
     ],
     "ctaHeadline": "Put your hackathon brief on the table",
