@@ -36,7 +36,7 @@ export const FOUNDERS: Founder[] = [
     // refusing those. The 500,000-developer figure (angelhack.com) is dropped
     // here on purpose to keep length parity with Marc's bio — it still appears
     // twice on /hackathons, so the proof is not lost from the site.
-    bio: "Five years at AngelHack as Director of Ecosystem Development, where most of his week was pipeline — discovery calls, sales data, and programs designed around what the market could actually spend. He led the developer ecosystem at the world's leading hackathon agency, ran a team of six and owned the cost line as well as the revenue. Before that, B2B conference and executive roundtable programs across Asia Pacific at IDC.",
+    bio: "Five years at AngelHack as Director of Ecosystem Development, where most of his week was pipeline — discovery calls, sales data, and programs designed around what the market could actually spend. He led the developer ecosystem at the world's leading hackathon agency, ran a team of six, and was accountable for whether corporate sponsors renewed. Before that, B2B conference and executive roundtable programs across Asia Pacific at IDC.",
     linkedin: "https://www.linkedin.com/in/justinngbr/",
     alumniOf: ["AngelHack", "International Data Corporation (IDC)"],
   },
