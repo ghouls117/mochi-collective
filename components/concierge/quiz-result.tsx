@@ -101,6 +101,28 @@ export function QuizResult({ answers, program, onRestart }: Props) {
       <h4>
         The <span style={{ color: program.accent }}>{program.name}</span>
       </h4>
+      {/* Names like "Inner Circle" exist only inside the Concierge, so without
+          this the result is a dead end — the visitor can't find the program
+          anywhere else on the site. Bind it to its practice and let them read
+          the full model. */}
+      <div
+        style={{
+          fontSize: 12.5,
+          letterSpacing: "0.02em",
+          color: "rgba(255,255,255,.62)",
+          marginTop: -6,
+          marginBottom: 12,
+        }}
+      >
+        Our{" "}
+        <a
+          href={program.practiceHref}
+          style={{ color: program.accent, textDecoration: "none", borderBottom: `1px solid ${program.accent}66` }}
+        >
+          {program.practice}
+        </a>{" "}
+        practice
+      </div>
       <p>{program.blurb}</p>
       <div className="rec-row">
         <div>

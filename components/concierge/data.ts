@@ -20,31 +20,43 @@ export const QUIZ_STEPS: QuizStep[] = [
   {
     key: "kind",
     q: "What are you planning?",
-    helper: "We work across every format. Tell us what shape this one takes.",
+    helper: "One option per practice. Tell us what shape this one takes.",
+    // These five mirror FORMATS/SERVICES in lib/services.ts one-for-one, and
+    // borrow each practice's colour, so a visitor can always reach the practice
+    // they came for. Before this they couldn't: there was no hackathon option
+    // at all (the lead landed on the conference program and Slack mislabelled
+    // it), no sponsor option, and an "internal program" option selling offsites
+    // and board days that aren't a practice at all.
     options: [
       {
         value: "launch",
-        label: "Framework integration, small scale programs",
-        sub: "Dinners, salons, popups, ongoing formats",
+        label: "Brand experience or launch moment",
+        sub: "Activations, launches, popups, brand-led rooms",
         dot: "#F6BEC9",
       },
       {
+        value: "hackathon",
+        label: "Hackathon or developer program",
+        sub: "Build events, developer relations, platform adoption",
+        dot: "#93ADBF",
+      },
+      {
         value: "conference",
-        label: "Activations & larger scale programs",
-        sub: "Launches, conferences, multi-stage moments",
+        label: "Conference or multi-stage event",
+        sub: "Summits, tracks, main-stage programming",
         dot: "#7ECADF",
       },
       {
-        value: "community",
-        label: "Community or membership",
-        sub: "Salons, dinners, recurring formats",
-        dot: "#BFDEA3",
+        value: "sponsor",
+        label: "Sponsor program",
+        sub: "Partner packages built to be measured and renewed",
+        dot: "#F9C84A",
       },
       {
-        value: "internal",
-        label: "Internal program or reporting",
-        sub: "Offsites, board events, partner days",
-        dot: "#F9C84A",
+        value: "community",
+        label: "Community or membership program",
+        sub: "Salons, dinners, recurring member formats",
+        dot: "#BFDEA3",
       },
     ],
   },
@@ -157,13 +169,50 @@ export type Program = {
   name: string;
   accent: string;
   blurb: string;
+  /** The practice this program belongs to, and where to read the full model. */
+  practice: string;
+  practiceHref: string;
 };
 
+/**
+ * One program per practice, colours taken from SERVICES in lib/services.ts.
+ *
+ * The names are deliberately kept — they're claimed as marks in /terms — but
+ * each is now bound to the practice it represents and deep-links to it. Before
+ * this a visitor was recommended "Inner Circle", a name that appeared nowhere
+ * else on the site, with no route to read more.
+ */
 const PROGRAM_BASE: Record<string, Omit<Program, "blurb">> = {
-  launch: { name: "Signal Series", accent: "#F6BEC9" },
-  conference: { name: "Stage Program", accent: "#7ECADF" },
-  community: { name: "Inner Circle", accent: "#BFDEA3" },
-  internal: { name: "Closed Doors", accent: "#F9C84A" },
+  launch: {
+    name: "Signal Series",
+    accent: "#F6BEC9",
+    practice: "Brand Experiences",
+    practiceHref: "/brand-experience",
+  },
+  hackathon: {
+    name: "Open Build",
+    accent: "#93ADBF",
+    practice: "Hackathons & Developer Programs",
+    practiceHref: "/hackathons",
+  },
+  conference: {
+    name: "Stage Program",
+    accent: "#7ECADF",
+    practice: "Conferences & Events",
+    practiceHref: "/conferences-and-events",
+  },
+  sponsor: {
+    name: "Renewal Series",
+    accent: "#F9C84A",
+    practice: "Sponsor Programs",
+    practiceHref: "/sponsor-programs",
+  },
+  community: {
+    name: "Inner Circle",
+    accent: "#BFDEA3",
+    practice: "Community & Membership",
+    practiceHref: "/community-and-membership",
+  },
 };
 
 const BLURBS: Record<string, string> = {
@@ -191,15 +240,34 @@ const BLURBS: Record<string, string> = {
     "Membership design, host briefing, and curation systems so every dinner stays on-tone three years in.",
   "community.impact":
     "A community measured on the conversations it starts, the doors it opens, and the retention it earns — not RSVP count.",
-  "internal.budget":
-    "An internal program that earns its budget by changing one specific behaviour, measured before and after.",
-  "internal.sponsor":
-    "Stakeholder programming engineered for the meeting after the meeting — when the partner decides what they think.",
-  "internal.audience":
-    "Offsite and partner-day design that engineers the right exchanges, in the right pairs, at the right time.",
-  "internal.impact":
-    "Closed-door programming with a measurement frame the leadership team will actually trust.",
+  "hackathon.budget":
+    "A build event sized to the outcome rather than the room. We cut the spend nobody remembers and put it into recruitment, judging and the ninety days afterwards.",
+  "hackathon.sponsor":
+    "Sponsor and platform integration designed in at kick-off, against the metric the partner has to defend internally — not a logo on a backdrop.",
+  "hackathon.audience":
+    "Recruitment against your ICP rather than against headcount. The right forty developers beat a bigger room that was never going to build on your platform.",
+  "hackathon.impact":
+    "The most measurable event we run: it ends in artefacts. Working prototypes, teams that formed, developers still building ninety days later.",
+  "sponsor.budget":
+    "Packages priced to what partners can actually approve, built around what can be evidenced rather than what is easy to sell.",
+  "sponsor.sponsor":
+    "The renewal case, designed at kick-off. One metric agreed in writing, reported against directly, in a form that survives someone who wasn't in the room.",
+  "sponsor.audience":
+    "Partner activations aimed at high-intent interaction rather than footfall — who engaged, at what depth, from which target accounts.",
+  "sponsor.impact":
+    "Outputs are easy and prove nothing. This is built to report outcomes: what the sponsorship changed, and what to redesign before next year.",
 };
+
+/**
+ * Program names, for the intellectual-property clause on /terms.
+ *
+ * Derived rather than retyped: the Terms page previously hardcoded the four
+ * launch names, so adding or retiring a program silently left it claiming a
+ * mark that no longer existed (and not claiming ones that did).
+ */
+export const PROGRAM_NAMES: string[] = Object.values(PROGRAM_BASE).map(
+  (p) => p.name
+);
 
 export function pickProgram(answers: Answers): Program {
   const kind = answers.kind ?? "launch";

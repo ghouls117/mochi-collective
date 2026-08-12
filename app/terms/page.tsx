@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { EMAIL } from "@/lib/constants";
+import { PROGRAM_NAMES } from "@/components/concierge/data";
 
 const LAST_UPDATED = "21 July 2026";
 const ENTITY = "Mochi Collective Pte. Ltd.";
@@ -112,9 +113,14 @@ export default function TermsPage() {
               Everything on the Site belongs to {ENTITY} unless otherwise
               indicated. This includes the copy, the design, our logo, the
               five-orb brand mark, photography, the Service Concierge logic,
-              and our program names (including &ldquo;Signal Series,&rdquo;
-              &ldquo;Stage Program,&rdquo; &ldquo;Inner Circle,&rdquo; and
-              &ldquo;Closed Doors&rdquo;).
+              and our program names (including{" "}
+              {PROGRAM_NAMES.map((name, i) => (
+                <span key={name}>
+                  {i > 0 && (i === PROGRAM_NAMES.length - 1 ? " and " : ", ")}
+                  &ldquo;{name}&rdquo;
+                </span>
+              ))}
+              ).
             </p>
             <ul>
               <li>
