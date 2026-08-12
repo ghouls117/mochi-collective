@@ -23,11 +23,20 @@ export const FOUNDERS: Founder[] = [
   {
     name: "Justin Ng",
     jobTitle: "Co-founder, Sales & Operations",
+    // Sales-forward rewrite. The previous version spent sixty of its
+    // sixty-eight words on programs delivered and eight on anything
+    // commercial, which read as a programme director under a title that says
+    // Sales & Operations. Every claim here is drawn from the role as held:
+    // pipeline was the bulk of the week, the team was six, cost management sat
+    // with the same role as revenue.
+    //
     // "Leading", not "largest": AngelHack's own site calls itself "The World's
-    // Leading Hackathon Agency" and never claims largest. Sourcing a superlative
-    // we can't support would be a poor look on a site built on refusing those.
-    // Community figure and city count verbatim from angelhack.com (500K+, 100+).
-    bio: "Five years at AngelHack as Director of Ecosystem Development, most of them running programs that create impact — the world's leading hackathon agency, with a global developer community 500,000 strong across more than a hundred cities. Before that, he led B2B conference and executive roundtable programs across Asia Pacific at IDC. He has delivered programs for corporate sponsors around the world and been accountable for whether they renewed.",
+    // Leading Hackathon Agency" and never claims largest. Sourcing a
+    // superlative we can't support would be a poor look on a site built on
+    // refusing those. The 500,000-developer figure (angelhack.com) is dropped
+    // here on purpose to keep length parity with Marc's bio — it still appears
+    // twice on /hackathons, so the proof is not lost from the site.
+    bio: "Five years at AngelHack as Director of Ecosystem Development, where most of his week was pipeline — discovery calls, sales data, and programs designed around what the market could actually spend. He led the developer ecosystem at the world's leading hackathon agency, ran a team of six and owned the cost line as well as the revenue. Before that, B2B conference and executive roundtable programs across Asia Pacific at IDC.",
     linkedin: "https://www.linkedin.com/in/justinngbr/",
     alumniOf: ["AngelHack", "International Data Corporation (IDC)"],
   },
