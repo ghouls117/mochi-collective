@@ -23,7 +23,11 @@ export const FAQ: FaqItem[] = [
   },
   {
     q: "Where are you based?",
-    a: "Mochi Collective Pte. Ltd. is a Singapore-registered agency at 68 Circular Road, #02-01, Singapore 049422 (UEN 202538712H). We work across Singapore and Southeast Asia — most of the events, conferences and community programs we design run in-region.",
+    // Registered address and UEN deliberately not repeated here. They stay in
+    // the PostalAddress node of the ProfessionalService schema (app/layout.tsx),
+    // the footer, /privacy, /terms and llms.txt — which is where Google and the
+    // answer engines actually read the entity from.
+    a: "We are a Singapore-registered agency working across Singapore and Southeast Asia primarily.",
   },
   {
     q: "What kinds of events and programs do you run?",
