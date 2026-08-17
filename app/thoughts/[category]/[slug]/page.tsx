@@ -9,6 +9,7 @@ import {
   buildShareUrls,
   getAllPosts,
   getPost,
+  todayInSingapore,
 } from "@/lib/thoughts";
 import { AUTHOR_FOUNDER, founderId } from "@/lib/founders";
 
@@ -43,8 +44,11 @@ export async function generateMetadata({
   // Don't let Google index a post before its publish date lands — a direct
   // URL preview is fine for humans, but we don't want early snapshots in
   // the SERP.
-  const today = new Date().toISOString().slice(0, 10);
-  const isPublished = post.publish_date <= today;
+  // Singapore date, not UTC — same definition getPublishedPosts(), the
+  // sitemap and the postbuild verifier use. When this was UTC it disagreed
+  // with all three for the first eight hours of every publish day, so a post
+  // could be in the sitemap and still serving noindex.
+  const isPublished = post.publish_date <= todayInSingapore();
   return {
     title: post.meta_title ?? `${post.title} | Mochi Collective`,
     description: post.meta_description,

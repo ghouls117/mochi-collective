@@ -124,7 +124,7 @@ export function getAllPosts(): Post[] {
  * time, so on a publish date they expected an essay that this function was
  * still hiding. Three places now agree on one definition of today.
  */
-function todayInSingapore(): string {
+export function todayInSingapore(): string {
   // en-CA formats as YYYY-MM-DD, which sorts and compares lexicographically.
   return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Singapore" });
 }
