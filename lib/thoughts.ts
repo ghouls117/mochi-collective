@@ -112,8 +112,25 @@ export function getAllPosts(): Post[] {
     .sort((a, b) => b.publish_date.localeCompare(a.publish_date));
 }
 
+/**
+ * Today's calendar date in Asia/Singapore, as YYYY-MM-DD.
+ *
+ * `publish_date` in the frontmatter means a Singapore date — this is a
+ * Singapore agency and the essays are scheduled against Justin's calendar.
+ * This used to be `new Date().toISOString().slice(0,10)`, which is UTC, so
+ * every post actually went live at 08:00 SGT rather than midnight, and
+ * between midnight and 08:00 SGT the build broke outright: the postbuild
+ * verifier and app/sitemap.ts both already computed "today" in Singapore
+ * time, so on a publish date they expected an essay that this function was
+ * still hiding. Three places now agree on one definition of today.
+ */
+function todayInSingapore(): string {
+  // en-CA formats as YYYY-MM-DD, which sorts and compares lexicographically.
+  return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Singapore" });
+}
+
 export function getPublishedPosts(): Post[] {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayInSingapore();
   return getAllPosts().filter((p) => p.publish_date <= today);
 }
 
