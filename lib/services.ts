@@ -51,13 +51,20 @@ export const SERVICES: Service[] = [
     title: "The most measurable event we run.",
     serviceType: "Hackathon and developer program design",
     color: "#93ADBF",
+    // Carries the argument of the 8 Sep essay, "Your Hackathon Has Two
+    // Clients": the budget comes from marketing, the verdict comes from
+    // engineers, and the second audience reads your docs and your rate limits.
+    // The list still maps to the three principles on /hackathons — recruit to
+    // the outcome, judge on what you want next, measure at ninety days — with
+    // the sponsor line reframed the way the essay argues it: your engineers on
+    // the floor ARE the sponsorship deliverable, not booth cover.
     body:
-      "Everything we build is meant to produce evidence, and hackathons make it easy — they end in artefacts. Working prototypes. Teams that formed. Developers still building on your platform ninety days later. Nobody has to argue about whether something happened.",
+      "A hackathon is commissioned by marketing and graded by engineers — and the second audience reads your documentation, your error messages and your rate limits. We design for both: a brief with a real constraint, a rubric published alongside it, and output that runs from a clean clone. What comes back is artefacts, not impressions.",
     list: [
       "Recruit to your ICP, not to the room",
-      "Judging criteria as strategy",
-      "Sponsor + platform integration",
-      "90-day retention measurement",
+      "Rubric published with the brief",
+      "Engineers on the floor, not a booth",
+      "Time to first call + 90-day retention",
     ],
     deepLink: {
       href: "/hackathons",

@@ -158,6 +158,10 @@ export const PRACTICES: Record<string, PracticeContent> = {
         ]
       },
       {
+        "type": "p",
+        "html": "Your technical staff are the sponsorship deliverable, not booth cover \u2014 an engineer can teach, a logo cannot. We run a named duty roster with defined shifts and a channel that has an owner. Two weeks out we run your own quickstart on a clean machine, with a new account, on the venue network, provisioning keys the way a participant will. The failure we see most often is an API that will not issue credentials on Saturday morning while two hundred people watch."
+      },
+      {
         "type": "h2",
         "text": "Who this is for"
       },
