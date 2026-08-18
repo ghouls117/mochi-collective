@@ -82,7 +82,7 @@ export function Nav() {
             rel="noopener noreferrer"
             className="nav-cta"
           >
-            Book a Discovery
+            Brief Diagnostic
           </a>
         </div>
       </nav>

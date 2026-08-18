@@ -114,7 +114,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       }
     ],
     "ctaHeadline": "Put your activation brief on the table",
-    "ctaSub": "A free 30-minute discovery call where we put your activation brief against the feeling target, the sensory anchor, the peak and the exit — no pitch, no deck, just the questions we'd ask anyway.",
+    "ctaSub": "A free 30-minute Brief Diagnostic where we put your activation brief against the feeling target, the sensory anchor, the peak and the exit — no pitch, no deck, just the questions we'd ask anyway.",
     "utm": "brandexperience"
   },
   "hackathons": {
@@ -211,7 +211,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       }
     ],
     "ctaHeadline": "Put your hackathon brief on the table",
-    "ctaSub": "A free 30-minute discovery call. We'll look at who you're trying to reach, what the judging criteria should be, and what you'd need to see at ninety days to call it worth repeating.",
+    "ctaSub": "A free 30-minute Brief Diagnostic. We'll look at who you're trying to reach, what the judging criteria should be, and what you'd need to see at ninety days to call it worth repeating.",
     "utm": "hackathons"
   },
   "conferences-and-events": {
@@ -312,7 +312,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
       }
     ],
     "ctaHeadline": "Bring us in before the agenda locks.",
-    "ctaSub": "A free 30-minute discovery call — no pitch, no deck, just the questions we'd ask about your program's throughline, its sponsors, and who's in the room.",
+    "ctaSub": "A free 30-minute Brief Diagnostic — no pitch, no deck, just the questions we'd ask about your program's throughline, its sponsors, and who's in the room.",
     "utm": "conferencesevents"
   },
   "sponsor-programs": {

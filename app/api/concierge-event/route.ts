@@ -7,7 +7,7 @@
  * Two event stages are accepted:
  *   - "engaged" : the user finished the 4-question concierge and saw a
  *                 recommendation. 👀
- *   - "intent"  : the user clicked "Book a discovery call" — zcal opens
+ *   - "intent"  : the user clicked "Book a Brief Diagnostic" — zcal opens
  *                 in a new tab. 💭
  *
  * (The third stage, "confirmed" ✅, fires from /api/zcal-webhook — not

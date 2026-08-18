@@ -286,10 +286,13 @@ export default function ThreeReportsPage() {
                 detection cannot distinguish interest from a sore back.
               </li>
               <li>
-                Which individual attendee &ldquo;mattered most.&rdquo; The
-                person who mattered most is almost never the one who moved
-                most, and ranking participants creates a false hierarchy that
-                clients then act on.
+                {/* Deliberately not the "person who mattered most" line from
+                    the AI essay — that argument is developed there over a full
+                    paragraph, and running it near-verbatim in two places puts
+                    the pages in competition for the same query. */}
+                Which individual attendee &ldquo;mattered most.&rdquo; Ranking
+                participants rewards whoever was loudest and most visible, and
+                builds a hierarchy the client then acts on.
               </li>
               <li>
                 That a same-day satisfaction score predicts anything durable.

@@ -83,7 +83,7 @@ export default function ThoughtsIndexPage() {
                 <em className="accent">talk to us</em> about your next event.
               </div>
               <p className="th-foot-cta-p">
-                30-minute discovery call. We'll ask what you're planning and
+                Free 30-minute Brief Diagnostic. We'll ask what you're planning and
                 where the pressure is coming from. If we can help, you'll know
                 by the end.
               </p>
@@ -94,7 +94,7 @@ export default function ThoughtsIndexPage() {
               rel="noopener noreferrer"
               className="th-foot-cta-btn"
             >
-              Book a Discovery →
+              Book a Brief Diagnostic →
             </a>
           </div>
         </div>

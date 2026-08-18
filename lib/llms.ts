@@ -110,7 +110,7 @@ function entityBlock(posts: Post[]): string {
     "Team size: 2-9",
     "Tagline: Make it worth talking about.",
     `Contact: ${EMAIL} (typically replies inside 72 hours on weekdays)`,
-    `Book a discovery call: ${BOOKING_URL}`,
+    `Book a Brief Diagnostic (free, 30 minutes): ${BOOKING_URL}`,
     `Last updated: ${lastUpdated}`,
   ].join("\n");
 }

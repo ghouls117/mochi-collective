@@ -150,7 +150,7 @@ export function QuizResult({ answers, program, onRestart }: Props) {
           rel="noopener noreferrer"
           onClick={handleBookClick}
         >
-          Secure a Consultation →
+          Book a Brief Diagnostic →
         </a>
         <button type="button" className="qb" onClick={copy}>
           {copied ? "Copied ✓" : "Copy summary"}

@@ -178,10 +178,10 @@ export default async function ThoughtsPostPage({
               rel="noopener noreferrer"
               className="th-post-cta-btn"
             >
-              Book a Discovery <span aria-hidden="true">→</span>
+              Book a Brief Diagnostic <span aria-hidden="true">→</span>
             </a>
             <span className="th-post-cta-lab">
-              30 min · we'll ask what you're planning
+              Free · 30 min · we'll ask what you're planning
             </span>
           </div>
 

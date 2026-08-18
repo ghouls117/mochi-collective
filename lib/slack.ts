@@ -4,10 +4,10 @@
  * Three Block Kit message types are emitted to the #website-leads channel:
  *
  *   👀 engaged   — the user finished the 4-question concierge and saw a
- *                  recommendation, but hasn't clicked "Book a discovery
- *                  call" yet. Fired client-side from QuizResult on mount.
+ *                  recommendation, but hasn't clicked "Book a Brief
+ *                  Diagnostic" yet. Fired client-side from QuizResult on mount.
  *
- *   💭 intent    — the user clicked "Book a discovery call" — zcal opens
+ *   💭 intent    — the user clicked "Book a Brief Diagnostic" — zcal opens
  *                  in a new tab. They may or may not actually book. Fired
  *                  client-side from QuizResult on click.
  *
@@ -292,7 +292,7 @@ export function buildBookingConfirmedPayload(
       type: "section",
       text: {
         type: "mrkdwn",
-        text: ":white_check_mark: *Discovery call booked via Mochi Concierge*",
+        text: ":white_check_mark: *Brief Diagnostic booked via Mochi Concierge*",
       },
     },
   ];
@@ -358,7 +358,7 @@ export function buildBookingConfirmedPayload(
   const attachments: unknown[] = [
     {
       color: COLOR_CONFIRMED,
-      fallback: `Discovery call booked${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+      fallback: `Brief Diagnostic booked${parsed.programName ? ` — ${parsed.programName}` : ""}`,
     },
   ];
 
@@ -374,7 +374,7 @@ export function buildBookingConfirmedPayload(
   }
 
   return {
-    text: `Discovery call booked${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+    text: `Brief Diagnostic booked${parsed.programName ? ` — ${parsed.programName}` : ""}`,
     blocks,
     attachments,
   };
@@ -406,7 +406,7 @@ export function buildBookingRescheduledPayload(input: {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: ":arrows_counterclockwise: *Discovery call rescheduled*",
+        text: ":arrows_counterclockwise: *Brief Diagnostic rescheduled*",
       },
     },
     {
@@ -472,7 +472,7 @@ export function buildBookingRescheduledPayload(input: {
   const attachments: unknown[] = [
     {
       color: COLOR_RESCHEDULED,
-      fallback: `Discovery call rescheduled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+      fallback: `Brief Diagnostic rescheduled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
     },
   ];
   if (includeRawPayload && rawPayload) {
@@ -485,7 +485,7 @@ export function buildBookingRescheduledPayload(input: {
   }
 
   return {
-    text: `Discovery call rescheduled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+    text: `Brief Diagnostic rescheduled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
     blocks,
     attachments,
   };
@@ -515,7 +515,7 @@ export function buildBookingCancelledPayload(input: {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: ":x: *Discovery call cancelled*",
+        text: ":x: *Brief Diagnostic cancelled*",
       },
     },
     {
@@ -584,7 +584,7 @@ export function buildBookingCancelledPayload(input: {
   const attachments: unknown[] = [
     {
       color: COLOR_CANCELLED,
-      fallback: `Discovery call cancelled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+      fallback: `Brief Diagnostic cancelled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
     },
   ];
   if (includeRawPayload && rawPayload) {
@@ -597,7 +597,7 @@ export function buildBookingCancelledPayload(input: {
   }
 
   return {
-    text: `Discovery call cancelled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
+    text: `Brief Diagnostic cancelled${parsed.programName ? ` — ${parsed.programName}` : ""}`,
     blocks,
     attachments,
   };

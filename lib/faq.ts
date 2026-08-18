@@ -43,7 +43,7 @@ export const FAQ: FaqItem[] = [
   },
   {
     q: "How fast do you turn around a proposal?",
-    a: "Inside 72 weekday hours of the discovery call. You answer four Concierge questions, we run the call, and what comes back is a program shape, a budget reality check, and a runway you can take to a sponsor or a board.",
+    a: "Inside 72 weekday hours of the Brief Diagnostic. You answer four Concierge questions, we run the call, and what comes back is a program shape, a budget reality check, and a runway you can take to a sponsor or a board.",
   },
   {
     q: "What makes you different from other event agencies in Singapore?",
@@ -59,10 +59,10 @@ export const FAQ: FaqItem[] = [
   },
   {
     q: "What budgets do you work with?",
-    a: "Most engagements start between S$5,000 and S$10,000, depending on how much of it we run. That is our fee, not the cost of the event — venue, production, F&B and talent sit on top and are usually the larger number, which is why the Concierge asks for your total working budget separately. Tell us the real figure. If it doesn't buy the thing you're describing, you'll hear that on the discovery call rather than in month three, and if we're not the right call at your number we'll point you to someone who is.",
+    a: "Most engagements start between S$5,000 and S$10,000, depending on how much of it we run. That is our fee, not the cost of the event — venue, production, F&B and talent sit on top and are usually the larger number, which is why the Concierge asks for your total working budget separately. Tell us the real figure. If it doesn't buy the thing you're describing, you'll hear that on the Brief Diagnostic rather than in month three, and if we're not the right call at your number we'll point you to someone who is.",
   },
   {
     q: "How do we start?",
-    a: "Answer the four questions in the Concierge — that's the fastest way in. If you'd rather talk first, book a discovery call at zcal.co/mochicollective/consultation, or email hello@mochicollective.com. Either way you'll hear back inside 72 hours on weekdays.",
+    a: "Answer the four questions in the Concierge — that's the fastest way in. If you'd rather talk first, book a Brief Diagnostic at zcal.co/mochicollective/consultation, or email hello@mochicollective.com. Either way you'll hear back inside 72 hours on weekdays.",
   },
 ];

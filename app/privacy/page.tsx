@@ -102,9 +102,9 @@ export default function PrivacyPage() {
               recommended program.
             </p>
 
-            <h3>2.3 When you book a discovery call</h3>
+            <h3>2.3 When you book a Brief Diagnostic</h3>
             <p>
-              Clicking &ldquo;Book a discovery call&rdquo; takes you to our
+              Clicking &ldquo;Book a Brief Diagnostic&rdquo; takes you to our
               scheduling provider, zcal, which asks for your name, email,
               and an optional message. zcal handles this data per their own{" "}
               <a

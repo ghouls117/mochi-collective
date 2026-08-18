@@ -88,7 +88,7 @@ function newEventId(): string {
  * still lands, which is the entire point of running CAPI alongside the Pixel.
  *
  * The server call is fire-and-forget with `keepalive` so it survives the page
- * unloading (the "Book a discovery call" click opens zcal in a new tab and
+ * unloading (the "Book a Brief Diagnostic" click opens zcal in a new tab and
  * can tear this one down mid-flight).
  */
 function fireMetaEvent(
@@ -194,7 +194,7 @@ export function trackConciergeEngaged(answers: Answers, program: Program) {
 }
 
 /**
- * Fires when a user clicks "Book a discovery call" (💭 stage).
+ * Fires when a user clicks "Book a Brief Diagnostic" (💭 stage).
  * Meta event: `Contact` — "person initiated contact with the business".
  * We use `Contact` (not `Schedule`) here so this client-side intent event
  * doesn't collide with the server-side `Schedule` event fired from

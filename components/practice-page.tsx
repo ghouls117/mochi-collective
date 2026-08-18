@@ -239,7 +239,7 @@ export function PracticePage({ content: c }: { content: PracticeContent }) {
                 textDecoration: "none",
               }}
             >
-              Book a Discovery →
+              Book a Brief Diagnostic →
             </a>
           </div>
         </div>

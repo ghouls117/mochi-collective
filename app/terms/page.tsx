@@ -41,7 +41,7 @@ export default function TermsPage() {
               The Site exists to describe our services (brand experiences,
               conferences and events, community and membership programs,
               sponsor activations, and impact measurement), to let you book a
-              discovery call through our scheduling provider, zcal, and to
+              Brief Diagnostic through our scheduling provider, zcal, and to
               share our thinking, work, and updates.
             </p>
             <p>The Site is not:</p>
@@ -143,7 +143,7 @@ export default function TermsPage() {
               When you submit information through the Service Concierge, a
               booking form, or by email, you grant us a non-exclusive licence
               to use that information to respond to you, prepare for a
-              discovery call, and improve our services. Any ideas,
+              Brief Diagnostic, and improve our services. Any ideas,
               suggestions, or feedback you volunteer about our services or
               the Site may be used by us without restriction or compensation.
               You remain responsible for what you submit, and you confirm
@@ -159,23 +159,23 @@ export default function TermsPage() {
 
             <h2>6. Bookings and engagements</h2>
             <p>
-              Clicking &ldquo;Book a Discovery&rdquo; or &ldquo;Secure a
-              Consultation&rdquo; starts the scheduling of a free 30-minute
-              discovery call. No payment is collected at the booking stage.
+              Clicking &ldquo;Book a Brief Diagnostic&rdquo; or &ldquo;Brief
+              Diagnostic&rdquo; starts the scheduling of a free 30-minute
+              Brief Diagnostic call. No payment is collected at the booking stage.
               Scheduling is handled by zcal and is subject to zcal&rsquo;s
               own terms; your name, email address, and scheduling preferences
               are transmitted to zcal as described in our{" "}
               <Link href="/privacy">Privacy Policy</Link>.
             </p>
             <p>
-              If we agree to work together after a discovery call, that
+              If we agree to work together after a Brief Diagnostic, that
               engagement will be governed by a separate Statement of Work
               covering scope, fees, ownership of deliverable IP, and
               confidentiality. That document, not these Terms, controls any
               paid work.
             </p>
             <p>
-              You can cancel a discovery call at any time, with no fee and no
+              You can cancel a Brief Diagnostic at any time, with no fee and no
               questions asked: decline the calendar invite or email us
               directly.
             </p>
@@ -208,7 +208,7 @@ export default function TermsPage() {
               on anything on the Site as a substitute for your own enquiries.
               The Service Concierge recommendation is a starting point for a
               conversation; the right shape for your event always emerges
-              from the discovery call, not the quiz.
+              from the Brief Diagnostic, not the quiz.
             </p>
 
             <h2>9. Liability</h2>

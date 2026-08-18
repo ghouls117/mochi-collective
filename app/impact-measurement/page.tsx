@@ -278,7 +278,7 @@ export default function ImpactMeasurementPage() {
                   maxWidth: "46ch",
                 }}
               >
-                30-minute discovery call. We&rsquo;ll ask what the event
+                Free 30-minute Brief Diagnostic. We&rsquo;ll ask what the event
                 needs to make easier to decide, and tell you whether we can
                 measure that.
               </p>
@@ -300,7 +300,7 @@ export default function ImpactMeasurementPage() {
                 textDecoration: "none",
               }}
             >
-              Book a Discovery →
+              Book a Brief Diagnostic →
             </a>
           </div>
         </div>
