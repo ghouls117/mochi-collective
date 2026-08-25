@@ -139,11 +139,23 @@ export const PRACTICES: Record<string, PracticeContent> = {
       },
       {
         "type": "p",
+        "html": "A hackathon is commissioned by marketing and graded by engineers. Marketing owns the budget, the reach, and a recap that has to survive a quarterly review. Engineers own their weekend — and they read your documentation, your error messages and your rate limits."
+      },
+      {
+        "type": "p",
+        "html": "Most programs are designed for the first client and judged by the second. That is why they get graded in group chats you never see."
+      },
+      {
+        "type": "p",
         "html": "Everything we build is meant to produce evidence, and hackathons make it easy, because they end in artefacts. Working prototypes. Submitted projects. Teams that formed. Developers who signed up for your platform and were still building on it ninety days later. Nobody has to argue about whether something happened."
       },
       {
         "type": "p",
-        "html": "Justin Ng, our co-founder, spent five years as Director of Ecosystem Development at AngelHack — the world's leading hackathon agency, with a global developer community 500,000 strong across more than a hundred cities — where he led the developer ecosystem before starting Mochi. We know what separates a hackathon that produces a press release from one that produces a pipeline."
+        "html": "Justin Ng, our co-founder, spent five years at AngelHack as Director of Ecosystem Development, where he designed the developer programs its clients ran and carried the commercial line for them."
+      },
+      {
+        "type": "p",
+        "html": "AngelHack is the world's leading hackathon agency, with a global developer community of 500,000 across more than a hundred cities. He knows what separates a hackathon that produces a press release from one that produces a pipeline."
       },
       {
         "type": "h2",
@@ -154,8 +166,12 @@ export const PRACTICES: Record<string, PracticeContent> = {
         "items": [
           "<strong>Recruit for the outcome, not the room.</strong> Two hundred warm bodies is a photo. Forty developers who match your ICP is a pipeline. We recruit against who you actually want building on your platform.",
           "<strong>Judge on what you want to happen next.</strong> The judging criteria are the strategy — they tell every team what to optimise for. Most hackathons pick them the week before.",
-          "<strong>Measure at ninety days, not on the night.</strong> Sign-ups on the day tell you about your marketing. Retention at ninety days tells you about your platform."
+          "<strong>Measure at ninety days, not on the night.</strong> Sign-ups on the day tell you about your marketing. Retention at ninety days tells you about your platform. The number we watch during the event itself is median time to first successful API call."
         ]
+      },
+      {
+        "type": "h2",
+        "text": "Your engineers are the sponsorship"
       },
       {
         "type": "p",
@@ -176,6 +192,14 @@ export const PRACTICES: Record<string, PracticeContent> = {
       {
         "type": "p",
         "html": "Early enough that the judging criteria can still be designed rather than picked. Recruitment against an ICP takes lead time, and the ninety-day measurement window only exists if the instrumentation is agreed before the event, not bolted on after it. Eight to twelve weeks out is comfortable."
+      },
+      {
+        "type": "h2",
+        "text": "What we won't claim"
+      },
+      {
+        "type": "p",
+        "html": "We will not attach a pipeline number to a weekend. We log the touch, watch what happens next, and stay honest that a developer who adopts six months later was moved by things nobody instrumented. A revenue figure for a hackathon is a number, not a finding."
       }
     ],
     "reading": [
