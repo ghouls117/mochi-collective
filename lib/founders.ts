@@ -66,11 +66,12 @@ export const FOUNDERS_INTRO =
   "Mochi is small on purpose. You get the founders on the work, not a pitch team who hand you to someone else after you sign.";
 
 /**
- * Closing lines. Rendered below a rule, deliberately separated from the last
- * bio so they read as a joint statement rather than a continuation of Marc's.
- * The second line is the payoff for Section 01 ending on the motto unattributed.
+ * Closing statement, rendered under the founders grid at the same width.
+ *
+ * One paragraph, not two: the motto payoff reads as the continuation of the
+ * "client side of this table" thought rather than a separate remark. The
+ * dividing rule above it was removed for the same reason. It remains the
+ * payoff for Section 01 ending on the motto unattributed.
  */
-export const FOUNDERS_CLOSING = [
-  "We have both spent our careers on the client side of this table. We know exactly which slide gets questioned.",
-  "And that line about leaving a place better than you found it isn't agency copy. It has been Marc's personal motto for twenty years. We built a company around it.",
-];
+export const FOUNDERS_CLOSING =
+  "We have both spent our careers on the client side of this table. We know exactly which slide gets questioned. And that line about leaving a place better than you found it isn't agency copy. It has been Marc's personal motto for twenty years. We built a company around it.";

@@ -60,9 +60,7 @@ export function Founders() {
         </div>
 
         <div className="founders-close reveal">
-          {FOUNDERS_CLOSING.map((line) => (
-            <p key={line}>{line}</p>
-          ))}
+          <p>{FOUNDERS_CLOSING}</p>
         </div>
       </div>
     </section>
