@@ -1683,6 +1683,16 @@ section {
   margin: 0 0 18px 0;
   padding-left: 22px;
 }
+/* Tailwind v4 Preflight resets ol/ul to list-style:none. .th-prose restores
+   it further down; .prose never did, so every bulleted list on the five
+   practice pages has been rendering without markers — despite the
+   li::marker colour below, which shows they were always meant to show. */
+.prose ol {
+  list-style-type: decimal;
+}
+.prose ul {
+  list-style-type: disc;
+}
 .prose li {
   margin-bottom: 8px;
 }
@@ -2436,23 +2446,31 @@ footer .social-link svg {
   color: var(--category-accent, var(--color-pink));
 }
 
-/* Orb-list — numbered points with beige markers + orb colors on bold labels */
-.th-prose ol.orb-list li::marker {
+/* Orb-list — numbered points with beige markers + orb colors on bold labels.
+   Scoped to both prose contexts: .th-prose is the essay body, .prose is the
+   practice pages. Colours follow orb order and loop after five. */
+.th-prose ol.orb-list li::marker,
+.prose ol.orb-list li::marker {
   color: var(--color-beige);
 }
-.th-prose ol.orb-list li:nth-child(1) > strong:first-child {
+.th-prose ol.orb-list li:nth-child(1) > strong:first-child,
+.prose ol.orb-list li:nth-child(1) > strong:first-child {
   color: var(--color-pink);
 }
-.th-prose ol.orb-list li:nth-child(2) > strong:first-child {
+.th-prose ol.orb-list li:nth-child(2) > strong:first-child,
+.prose ol.orb-list li:nth-child(2) > strong:first-child {
   color: var(--color-blue);
 }
-.th-prose ol.orb-list li:nth-child(3) > strong:first-child {
+.th-prose ol.orb-list li:nth-child(3) > strong:first-child,
+.prose ol.orb-list li:nth-child(3) > strong:first-child {
   color: var(--color-sage);
 }
-.th-prose ol.orb-list li:nth-child(4) > strong:first-child {
+.th-prose ol.orb-list li:nth-child(4) > strong:first-child,
+.prose ol.orb-list li:nth-child(4) > strong:first-child {
   color: var(--color-honey);
 }
-.th-prose ol.orb-list li:nth-child(5) > strong:first-child {
+.th-prose ol.orb-list li:nth-child(5) > strong:first-child,
+.prose ol.orb-list li:nth-child(5) > strong:first-child {
   color: var(--color-slate-orb);
 }
 

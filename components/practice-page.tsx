@@ -32,7 +32,10 @@ export type PracticeBlock =
   | { type: "h2"; text: string }
   | { type: "h3"; text: string }
   | { type: "p"; html: string }
-  | { type: "ul"; items: string[] };
+  | { type: "ul"; items: string[] }
+  /** Numbered list carrying one Mochi orb colour per item, in orb order
+   *  (pink, blue, sage, honey, slate). Styled by .orb-list in globals.css. */
+  | { type: "ol"; items: string[] };
 
 export type PracticeContent = {
   /** URL slug, e.g. "brand-experience". Path is `/${slug}`. */
@@ -113,6 +116,14 @@ function ProseBlock({ block }: { block: PracticeBlock }) {
             <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
           ))}
         </ul>
+      );
+    case "ol":
+      return (
+        <ol className="orb-list">
+          {block.items.map((item, i) => (
+            <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
+          ))}
+        </ol>
       );
   }
 }

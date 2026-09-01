@@ -162,7 +162,7 @@ export const PRACTICES: Record<string, PracticeContent> = {
         "text": "Three things we do differently"
       },
       {
-        "type": "ul",
+        "type": "ol",
         "items": [
           "<strong>Recruit for the outcome, not the room.</strong> Two hundred warm bodies is a photo. Forty developers who match your ICP is a pipeline. We recruit against who you actually want building on your platform.",
           "<strong>Judge on what you want to happen next.</strong> The judging criteria are the strategy — they tell every team what to optimise for. Most hackathons pick them the week before.",

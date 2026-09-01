@@ -225,6 +225,12 @@ function blockToMarkdown(b: PracticeBlock): string {
       return stripInlineHtml(b.html);
     case "ul":
       return b.items.map((i) => `- ${stripInlineHtml(i)}`).join("\n");
+    case "ol":
+      // Numbered in the output too — the order carries meaning on the page,
+      // so flattening it to bullets would lose that for an answer engine.
+      return b.items
+        .map((i, n) => `${n + 1}. ${stripInlineHtml(i)}`)
+        .join("\n");
   }
 }
 
