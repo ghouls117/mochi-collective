@@ -7,17 +7,17 @@ import { ShareButtons } from "@/components/thoughts/share-buttons";
 import {
   buildRelatedPosts,
   buildShareUrls,
-  getAllPosts,
+  getPublishedPosts,
   getPost,
   todayInSingapore,
 } from "@/lib/thoughts";
 import { AUTHOR_FOUNDER, founderId } from "@/lib/founders";
 
 /**
- * Revalidate every 15 minutes so the noindex meta and related-post
- * gating stay in sync with the current date. Without this, a post
- * pre-generated when publish_date > today would keep noindex forever
- * until the next full deploy.
+ * Revalidate every 15 minutes so publish-date gating stays in sync with the
+ * calendar without a redeploy. A scheduled post 404s until its date, then
+ * starts serving within 15 minutes of the date landing; related-post lists
+ * pick it up on the same cycle.
  */
 export const revalidate = 900;
 
@@ -26,7 +26,11 @@ const SITE_URL = "https://mochicollective.com";
 type Params = { category: string; slug: string };
 
 export function generateStaticParams(): Params[] {
-  return getAllPosts().map((p) => ({
+  // Published only. A scheduled post must not be pre-rendered, or its URL
+  // serves the finished essay to anyone who guesses or is forwarded the link.
+  // Unknown slugs fall through to on-demand rendering, where the publish-date
+  // check below turns them into a real 404 until their date.
+  return getPublishedPosts().map((p) => ({
     category: p.categorySlug,
     slug: p.slug,
   }));
@@ -40,22 +44,19 @@ export async function generateMetadata({
   const { category, slug } = await params;
   const post = getPost(category, slug);
   if (!post) return {};
-  const url = `${SITE_URL}${post.urlPath}`;
-  // Don't let Google index a post before its publish date lands — a direct
-  // URL preview is fine for humans, but we don't want early snapshots in
-  // the SERP.
-  // Singapore date, not UTC — same definition getPublishedPosts(), the
+  // Scheduled posts 404 (see the page component), so emit no metadata for
+  // them at all — no title, description or OG card to leak the piece early.
+  //
+  // Singapore date, not UTC — the same definition getPublishedPosts(), the
   // sitemap and the postbuild verifier use. When this was UTC it disagreed
-  // with all three for the first eight hours of every publish day, so a post
-  // could be in the sitemap and still serving noindex.
-  const isPublished = post.publish_date <= todayInSingapore();
+  // with all three for the first eight hours of every publish day.
+  if (post.publish_date > todayInSingapore()) return {};
+  const url = `${SITE_URL}${post.urlPath}`;
   return {
     title: post.meta_title ?? `${post.title} | Mochi Collective`,
     description: post.meta_description,
     alternates: { canonical: post.urlPath },
-    robots: isPublished
-      ? { index: true, follow: true }
-      : { index: false, follow: true },
+    robots: { index: true, follow: true },
     openGraph: {
       title: post.meta_title ?? post.title,
       description: post.meta_description,
@@ -100,7 +101,9 @@ export default async function ThoughtsPostPage({
 }) {
   const { category, slug } = await params;
   const post = getPost(category, slug);
-  if (!post) notFound();
+  // A scheduled post is a real 404 until its publish date. `revalidate` below
+  // means it starts serving within 15 minutes of the date landing.
+  if (!post || post.publish_date > todayInSingapore()) notFound();
 
   const share = buildShareUrls(post);
   const related = buildRelatedPosts(post);
