@@ -63,6 +63,171 @@ export const SHORT_LINKS: Record<string, ShortLink> = {
       campaign: "july-2026-w3",
     },
   },
+  "6q-fb": {
+    slug: "6q-fb",
+    url: "https://mochicollective.com/thoughts/thought-leadership/6-questions-every-brief",
+    note: "6 Questions — Facebook repost aug",
+    utm: {
+      source: "facebook",
+      medium: "organic-social",
+      campaign: "august-2026-reposting",
+    },
+  },
+  "ai-impact-ig": {
+    slug: "ai-impact-ig",
+    url: "https://mochicollective.com/thoughts/thought-leadership/how-we-use-ai-to-measure-impact",
+    note: "How We Use AI to Measure Impact — Instagram aug w3",
+    utm: {
+      source: "instagram",
+      medium: "organic-social",
+      campaign: "august-2026-w3",
+    },
+  },
+  "ai-impact-fb": {
+    slug: "ai-impact-fb",
+    url: "https://mochicollective.com/thoughts/thought-leadership/how-we-use-ai-to-measure-impact",
+    note: "How We Use AI to Measure Impact — Facebook repost aug",
+    utm: {
+      source: "facebook",
+      medium: "organic-social",
+      campaign: "august-2026-reposting",
+    },
+  },
+  "ai-impact-li": {
+    slug: "ai-impact-li",
+    url: "https://mochicollective.com/thoughts/thought-leadership/how-we-use-ai-to-measure-impact",
+    note: "How We Use AI to Measure Impact — LinkedIn aug w3",
+    utm: {
+      source: "linkedin",
+      medium: "organic-social",
+      campaign: "august-2026-w3",
+    },
+  },
+  "community-ig": {
+    slug: "community-ig",
+    url: "https://mochicollective.com/thoughts/events-craft/how-community-programs-compound",
+    note: "How Community Programs Compound — Instagram aug w4",
+    utm: {
+      source: "instagram",
+      medium: "organic-social",
+      campaign: "august-2026-w4",
+    },
+  },
+  "community-li": {
+    slug: "community-li",
+    url: "https://mochicollective.com/thoughts/events-craft/how-community-programs-compound",
+    note: "How Community Programs Compound — LinkedIn aug w4",
+    utm: {
+      source: "linkedin",
+      medium: "organic-social",
+      campaign: "august-2026-w4",
+    },
+  },
+  "community-fb": {
+    slug: "community-fb",
+    url: "https://mochicollective.com/thoughts/events-craft/how-community-programs-compound",
+    note: "How Community Programs Compound — Facebook aug w4",
+    utm: {
+      source: "facebook",
+      medium: "organic-social",
+      campaign: "august-2026-w4",
+    },
+  },
+  "brandroom-li-ann": {
+    slug: "brandroom-li-ann",
+    url: "https://mochicollective.com/thoughts/brand-strategy/when-your-brand-becomes-a-room",
+    note: "When Your Brand Becomes a Room — LinkedIn announce sep",
+    utm: {
+      source: "linkedin",
+      medium: "organic-social",
+      campaign: "september-2026",
+      content: "brand-room-announce",
+    },
+  },
+  "brandroom-li-amp": {
+    slug: "brandroom-li-amp",
+    url: "https://mochicollective.com/thoughts/brand-strategy/when-your-brand-becomes-a-room",
+    note: "When Your Brand Becomes a Room — LinkedIn amplifier sep",
+    utm: {
+      source: "linkedin",
+      medium: "organic-social",
+      campaign: "september-2026",
+      content: "brand-room-amplifier",
+    },
+  },
+  "brandroom-ig": {
+    slug: "brandroom-ig",
+    url: "https://mochicollective.com/thoughts/brand-strategy/when-your-brand-becomes-a-room",
+    note: "When Your Brand Becomes a Room — Instagram amplifier sep",
+    utm: {
+      source: "instagram",
+      medium: "organic-social",
+      campaign: "september-2026",
+      content: "brand-room-amplifier",
+    },
+  },
+  "brandroom-fb": {
+    slug: "brandroom-fb",
+    url: "https://mochicollective.com/thoughts/brand-strategy/when-your-brand-becomes-a-room",
+    note: "When Your Brand Becomes a Room — Facebook amplifier sep",
+    utm: {
+      source: "facebook",
+      medium: "organic-social",
+      campaign: "september-2026",
+      content: "brand-room-amplifier",
+    },
+  },
+  "hack-li-buildup1": {
+    slug: "hack-li-buildup1",
+    url: "https://mochicollective.com/hackathons",
+    note: "Hackathons page — LinkedIn buildup 1 sep",
+    utm: {
+      source: "linkedin",
+      medium: "organic-social",
+      campaign: "september-2026",
+      content: "hackathons-buildup-1",
+    },
+  },
+  "hack-ig-w2": {
+    slug: "hack-ig-w2",
+    url: "https://mochicollective.com/hackathons",
+    note: "Hackathons page — Instagram sep w2",
+    utm: {
+      source: "instagram",
+      medium: "organic-social",
+      campaign: "september-2026-w2",
+    },
+  },
+  "hack-ig-w1": {
+    slug: "hack-ig-w1",
+    url: "https://mochicollective.com/hackathons",
+    note: "Hackathons page — Instagram sep w1",
+    utm: {
+      source: "instagram",
+      medium: "organic-social",
+      campaign: "september-2026-w1",
+    },
+  },
+  "hack-li-w1": {
+    slug: "hack-li-w1",
+    url: "https://mochicollective.com/hackathons",
+    note: "Hackathons page — LinkedIn sep w1",
+    utm: {
+      source: "linkedin",
+      medium: "organic-social",
+      campaign: "september-2026-w1",
+    },
+  },
+  "hack-fb-w1": {
+    slug: "hack-fb-w1",
+    url: "https://mochicollective.com/hackathons",
+    note: "Hackathons page — Facebook sep w1",
+    utm: {
+      source: "facebook",
+      medium: "organic-social",
+      campaign: "september-2026-w1",
+    },
+  },
 };
 
 /**
